@@ -6,10 +6,12 @@ using System.Web.Mvc;
 
 namespace Holiday_App.Controllers
 {
+    [RequireHttps]
     public class HomeController : Controller
     {
         public ActionResult Index()
         {
+            ViewBag.Title = "HolidayApp";
             return View();
         }
 
