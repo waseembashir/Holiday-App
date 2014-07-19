@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Holiday_App.Models
+namespace HolidayApp.Models
 {
     public class ExternalLoginConfirmationViewModel
     {

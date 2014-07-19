@@ -1,8 +1,8 @@
 ﻿using Microsoft.Owin;
 using Owin;
 
-[assembly: OwinStartupAttribute(typeof(Holiday_App.Startup))]
-namespace Holiday_App
+[assembly: OwinStartupAttribute(typeof(HolidayApp.Startup))]
+namespace HolidayApp
 {
     public partial class Startup
     {

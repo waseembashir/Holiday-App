@@ -3,7 +3,7 @@ using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
 using Owin;
 
-namespace Holiday_App
+namespace HolidayApp
 {
     public partial class Startup
     {

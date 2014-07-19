@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace Holiday_App.Controllers
+namespace HolidayApp.Controllers
 {
     [RequireHttps]
     public class HomeController : Controller

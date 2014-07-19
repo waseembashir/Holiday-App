@@ -1,9 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+using System.ComponentModel.DataAnnotations;
 
-namespace Holiday_App.Models
+namespace HolidayApp.Core.Model
 {
     public class Employee
     {
@@ -15,7 +13,7 @@ namespace Holiday_App.Models
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
 
         public virtual DateTime BirthDate { get; set; }
-        public virtual Gender Gender { get; set; }
+        //public virtual Gender Gender { get; set; }
 
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
@@ -35,9 +33,9 @@ namespace Holiday_App.Models
 
         public virtual string Username { get; set; }
 
-        public virtual EmployeeType EmployeeType { get; set; }
+     //   public virtual EmployeeType EmployeeType { get; set; }
 
-        public virtual ICollection<Project> Projects { get; set; }
+       // public virtual ICollection<Project> Projects { get; set; }
         public virtual string JobTitle { get; set; }
 
     }
