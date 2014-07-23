@@ -48,6 +48,7 @@
   <ItemGroup>
     <Compile Include="Data\HolidayAppDb.cs" />
     <Compile Include="Model\Employee.cs" />
+    <Compile Include="Model\Holiday.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -19,6 +19,13 @@ namespace HolidayApp.Core.Data
             get { return Employees; }
         }
 
+        public DbSet<Holiday> MyHolidays { get; set; }
+
+        public IQueryable<Holiday> GetMyHolidays
+        {
+            get { return MyHolidays; }
+        }
+
     }
 
 }
