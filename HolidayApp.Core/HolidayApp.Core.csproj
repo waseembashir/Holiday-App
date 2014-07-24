@@ -20,6 +20,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -47,6 +48,27 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Data\HolidayAppDb.cs" />
+    <Compile Include="Migrations\201407230559432_InitialCreate.cs" />
+    <Compile Include="Migrations\201407230559432_InitialCreate.Designer.cs">
+      <DependentUpon>201407230559432_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201407240502095_HolidayAppDb.cs" />
+    <Compile Include="Migrations\201407240502095_HolidayAppDb.Designer.cs">
+      <DependentUpon>201407240502095_HolidayAppDb.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201407240726455_HolidayAppDb1.cs" />
+    <Compile Include="Migrations\201407240726455_HolidayAppDb1.Designer.cs">
+      <DependentUpon>201407240726455_HolidayAppDb1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201407240745576_HolidayAppDb2.cs" />
+    <Compile Include="Migrations\201407240745576_HolidayAppDb2.Designer.cs">
+      <DependentUpon>201407240745576_HolidayAppDb2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201407240956109_HolidayAppDb3.cs" />
+    <Compile Include="Migrations\201407240956109_HolidayAppDb3.Designer.cs">
+      <DependentUpon>201407240956109_HolidayAppDb3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model\Employee.cs" />
     <Compile Include="Model\Holiday.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -54,6 +76,23 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201407230559432_InitialCreate.resx">
+      <DependentUpon>201407230559432_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201407240502095_HolidayAppDb.resx">
+      <DependentUpon>201407240502095_HolidayAppDb.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201407240726455_HolidayAppDb1.resx">
+      <DependentUpon>201407240726455_HolidayAppDb1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201407240745576_HolidayAppDb2.resx">
+      <DependentUpon>201407240745576_HolidayAppDb2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201407240956109_HolidayAppDb3.resx">
+      <DependentUpon>201407240956109_HolidayAppDb3.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

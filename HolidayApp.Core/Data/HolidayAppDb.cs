@@ -6,6 +6,8 @@ namespace HolidayApp.Core.Data
 {
     public class HolidayAppDb : DbContext
     {
+
+        
         public HolidayAppDb()
             : base("DefaultConnection")
         {
@@ -27,5 +29,6 @@ namespace HolidayApp.Core.Data
         }
 
     }
+
 
 }
