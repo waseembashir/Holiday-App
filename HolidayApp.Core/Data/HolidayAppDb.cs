@@ -21,11 +21,21 @@ namespace HolidayApp.Core.Data
             get { return Employees; }
         }
 
-        public DbSet<Holiday> MyHolidays { get; set; }
+        public DbSet<Holiday> Holidays { get; set; }
 
-        public IQueryable<Holiday> GetMyHolidays
+        public IQueryable<Holiday> GetAllHolidays
         {
-            get { return MyHolidays; }
+            get { return Holidays; }
+        }
+
+        public IQueryable<Holiday> GetHolidaysByEmployee(Employee employee)
+        {
+            return Holidays.Where(r => r.Employee == employee);
+        }
+
+        public Employee GetEmployeeByUsername(string username)
+        {
+            return Employees.FirstOrDefault(r => r.Username == username);
         }
 
     }

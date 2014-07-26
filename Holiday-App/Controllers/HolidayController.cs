@@ -16,11 +16,15 @@ namespace HolidayApp.Controllers
        private HolidayAppDb db = new HolidayAppDb();
 
         // GET: /Holiday/
+        
+        
+        // [Authorize] should use this helper attribute. This will force the user to login before they can 
+        // View or book holidays. - WB
         public ActionResult Index()
         {
-            
-           ViewData["Message"] ="aa" ;
-           return View(db.MyHolidays.ToList());
+           var loggedInUser = User.Identity.Name;
+           var employee = db.GetEmployeeByUsername(loggedInUser);
+           return View(db.GetHolidaysByEmployee(employee));
         }
 
         public ActionResult Create()
@@ -34,9 +38,15 @@ namespace HolidayApp.Controllers
 
         public ActionResult Create([Bind(Include = "EmployeeId,StartDate,EndDate,NoOfDays")] Holiday holiday)
         {
+            var loggedInUser = User.Identity.Name;
+            var employee = db.GetEmployeeByUsername(loggedInUser);
+            
+            // Add validation for dates here.
+
             if (ModelState.IsValid)
             {
-                db.MyHolidays.Add(holiday);
+                holiday.Employee = employee;
+                db.Holidays.Add(holiday);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -46,8 +56,8 @@ namespace HolidayApp.Controllers
 
         public ActionResult Details(int? id)
         {
-            
-            Holiday holiday = db.MyHolidays.Find(id);
+
+            Holiday holiday = db.Holidays.Find(id);
             if (holiday == null)
             {
                 return HttpNotFound();
