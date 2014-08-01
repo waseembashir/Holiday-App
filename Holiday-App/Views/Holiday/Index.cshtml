@@ -4,7 +4,7 @@
     ViewBag.Title = "Index";
 }
 
-<h2>@ViewData["Message"]</h2>
+<h2>My Holiday List</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -17,6 +17,9 @@
         </th>
         <th>
             @Html.DisplayNameFor(model => model.EndDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UserId)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.NoOfDays)
@@ -37,6 +40,9 @@
             @Html.DisplayFor(modelItem => item.EndDate)
         </td>
         <td>
+            @Html.DisplayFor(modelItem => item.UserId)
+        </td>
+        <td>
             @Html.DisplayFor(modelItem => item.NoOfDays)
         </td>
         <td>
@@ -51,4 +57,3 @@
 }
 
 </table>
-@ViewBag.Message
