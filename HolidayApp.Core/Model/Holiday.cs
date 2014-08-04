@@ -17,6 +17,7 @@ namespace HolidayApp.Core.Model
         [Required]
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
+        [CurrentDateCheck]
         public virtual DateTime StartDate { get; set; }
 
         [Required]

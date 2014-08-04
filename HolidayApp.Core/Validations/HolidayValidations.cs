@@ -25,7 +25,32 @@ namespace HolidayApp.Validations
             var Otherdate = (DateTime)otherpropertyinfo.GetValue(validationContext.ObjectInstance, null);
             var thisdate = (DateTime)value;
 
-            if(thisdate > Otherdate)
+            if(thisdate < Otherdate)
+            {
+                var msg = FormatErrorMessage(validationContext.DisplayName);
+                return new ValidationResult(msg);
+            }
+
+            return null;
+        }
+    }
+
+    public class CurrentDateCheck:ValidationAttribute
+    {
+        
+        public CurrentDateCheck()
+            :base("{0} shoud be Today's Date or Greater")
+        {
+           
+        }
+       
+        protected override ValidationResult IsValid(object value, ValidationContext validationContext)
+        {
+            
+            var thisdate = (DateTime)value;
+            var today = DateTime.Today;
+
+            if(thisdate < today)
             {
                 var msg = FormatErrorMessage(validationContext.DisplayName);
                 return new ValidationResult(msg);
