@@ -124,7 +124,7 @@ namespace HolidayApp.Controllers
         // POST: /Holiday/Edit/5
         [HttpPost, ActionName("Edit")]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "StartDate,EndDate")] Holiday holiday)
+        public ActionResult Edit([Bind(Include = "StartDate,EndDate,NoOfDays")] Holiday holiday)
         {
             if (ModelState.IsValid)
             {
