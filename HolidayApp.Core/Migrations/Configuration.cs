@@ -10,7 +10,6 @@ namespace HolidayApp.Core.Migrations
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
-            ContextKey = "HolidayApp.Core.Data.HolidayAppDb";
         }
 
         protected override void Seed(HolidayApp.Core.Data.HolidayAppDb context)

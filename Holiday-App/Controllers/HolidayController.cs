@@ -4,11 +4,11 @@ using System.Linq;
 using System.Web;
 using System.Net;
 using System.Web.Mvc;
+using System.Data.Entity;
 using HolidayApp.Models;
 using HolidayApp.Core.Model;
 using HolidayApp.Core.Data;
 using Microsoft.AspNet.Identity;
-using HolidayApp.Models;
 using Microsoft.AspNet.Identity;
 
 namespace HolidayApp.Controllers
@@ -19,12 +19,23 @@ namespace HolidayApp.Controllers
        private HolidayAppDb db = new HolidayAppDb();
 
         // GET: /Holiday/
+        
+        
+        // [Authorize] should use this helper attribute. This will force the user to login before they can 
+        // View or book holidays. - WB
+        [Authorize]
         public ActionResult Index()
         {
+
             var memberId = User.Identity.GetUserId();
-            Holiday holidays = db.MyHolidays.Find(memberId);
+           // Holiday holidays = db.MyHolidays.Find(memberId);
             
-           return View(db.MyHolidays.ToList());
+           //return View(db.Holidays.ToList());
+
+           var loggedInUser = User.Identity.Name;
+           var employee = db.GetEmployeeByUsername(loggedInUser);
+           return View(db.GetHolidaysByEmployee(employee));
+
         }
 
         public ActionResult Create()
@@ -39,11 +50,17 @@ namespace HolidayApp.Controllers
         
         [HttpPost]
 
-        public ActionResult Create([Bind(Include = "EmployeeId,StartDate,EndDate,NoOfDays,UserId")] Holiday holiday)
+        public ActionResult Create([Bind(Include = "HolidayId,StartDate,EndDate,NoOfDays,Employee")] Holiday holiday)
         {
+            var loggedInUser = User.Identity.Name;
+            var employee = db.GetEmployeeByUsername(loggedInUser);
+            
+            // Add validation for dates here.
+
             if (ModelState.IsValid)
             {
-                db.MyHolidays.Add(holiday);
+                holiday.Employee = employee;
+                db.Holidays.Add(holiday);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -53,8 +70,8 @@ namespace HolidayApp.Controllers
 
         public ActionResult Details(int? id)
         {
-            
-            Holiday holiday = db.MyHolidays.Find(id);
+
+            Holiday holiday = db.Holidays.Find(id);
             if (holiday == null)
             {
                 return HttpNotFound();
@@ -69,7 +86,7 @@ namespace HolidayApp.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Holiday holiday = db.MyHolidays.Find(id);
+            Holiday holiday = db.Holidays.Find(id);
             if (holiday == null)
             {
                 return HttpNotFound();
@@ -82,10 +99,51 @@ namespace HolidayApp.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Holiday holiday = db.MyHolidays.Find(id);
-            db.MyHolidays.Remove(holiday);
+            Holiday holiday = db.Holidays.Find(id);
+            db.Holidays.Remove(holiday);
             db.SaveChanges();
             return RedirectToAction("Index");
+        }
+
+        // GEt: /Holiday/Edit/5
+        public ActionResult Edit(int id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Holiday holiday = db.Holidays.Find(id);
+            if (holiday == null)
+            {
+                return HttpNotFound();
+            }
+            return View(holiday);
+
+        }
+
+        // POST: /Holiday/Edit/5
+        [HttpPost, ActionName("Edit")]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit([Bind(Include = "StartDate,EndDate,NoOfDays")] Holiday holiday)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Entry(holiday).State = EntityState.Modified;
+               
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View(holiday);
+        }
+
+
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                db.Dispose();
+            }
+            base.Dispose(disposing);
         }
 
 	}

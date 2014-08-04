@@ -234,8 +234,9 @@
     <Content Include="Views\Employee\Index.cshtml" />
     <Content Include="Views\Holiday\Details.cshtml" />
     <Content Include="Views\Holiday\Index.cshtml" />
-    <Content Include="Views\Holiday\Create.cshtml" />
     <Content Include="Views\Holiday\Delete.cshtml" />
+    <Content Include="Views\Holiday\Edit.cshtml" />
+    <Content Include="Views\Holiday\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

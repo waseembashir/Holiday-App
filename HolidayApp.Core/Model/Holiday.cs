@@ -4,16 +4,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
+using HolidayApp.Validations;
 
 namespace HolidayApp.Core.Model
 {
     public class Holiday
     {
   
-        //public virtual int EmployeeID { get; set; }
-       
         [Key]
-        public virtual int RequestId{get;set;}
+        public virtual int HolidayId{ get; set; }
 
         [Required]
         [DataType(DataType.Date)]
@@ -23,12 +22,13 @@ namespace HolidayApp.Core.Model
         [Required]
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
+        [HolidayValidations("StartDate")]
         public virtual DateTime EndDate { get; set; }
-
-       [Required]
+ 
+        [Required]
         public virtual int NoOfDays { get; set; }
 
-       public virtual String UserId { get; set; }
+        public virtual Employee Employee { get; set; }
 
         public virtual String Status { get; set; }
     }

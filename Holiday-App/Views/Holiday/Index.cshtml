@@ -18,9 +18,7 @@
         <th>
             @Html.DisplayNameFor(model => model.EndDate)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.UserId)
-        </th>
+        
         <th>
             @Html.DisplayNameFor(model => model.NoOfDays)
         </th>
@@ -39,9 +37,7 @@
         <td>
             @Html.DisplayFor(modelItem => item.EndDate)
         </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.UserId)
-        </td>
+        
         <td>
             @Html.DisplayFor(modelItem => item.NoOfDays)
         </td>
@@ -49,9 +45,9 @@
             @Html.DisplayFor(modelItem => item.Status)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.RequestId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.RequestId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.RequestId })
+            @Html.ActionLink("Edit", "Edit", new { id=item.HolidayId }) |
+            @Html.ActionLink("Details", "Details", new { id = item.HolidayId }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.HolidayId })
         </td>
     </tr>
 }
