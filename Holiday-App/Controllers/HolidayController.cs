@@ -11,8 +11,10 @@ using HolidayApp.Core.Data;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity;
 
+
 namespace HolidayApp.Controllers
 {
+    
     public class HolidayController : Controller
     {
 
@@ -34,27 +36,33 @@ namespace HolidayApp.Controllers
 
            var loggedInUser = User.Identity.Name;
            var employee = db.GetEmployeeByUsername(loggedInUser);
+            if (employee==null)
+            {
+                return View("Create");
+            }
            return View(db.GetHolidaysByEmployee(employee));
 
         }
 
+        // GET: /Holiday/Create
+         [Authorize]
         public ActionResult Create()
         {
             var memberId = User.Identity.GetUserId();
             ViewData["Message"] = memberId;
-          
+
             return View();
         }
 
-        // POST: /Employee/Create
-        
+        // POST: /Holiday/Create
+
         [HttpPost]
 
         public ActionResult Create([Bind(Include = "HolidayId,StartDate,EndDate,NoOfDays,Employee")] Holiday holiday)
         {
             var loggedInUser = User.Identity.Name;
             var employee = db.GetEmployeeByUsername(loggedInUser);
-            
+
             // Add validation for dates here.
 
             if (ModelState.IsValid)
@@ -79,7 +87,7 @@ namespace HolidayApp.Controllers
             return View(holiday);  
         }
 
-        // GET: /Employee/Delete/5
+        // GET: /Holidays/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -124,10 +132,13 @@ namespace HolidayApp.Controllers
         // POST: /Holiday/Edit/5
         [HttpPost, ActionName("Edit")]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "StartDate,EndDate,NoOfDays")] Holiday holiday)
+        public ActionResult Edit([Bind(Include = "HolidayId,StartDate,EndDate,NoOfDays,Employee")] Holiday holiday)
         {
+            var loggedInUser = User.Identity.Name;
+            var employee = db.GetEmployeeByUsername(loggedInUser);
             if (ModelState.IsValid)
             {
+                holiday.Employee = employee;
                 db.Entry(holiday).State = EntityState.Modified;
                
                 db.SaveChanges();

@@ -30,11 +30,13 @@ namespace HolidayApp.Core.Data
 
         public IQueryable<Holiday> GetHolidaysByEmployee(Employee employee)
         {
+            var hr = Holidays.Where(r => r.Employee == employee);
             return Holidays.Where(r => r.Employee == employee);
         }
 
         public Employee GetEmployeeByUsername(string username)
         {
+            
             return Employees.FirstOrDefault(r => r.Username == username);
         }
 

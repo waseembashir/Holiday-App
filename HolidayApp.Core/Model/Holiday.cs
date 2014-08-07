@@ -27,7 +27,8 @@ namespace HolidayApp.Core.Model
         public virtual DateTime EndDate { get; set; }
  
         [Required]
-        public virtual int NoOfDays { get; set; }
+        [Range(0.5,100)]
+        public virtual float NoOfDays { get; set; }
 
         public virtual Employee Employee { get; set; }
 
