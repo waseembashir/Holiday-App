@@ -4,6 +4,20 @@
         <name>SalesFirst.Core</name>
     </assembly>
     <members>
+        <member name="M:SalesFirst.Core.Data.ClientDb.GetEmployeeByApexureId(System.String)">
+            <summary>
+            Gets the employee by Apexure ID. e.g. john.smith@apexure.com
+            </summary>
+            <param name="apexureId">The Apexure ID.</param>
+            <returns></returns>
+        </member>
+        <member name="M:SalesFirst.Core.Data.ClientDb.GetEmployeeByUsername(System.String)">
+            <summary>
+            Gets the employee by username e.g. john.doe
+            </summary>
+            <param name="username">The username.</param>
+            <returns></returns>
+        </member>
         <member name="T:SalesFirst.Core.Service.EmailService">
             <summary>
             EmailService Class definition, send emails to recipients via sales-first email.

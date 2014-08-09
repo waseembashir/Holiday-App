@@ -34,11 +34,11 @@ namespace HolidayApp.Core.Data
            return Holidays.Where(r => r.Employee.Username == employee.Username);
         }
 
-        public Employee GetEmployeeByUsername(string username)
-        {
+        //public Employee GetEmployeeByUsername(string username)
+        //{
             
-            return Employees.FirstOrDefault(r => r.Username == username);
-        }
+        //    return Employees.FirstOrDefault(r => r.Username == username);
+        //}
 
     }
 
