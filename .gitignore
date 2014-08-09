@@ -198,4 +198,4 @@ Desktop.ini
 # Recycle Bin used on file shares
 $RECYCLE.BIN/
 *.cache
-Holiday-App/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
+Holiday-App/obj/*

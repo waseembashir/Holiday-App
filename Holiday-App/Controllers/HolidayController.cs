@@ -2,10 +2,10 @@
 using System.Net;
 using System.Web.Mvc;
 using System.Data.Entity;
-using System.Web.UI;
 using HolidayApp.Core.Model;
 using HolidayApp.Core.Data;
 using Microsoft.AspNet.Identity;
+using SalesFirst.Core.Service;
 
 
 namespace HolidayApp.Controllers
@@ -15,11 +15,14 @@ namespace HolidayApp.Controllers
     {
 
        private HolidayAppDb db = new HolidayAppDb();
-
         // GET: /Holiday/
         
         // [Authorize] should use this helper attribute. This will force the user to login before they can 
         // View or book holidays. - WB
+       /// <summary>
+       /// Indexes this instance.
+       /// </summary>
+       /// <returns></returns>
         [Authorize]
         public ActionResult Index()
         {
@@ -35,7 +38,10 @@ namespace HolidayApp.Controllers
                 /*However, if the employee doesn't exist, meaning mapping didn't work - needs some extra validation - WB */
                 return RedirectToAction("Create");
             }
-           return View(db.GetHolidaysByEmployee(employee).ToList());
+
+
+            return View(db.GetHolidaysByEmployee(employee).ToList());
+
 
         }
 
