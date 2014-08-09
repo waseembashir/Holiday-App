@@ -199,3 +199,4 @@ Desktop.ini
 $RECYCLE.BIN/
 *.cache
 Holiday-App/obj/*
+*.cache
