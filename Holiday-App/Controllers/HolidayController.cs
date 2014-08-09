@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Linq;
 using System.Net;
 using System.Web.Mvc;
 using System.Data.Entity;
-using HolidayApp.Models;
+using System.Web.UI;
 using HolidayApp.Core.Model;
 using HolidayApp.Core.Data;
-using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity;
 
 
@@ -22,25 +18,24 @@ namespace HolidayApp.Controllers
 
         // GET: /Holiday/
         
-        
         // [Authorize] should use this helper attribute. This will force the user to login before they can 
         // View or book holidays. - WB
         [Authorize]
         public ActionResult Index()
         {
+            /*this gives us the username of the user currently logged in - WB*/
+            var loggedInUser = User.Identity.Name;
 
-            var memberId = User.Identity.GetUserId();
-           // Holiday holidays = db.MyHolidays.Find(memberId);
-            
-           //return View(db.Holidays.ToList());
+            /*Concatenating the word @apexure.com to the username to map to the employee username. -WB*/
 
-           var loggedInUser = User.Identity.Name;
-           var employee = db.GetEmployeeByUsername(loggedInUser);
-            if (employee==null)
+            var employee = db.GetEmployeeByUsername(loggedInUser+"@apexure.com");
+            if (employee == null || db.GetHolidaysByEmployee(employee).FirstOrDefault()==null)
             {
-                return View("Create");
+                /*If the employee doesn't exist or if there are no holidays against an employee we cannot list any holidays*/
+                /*However, if the employee doesn't exist, meaning mapping didn't work - needs some extra validation - WB */
+                return RedirectToAction("Create");
             }
-           return View(db.GetHolidaysByEmployee(employee));
+           return View(db.GetHolidaysByEmployee(employee).ToList());
 
         }
 
@@ -56,8 +51,8 @@ namespace HolidayApp.Controllers
 
         // POST: /Holiday/Create
 
-        [HttpPost]
-
+         [HttpPost]
+         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "HolidayId,StartDate,EndDate,NoOfDays,Employee")] Holiday holiday)
         {
             var loggedInUser = User.Identity.Name;

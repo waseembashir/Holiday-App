@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
 using HolidayApp.Validations;
+using SalesFirst.Core.Model;
 
 namespace HolidayApp.Core.Model
 {

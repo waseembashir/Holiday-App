@@ -1,6 +1,7 @@
 ﻿using System.Data.Entity;
 using System.Linq;
 using HolidayApp.Core.Model;
+using SalesFirst.Core.Model;
 
 namespace HolidayApp.Core.Data
 {
@@ -30,8 +31,7 @@ namespace HolidayApp.Core.Data
 
         public IQueryable<Holiday> GetHolidaysByEmployee(Employee employee)
         {
-            var hr = Holidays.Where(r => r.Employee == employee);
-            return Holidays.Where(r => r.Employee == employee);
+           return Holidays.Where(r => r.Employee.Username == employee.Username);
         }
 
         public Employee GetEmployeeByUsername(string username)

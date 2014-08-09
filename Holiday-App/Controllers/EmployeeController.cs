@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using HolidayApp.Core.Model;
 using HolidayApp.Core.Data;
+using SalesFirst.Core.Model;
 
 namespace HolidayApp.Controllers
 {

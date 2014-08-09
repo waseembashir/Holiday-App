@@ -11,8 +11,7 @@ $(document).ready(function () {
     $('#NoOfDays').attr('readonly', 'readonly');
     $('#NoOfDays').css('background-color', '#D4D4D4');
 
-//    //alert("welcome");
-//    var $j = jQuery.noConflict();
+
     var select = function (dateStr) {
         var d1 = $('#StartDate').datepicker('getDate');
         var d2 = $('#EndDate').datepicker('getDate');
