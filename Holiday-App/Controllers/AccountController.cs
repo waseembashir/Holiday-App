@@ -23,6 +23,12 @@ namespace HolidayApp.Controllers
         public AccountController(UserManager<ApplicationUser> userManager)
         {
             UserManager = userManager;
+         /* To allow john.doe pattern(alphanumeric characters) NN. */
+            UserManager.UserValidator = new UserValidator<ApplicationUser>(UserManager)
+            {
+                AllowOnlyAlphanumericUserNames = false,
+            };
+          
         }
 
         public UserManager<ApplicationUser> UserManager { get; private set; }

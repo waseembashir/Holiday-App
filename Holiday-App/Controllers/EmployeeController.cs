@@ -9,12 +9,13 @@ using System.Web.Mvc;
 using HolidayApp.Core.Model;
 using HolidayApp.Core.Data;
 using SalesFirst.Core.Model;
+using SalesFirst.Core.Data;
 
 namespace HolidayApp.Controllers
 {
     public class EmployeeController : Controller
     {
-        private HolidayAppDb db = new HolidayAppDb();
+        private ClientDb db = new ClientDb();
 
         // GET: /Employee/
         public ActionResult Index()

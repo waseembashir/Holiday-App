@@ -2,25 +2,22 @@
 using System.Linq;
 using HolidayApp.Core.Model;
 using SalesFirst.Core.Model;
-
+using SalesFirst.Core.Data;
 namespace HolidayApp.Core.Data
 {
-    public class HolidayAppDb : DbContext
+    /*NN: Inherited from ClientDb, so extending previous context and usng that single context all over app  NN. */
+    public class HolidayAppDb : ClientDb
     {
 
-        
-        public HolidayAppDb()
-            : base("DefaultConnection")
-        {
 
-        }
-        
-        public DbSet<Employee> Employees { get; set; }
 
-        public IQueryable<Employee> GetAllEmployees
-        {
-            get { return Employees; }
-        }
+        /*NN: ALready in ClientDb context*/
+        //public DbSet<Employee> Employees { get; set; }
+
+        //public IQueryable<Employee> GetAllEmployees
+        //{
+        //    get { return Employees; }
+        //}
 
         public DbSet<Holiday> Holidays { get; set; }
 

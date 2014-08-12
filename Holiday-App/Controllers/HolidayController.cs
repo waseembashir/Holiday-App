@@ -62,7 +62,8 @@ namespace HolidayApp.Controllers
         public ActionResult Create([Bind(Include = "HolidayId,StartDate,EndDate,NoOfDays,Employee")] Holiday holiday)
         {
             var loggedInUser = User.Identity.Name;
-            var employee = salesFirstDb.GetEmployeeByUsername(loggedInUser);
+         /*NN: Changed context to Generel HollidapApp*/
+            var employee = db.GetEmployeeByUsername(loggedInUser);
 
             // Add validation for dates here.
 

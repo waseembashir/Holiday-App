@@ -8,7 +8,7 @@ $(document).ready(function () {
     
     $("#StartDate").attr('type', 'text');
     $("#EndDate").attr('type', 'text');
-    $('#NoOfDays').attr('readonly', 'readonly');
+    //$('#NoOfDays').attr('readonly', 'readonly');
     $('#NoOfDays').css('background-color', '#D4D4D4');
 
 
