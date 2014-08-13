@@ -7,7 +7,7 @@ using SalesFirst.Core.Data;
 namespace HolidayApp.Core.Data
 {
     /*NN: Inherited from ClientDb, so extending previous context and usng that single context all over app  NN. */
-    public class HolidayAppDb : Client Db
+    public class HolidayAppDb : ClientDb
     {
 
 
