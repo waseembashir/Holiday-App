@@ -3,10 +3,11 @@ using System.Linq;
 using HolidayApp.Core.Model;
 using SalesFirst.Core.Model;
 using SalesFirst.Core.Data;
+
 namespace HolidayApp.Core.Data
 {
     /*NN: Inherited from ClientDb, so extending previous context and usng that single context all over app  NN. */
-    public class HolidayAppDb : ClientDb
+    public class HolidayAppDb : Client Db
     {
 
 
