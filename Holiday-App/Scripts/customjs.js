@@ -5,7 +5,7 @@
 
 $(document).ready(function () {
 
-    
+    $(".datepicker").datepicker({ dateFormat: 'dd/mm/yy' });
     $("#StartDate").attr('type', 'text');
     $("#EndDate").attr('type', 'text');
     //$('#NoOfDays').attr('readonly', 'readonly');
@@ -31,9 +31,10 @@ $(document).ready(function () {
 
     $("#StartDate").datepicker({
         minDate: 0,
-        onSelect: select
+        onSelect: select,
+        dateFormat:'dd/mm/yy'
     });
-    $('#EndDate').datepicker({ minDate: 0,  onSelect: select });
+    $('#EndDate').datepicker({ minDate: 0, onSelect: select, dateFormat: 'dd/mm/yy' });
     
 
 
