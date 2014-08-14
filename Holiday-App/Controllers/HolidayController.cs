@@ -65,7 +65,12 @@ namespace HolidayApp.Controllers
          /*NN: Changed context to Generel HollidapApp*/
             var employee = db.GetEmployeeByUsername(loggedInUser);
 
-            // Add validation for dates here.
+            // Can i  use below like structur to show errors before saving data to db
+             //if(holiday.NoOfDays<2)
+             //{
+             //    ModelState.AddModelError("NoOfDays", "Days greater than 1 please");
+             //    return RedirectToAction("Create");
+             //}
 
             if (ModelState.IsValid)
             {
@@ -140,7 +145,7 @@ namespace HolidayApp.Controllers
             var employee = salesFirstDb.GetEmployeeByUsername(loggedInUser);
             if (ModelState.IsValid)
             {
-                holiday.Employee = employee;
+              //  holiday.Employee = employee;
                 db.Entry(holiday).State = EntityState.Modified;
                
                 db.SaveChanges();

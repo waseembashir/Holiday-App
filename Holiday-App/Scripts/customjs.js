@@ -15,6 +15,7 @@ $(document).ready(function () {
     var select = function (dateStr) {
         var d1 = $('#StartDate').datepicker('getDate');
         var d2 = $('#EndDate').datepicker('getDate');
+       
         var diff =0;
         if (d1 && d2) {
             if (d1.getTime() === d2.getTime()) {
@@ -32,7 +33,7 @@ $(document).ready(function () {
         minDate: 0,
         onSelect: select
     });
-    $('#EndDate').datepicker({ minDate: 0, onSelect: select });
+    $('#EndDate').datepicker({ minDate: 0,  onSelect: select });
     
 
 

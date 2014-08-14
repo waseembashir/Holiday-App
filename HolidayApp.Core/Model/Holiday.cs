@@ -17,22 +17,25 @@ namespace HolidayApp.Core.Model
 
         [Required]
         [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
+        [DisplayFormat(DataFormatString = "{0:MM/dd/yyyy}", ApplyFormatInEditMode = true)]
         [CurrentDateCheck]
         public virtual DateTime StartDate { get; set; }
 
         [Required]
         [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
+        [DisplayFormat(DataFormatString = "{0:MM/dd/yyyy}", ApplyFormatInEditMode = true)]
         [HolidayValidations("StartDate")]
         public virtual DateTime EndDate { get; set; }
  
         [Required]
         [Range(0.5,100)]
+        [DiffrenceInDays("StartDate","EndDate")]
         public virtual float NoOfDays { get; set; }
 
         public virtual Employee Employee { get; set; }
 
         public virtual String Status { get; set; }
+
+        
     }
 }
