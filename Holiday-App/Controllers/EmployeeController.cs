@@ -10,17 +10,25 @@ using HolidayApp.Core.Model;
 using HolidayApp.Core.Data;
 using SalesFirst.Core.Model;
 using SalesFirst.Core.Data;
+using SalesFirst.Core.Service;
 
 namespace HolidayApp.Controllers
 {
     public class EmployeeController : Controller
     {
-        private ClientDb db = new ClientDb();
+        //private ClientDb db = new ClientDb();
+        readonly EmployeeRepository employeeRepository = new EmployeeRepository();
+        readonly EmployeeService employeeService;
+
+        public EmployeeController()
+        {
+            employeeService = new EmployeeService(employeeRepository);
+        }
 
         // GET: /Employee/
         public ActionResult Index()
         {
-            return View(db.Employees.ToList());
+            return View(employeeService.GetAll());
         }
 
         // GET: /Employee/Details/5
@@ -30,7 +38,7 @@ namespace HolidayApp.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Employee employee = db.Employees.Find(id);
+            Employee employee = employeeService.Get(id);
             if (employee == null)
             {
                 return HttpNotFound();
@@ -53,8 +61,7 @@ namespace HolidayApp.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Employees.Add(employee);
-                db.SaveChanges();
+                employeeService.Create(employee);
                 return RedirectToAction("Index");
             }
 
@@ -68,7 +75,7 @@ namespace HolidayApp.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Employee employee = db.Employees.Find(id);
+            Employee employee = employeeService.Get(id);
             if (employee == null)
             {
                 return HttpNotFound();
@@ -85,8 +92,9 @@ namespace HolidayApp.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(employee).State = EntityState.Modified;
-                db.SaveChanges();
+                employeeService.Update(employee);
+                //db.Entry(employee).State = EntityState.Modified;
+                //db.SaveChanges();
                 return RedirectToAction("Index");
             }
             return View(employee);
@@ -99,7 +107,7 @@ namespace HolidayApp.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Employee employee = db.Employees.Find(id);
+            Employee employee = employeeService.Get(id);
             if (employee == null)
             {
                 return HttpNotFound();
@@ -112,9 +120,8 @@ namespace HolidayApp.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Employee employee = db.Employees.Find(id);
-            db.Employees.Remove(employee);
-            db.SaveChanges();
+            Employee employee = employeeService.Get(id);
+            employeeService.Delete(employee.EmployeeId);
             return RedirectToAction("Index");
         }
 
@@ -122,7 +129,7 @@ namespace HolidayApp.Controllers
         {
             if (disposing)
             {
-                db.Dispose();
+                //employeeService.Dispose();
             }
             base.Dispose(disposing);
         }

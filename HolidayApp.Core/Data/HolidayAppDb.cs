@@ -10,16 +10,6 @@ namespace HolidayApp.Core.Data
     public class HolidayAppDb : ClientDb
     {
 
-
-
-        /*NN: ALready in ClientDb context*/
-        //public DbSet<Employee> Employees { get; set; }
-
-        //public IQueryable<Employee> GetAllEmployees
-        //{
-        //    get { return Employees; }
-        //}
-
         public DbSet<Holiday> Holidays { get; set; }
 
         public IQueryable<Holiday> GetAllHolidays
@@ -32,11 +22,6 @@ namespace HolidayApp.Core.Data
            return Holidays.Where(r => r.Employee.Username == employee.Username);
         }
 
-        //public Employee GetEmployeeByUsername(string username)
-        //{
-            
-        //    return Employees.FirstOrDefault(r => r.Username == username);
-        //}
 
     }
 

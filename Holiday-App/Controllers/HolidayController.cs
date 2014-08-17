@@ -62,7 +62,8 @@ namespace HolidayApp.Controllers
         public ActionResult Create([Bind(Include = "HolidayId,StartDate,EndDate,NoOfDays,Employee")] Holiday holiday)
         {
             var loggedInUser = User.Identity.Name;
-         /*NN: Changed context to Generel HollidapApp*/
+            /*NN: Changed context to Generel HollidapApp*/
+
             var employee = db.GetEmployeeByUsername(loggedInUser);
 
             // Can i  use below like structur to show errors before saving data to db
