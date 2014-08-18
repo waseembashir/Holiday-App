@@ -6,6 +6,7 @@ using HolidayApp.Core.Model;
 using HolidayApp.Core.Data;
 using Microsoft.AspNet.Identity;
 using SalesFirst.Core.Data;
+using SalesFirst.Core.Service;
 
 
 namespace HolidayApp.Controllers
@@ -16,7 +17,15 @@ namespace HolidayApp.Controllers
 
        private readonly HolidayAppDb db = new HolidayAppDb();
        private readonly ClientDb salesFirstDb = new ClientDb();
-    
+       readonly EmployeeRepository employeeRepository;
+       readonly EmployeeService employeeService;
+
+        public HolidayController()
+        {
+            employeeRepository = new EmployeeRepository(db);
+            employeeService = new EmployeeService(employeeRepository);
+        }
+
         // GET: /Holiday/
         
         // [Authorize] should use this helper attribute. This will force the user to login before they can 
@@ -31,7 +40,7 @@ namespace HolidayApp.Controllers
             /*this gives us the username of the user currently logged in - WB*/
             var loggedInUser = User.Identity.Name;
 
-            var employee = salesFirstDb.GetEmployeeByUsername(loggedInUser);
+            var employee = employeeService.GetEmployeeByUsername(loggedInUser);
             if (employee == null || db.GetHolidaysByEmployee(employee).FirstOrDefault()==null)
             {
                 /*If the employee doesn't exist or if there are no holidays against an employee we cannot list any holidays*/
@@ -62,16 +71,14 @@ namespace HolidayApp.Controllers
         public ActionResult Create([Bind(Include = "HolidayId,StartDate,EndDate,NoOfDays,Employee")] Holiday holiday)
         {
             var loggedInUser = User.Identity.Name;
-            /*NN: Changed context to Generel HollidapApp*/
-
-            var employee = db.GetEmployeeByUsername(loggedInUser);
+            var employee = employeeService.GetEmployeeByUsername(loggedInUser);
 
             // Can i  use below like structur to show errors before saving data to db
-             //if(holiday.NoOfDays<2)
-             //{
-             //    ModelState.AddModelError("NoOfDays", "Days greater than 1 please");
-             //    return RedirectToAction("Create");
-             //}
+            // if(holiday.NoOfDays<2)
+            // {
+            //   ModelState.AddModelError("NoOfDays", "Days greater than 1 please");
+            //    return RedirectToAction("Create");
+            // }
 
             if (ModelState.IsValid)
             {
@@ -143,7 +150,7 @@ namespace HolidayApp.Controllers
         public ActionResult Edit([Bind(Include = "HolidayId,StartDate,EndDate,NoOfDays,Employee")] Holiday holiday)
         {
             var loggedInUser = User.Identity.Name;
-            var employee = salesFirstDb.GetEmployeeByUsername(loggedInUser);
+            var employee = employeeService.GetEmployeeByUsername(loggedInUser);
             if (ModelState.IsValid)
             {
               //  holiday.Employee = employee;

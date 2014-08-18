@@ -16,12 +16,13 @@ namespace HolidayApp.Controllers
 {
     public class EmployeeController : Controller
     {
-        //private ClientDb db = new ClientDb();
-        readonly EmployeeRepository employeeRepository = new EmployeeRepository();
+        private ClientDb db = new ClientDb();
+        readonly EmployeeRepository employeeRepository;
         readonly EmployeeService employeeService;
 
         public EmployeeController()
         {
+            employeeRepository = new EmployeeRepository(db);
             employeeService = new EmployeeService(employeeRepository);
         }
 
@@ -44,7 +45,8 @@ namespace HolidayApp.Controllers
                 return HttpNotFound();
             }
             return View(employee);
-        }
+
+            }
 
         // GET: /Employee/Create
         public ActionResult Create()
