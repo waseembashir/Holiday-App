@@ -60,6 +60,10 @@
     <Compile Include="Migrations\201408082256308_SalesFirst.Designer.cs">
       <DependentUpon>201408082256308_SalesFirst.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201408190835481_HolidayAppDb.cs" />
+    <Compile Include="Migrations\201408190835481_HolidayAppDb.Designer.cs">
+      <DependentUpon>201408190835481_HolidayAppDb.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model\Holiday.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -76,6 +80,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201408082256308_SalesFirst.resx">
       <DependentUpon>201408082256308_SalesFirst.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201408190835481_HolidayAppDb.resx">
+      <DependentUpon>201408190835481_HolidayAppDb.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

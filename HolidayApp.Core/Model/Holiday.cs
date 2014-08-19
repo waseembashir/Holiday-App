@@ -35,7 +35,16 @@ namespace HolidayApp.Core.Model
         public virtual Employee Employee { get; set; }
 
         public virtual String Status { get; set; }
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
+        public virtual DateTime BookingDate { get; set; }
 
+        public virtual String BookedBy { get; set; }
+
+        [Required]
+        public virtual String Holidaytype { get; set; }
+
+        public virtual String HolidayDescription { get; set; }
         
     }
 }

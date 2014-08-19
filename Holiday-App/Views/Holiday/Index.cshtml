@@ -9,6 +9,10 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
+@{if(ViewBag.Message != null) {
+        <h1> @ViewBag.Message </h1> }
+  else { 
+    
 <table class="table">
     <tr>
        
@@ -42,7 +46,14 @@
             @Html.DisplayFor(modelItem => item.NoOfDays)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Status)
+            @if (item.Status==null)
+            {
+                <p>Pending</p>
+                    
+            }else
+            { 
+                @Html.DisplayFor(modelItem => item.Status)
+            }
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.HolidayId }) |
@@ -53,3 +64,4 @@
 }
 
 </table>
+}}
