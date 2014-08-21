@@ -147,26 +147,26 @@ namespace HolidayApp.Controllers
 
                 db.Holidays.Add(holiday);
                 db.SaveChanges();
-                ////Send email notification to the admin
-                //    //EmailService email = new EmailService();
-                //    var id = holiday.HolidayId;
-                   
-                //    MailMessage message = new MailMessage();
-                //  //  message.To.Add(new MailAddress("zafar.rather@apexure.com"));  //employees email id retrieve from employee table
-                //    message.To.Add(new MailAddress("waseem@apexure.com"));
-                //    message.From = new MailAddress("zafar.rather@apexure.com");
-                //    // message.CC.Add(new MailAddress("carboncopy@foo.bar.com"));
-                //    message.Subject = "New Holiday Booking Request By "+employee.FirstName;
-                //    message.IsBodyHtml = true;
-                //    var link = "https://localhost:44388/Holiday/Edit/" + id;
-                //    message.Body = "This is demo mail Goto to this link <br> <a href='"+link +"'>Click here</a>";
-                //    SmtpClient client = new SmtpClient() {EnableSsl= true };
-                //    client.Host = "smtp.gmail.com";
-                //    client.Port = 587;
-                //    client.UseDefaultCredentials = false;
-                //    client.Credentials = new System.Net.NetworkCredential
-                //    ("holiday.apexure", "apexure111");
-                //    client.Send(message);
+                //Send email notification to the admin
+                ////EmailService email = new EmailService();
+                //var id = holiday.HolidayId;
+
+                //MailMessage message = new MailMessage();
+                ////  message.To.Add(new MailAddress("zafar.rather@apexure.com"));  //employees email id retrieve from employee table
+                //message.To.Add(new MailAddress("zafar.rather@apexure.com"));
+                //message.From = new MailAddress("zafar.rather@apexure.com");
+                //// message.CC.Add(new MailAddress("carboncopy@foo.bar.com"));
+                //message.Subject = "New Holiday Booking Request By " + employee.FirstName;
+                //message.IsBodyHtml = true;
+                //var link = "https://localhost:44388/Holiday/Edit/" + id;
+                //message.Body = "This is demo mail Goto to this link <br> <a href='" + link + "'>Click here</a>";
+                //SmtpClient client = new SmtpClient() { EnableSsl = true };
+                //client.Host = "smtp.gmail.com";
+                //client.Port = 587;
+                //client.UseDefaultCredentials = false;
+                //client.Credentials = new System.Net.NetworkCredential
+                //("holiday.apexure", "apexure111");
+                //client.Send(message);
                 //------------------------------------------------------------------------------------
                 return RedirectToAction("Index");
             }
@@ -235,7 +235,7 @@ namespace HolidayApp.Controllers
         // POST: /Holiday/Edit/5
         [HttpPost, ActionName("Edit")]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "HolidayId,StartDate,EndDate,NoOfDays,Employee")] Holiday holiday)
+        public ActionResult Edit([Bind(Include = "HolidayId,StartDate,EndDate,NoOfDays,Employee,HalfDay,Holidaytype,HolidayDescription,")] Holiday holiday)
         {
             var loggedInUser = User.Identity.Name;
             var employee = employeeService.GetEmployeeByUsername(loggedInUser);

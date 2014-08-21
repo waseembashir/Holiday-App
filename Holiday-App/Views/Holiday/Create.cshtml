@@ -41,6 +41,17 @@
             @Html.LabelFor(model => model.NoOfDays, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.NoOfDays)
+                <div class="halfday">
+                    @Html.CheckBox("ishalf")
+                    @Html.Label("Any HalfDay") 
+                    <span id="amorpm">
+                        @Html.Label("AM")
+                        @Html.RadioButtonFor(model => model.HalfDay,"Am")
+                        @Html.Label("PM")
+                        @Html.RadioButtonFor(model => model.HalfDay, "Pm")
+                     </span>                              
+                </div>
+
                 @Html.ValidationMessageFor(model => model.NoOfDays)
             </div>
         </div>

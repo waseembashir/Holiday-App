@@ -68,30 +68,31 @@ namespace HolidayApp.Validations
     {
         public String d1 { get; set; }
         public String d2 { get; set; }
-        public DiffrenceInDays(String startdate, String endate)
+        public String ishalf { get; set; }
+        public DiffrenceInDays(String startdate, String endate, String halfday)
             :base("Number of days should be differece between startdate and EndDate")
         {
             d1 = startdate;
             d2 = endate;
+            ishalf = halfday;
         }
 
         protected override ValidationResult IsValid(object value, ValidationContext validationContext)
         {
             var start = validationContext.ObjectType.GetProperty(d1); //get startdate
             var end = validationContext.ObjectType.GetProperty(d2);  // get enddate 
+            var ishalfday = validationContext.ObjectType.GetProperty(ishalf);  // check if any halfday
             var Date1 = (DateTime)start.GetValue(validationContext.ObjectInstance, null);
             var Date2 = (DateTime)end.GetValue(validationContext.ObjectInstance, null);
+            var ifhalfday = (String)ishalfday.GetValue(validationContext.ObjectInstance, null);
             var Days = (float)value;
             Double diff;
-            if(Date1==Date2)
-            {
-                diff = 0.5;
-                
-            }
-            else
-            {
-                diff = (Date2 - Date1).TotalDays;
-            }
+            
+                diff = (Date2 - Date1).TotalDays+1;
+           if(ifhalfday!=null)
+           {
+               diff = diff - 0.5;
+           }
             if (Days != diff)
             {
                 var msg = FormatErrorMessage(validationContext.DisplayName);

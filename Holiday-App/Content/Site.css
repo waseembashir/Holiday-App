@@ -40,3 +40,19 @@ input[type="checkbox"].input-validation-error {
 .validation-summary-valid {
     display: none;
 }
+
+.halfday{ 
+    float:right;
+    width:80%;
+    display:none;
+}
+#ishalf{
+    float:left;
+    margin-right: 8px;
+    margin-top: 6px;
+}
+#amorpm{
+    border:1px dashed #000;
+    margin-left:20px;
+    display:none;
+}

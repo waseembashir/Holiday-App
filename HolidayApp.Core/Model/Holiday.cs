@@ -29,8 +29,10 @@ namespace HolidayApp.Core.Model
  
         [Required]
         [Range(0.5,100)]
-        [DiffrenceInDays("StartDate","EndDate")]
+        [DiffrenceInDays("StartDate","EndDate","HalfDay")]
         public virtual float NoOfDays { get; set; }
+
+        public virtual String HalfDay { get; set; }
 
         public virtual Employee Employee { get; set; }
 
@@ -41,7 +43,7 @@ namespace HolidayApp.Core.Model
 
         public virtual String BookedBy { get; set; }
 
-        [Required]
+       [Required]
         public virtual String Holidaytype { get; set; }
 
         public virtual String HolidayDescription { get; set; }

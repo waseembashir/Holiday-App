@@ -14,12 +14,12 @@ namespace HolidayApp.Core.Migrations
                         Id = c.Int(nullable: false, identity: true),
                         Name = c.String(),
                         Budget = c.Single(nullable: false),
-                        StartDate = c.DateTime(nullable: false, precision: 7, storeType: "datetime2"),
-                        EndDate = c.DateTime(precision: 7, storeType: "datetime2"),
+                        StartDate = c.DateTime(nullable: false, precision: 7, storeType: "datetime"),
+                        EndDate = c.DateTime(precision: 7, storeType: "datetime"),
                         Cost = c.Double(),
                         Balance = c.Double(),
                         Source = c.String(),
-                        ConversionDate = c.DateTime(precision: 7, storeType: "datetime2"),
+                        ConversionDate = c.DateTime(precision: 7, storeType: "datetime"),
                         HarvestInvoiceId = c.Long(),
                         Client_Id = c.Int(),
                         Domain_Id = c.Int(),
@@ -51,10 +51,10 @@ namespace HolidayApp.Core.Migrations
                         Address = c.String(),
                         Status = c.String(),
                         ResellerClientKey = c.Int(nullable: false),
-                        CreatedTime = c.DateTime(nullable: false, precision: 7, storeType: "datetime2"),
+                        CreatedTime = c.DateTime(nullable: false, precision: 7, storeType: "datetime"),
                         CreatedBy = c.String(),
                         UpdatedBy = c.String(),
-                        UpdatedTime = c.DateTime(precision: 7, storeType: "datetime2"),
+                        UpdatedTime = c.DateTime(precision: 7, storeType: "datetime"),
                         ClientIndustry_Id = c.Int(),
                     })
                 .PrimaryKey(t => t.Id)
@@ -68,7 +68,7 @@ namespace HolidayApp.Core.Migrations
                         Id = c.Int(nullable: false, identity: true),
                         DateTime = c.DateTime(nullable: false),
                         Action = c.String(),
-                        Reminder = c.DateTime(precision: 7, storeType: "datetime2"),
+                        Reminder = c.DateTime(precision: 7, storeType: "datetime"),
                         Status = c.String(),
                         WelcomeEmail = c.String(),
                         Client_Id = c.Int(),
@@ -123,8 +123,8 @@ namespace HolidayApp.Core.Migrations
                     {
                         Id = c.Int(nullable: false, identity: true),
                         Name = c.String(),
-                        FromDate = c.DateTime(nullable: false, precision: 7, storeType: "datetime2"),
-                        ToDate = c.DateTime(precision: 7, storeType: "datetime2"),
+                        FromDate = c.DateTime(nullable: false, precision: 7, storeType: "datetime"),
+                        ToDate = c.DateTime(precision: 7, storeType: "datetime"),
                         Cost = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.Id);

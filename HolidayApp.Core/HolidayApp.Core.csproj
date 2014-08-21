@@ -64,6 +64,22 @@
     <Compile Include="Migrations\201408190835481_HolidayAppDb.Designer.cs">
       <DependentUpon>201408190835481_HolidayAppDb.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201408200929178_HolidayAppDb1.cs" />
+    <Compile Include="Migrations\201408200929178_HolidayAppDb1.Designer.cs">
+      <DependentUpon>201408200929178_HolidayAppDb1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201408201013025_HolidayAppDb2.cs" />
+    <Compile Include="Migrations\201408201013025_HolidayAppDb2.Designer.cs">
+      <DependentUpon>201408201013025_HolidayAppDb2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201408210916576_HolidayAppDb3.cs" />
+    <Compile Include="Migrations\201408210916576_HolidayAppDb3.Designer.cs">
+      <DependentUpon>201408210916576_HolidayAppDb3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201408211130369_HolidayAppDb4.cs" />
+    <Compile Include="Migrations\201408211130369_HolidayAppDb4.Designer.cs">
+      <DependentUpon>201408211130369_HolidayAppDb4.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model\Holiday.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -83,6 +99,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201408190835481_HolidayAppDb.resx">
       <DependentUpon>201408190835481_HolidayAppDb.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201408200929178_HolidayAppDb1.resx">
+      <DependentUpon>201408200929178_HolidayAppDb1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201408201013025_HolidayAppDb2.resx">
+      <DependentUpon>201408201013025_HolidayAppDb2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201408210916576_HolidayAppDb3.resx">
+      <DependentUpon>201408210916576_HolidayAppDb3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201408211130369_HolidayAppDb4.resx">
+      <DependentUpon>201408211130369_HolidayAppDb4.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
