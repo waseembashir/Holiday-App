@@ -7,13 +7,11 @@ using HolidayApp.Core.Model;
 using HolidayApp.Core.Data;
 using Microsoft.AspNet.Identity;
 using SalesFirst.Core.Data;
-<<<<<<< HEAD
 using System.Net.Mail;
 using SalesFirst.Core.Service;
 using System.Collections.Generic;
-=======
-using SalesFirst.Core.Service;
->>>>>>> origin/master
+
+
 
 
 namespace HolidayApp.Controllers
@@ -24,7 +22,7 @@ namespace HolidayApp.Controllers
 
        private readonly HolidayAppDb db = new HolidayAppDb();
        private readonly ClientDb salesFirstDb = new ClientDb();
-<<<<<<< HEAD
+
 
         //-------------Make the list of holiday type-------------------------
        public enum holidaytypes { personal, Monthly, Sick_Leave, Yearly };
@@ -62,7 +60,7 @@ namespace HolidayApp.Controllers
 
         //-------------------------------------------------------------------
     
-=======
+
        readonly EmployeeRepository employeeRepository;
        readonly EmployeeService employeeService;
 
@@ -72,7 +70,7 @@ namespace HolidayApp.Controllers
             employeeService = new EmployeeService(employeeRepository);
         }
 
->>>>>>> origin/master
+
         // GET: /Holiday/
         
         // [Authorize] should use this helper attribute. This will force the user to login before they can 
@@ -109,11 +107,11 @@ namespace HolidayApp.Controllers
         {
             List<SelectListItem> items = new List<SelectListItem>();
 
-            items.Add(new SelectListItem { Text = "Personal", Value = "Personal" });
+            items.Add(new SelectListItem { Text = "Personal", Value = "Personal", Selected = true });
 
             items.Add(new SelectListItem { Text = "Mothly", Value = "Mothly" });
 
-            items.Add(new SelectListItem { Text = "Sick Leave", Value = "Sick Leave", Selected = true });
+            items.Add(new SelectListItem { Text = "Sick Leave", Value = "Sick Leave"});
 
             items.Add(new SelectListItem { Text = "Yearly", Value = "Yearly" });
 
@@ -127,22 +125,19 @@ namespace HolidayApp.Controllers
 
          [HttpPost]
          [ValidateAntiForgeryToken]
-         public ActionResult Create([Bind(Include = "HolidayId,StartDate,EndDate,NoOfDays,Employee,BookingDate,BookedBy,Holidaytype,HolidayDescription")] Holiday holiday)
+         public ActionResult Create([Bind(Include = "HolidayId,StartDate,EndDate,NoOfDays,Employee,BookingDate,BookedBy,Holidaytype,HolidayDescription,HalfDay")] Holiday holiday)
         {
             var loggedInUser = User.Identity.Name;
             var employee = employeeService.GetEmployeeByUsername(loggedInUser);
 
-<<<<<<< HEAD
 
-            
-=======
             // Can i  use below like structur to show errors before saving data to db
             // if(holiday.NoOfDays<2)
             // {
             //   ModelState.AddModelError("NoOfDays", "Days greater than 1 please");
             //    return RedirectToAction("Create");
             // }
->>>>>>> origin/master
+
 
             if (ModelState.IsValid)
             {
@@ -183,6 +178,7 @@ namespace HolidayApp.Controllers
         {
 
             Holiday holiday = db.Holidays.Find(id);
+            
             if (holiday == null)
             {
                 return HttpNotFound();
@@ -228,6 +224,10 @@ namespace HolidayApp.Controllers
             {
                 return HttpNotFound();
             }
+            var loggedInUser = User.Identity.Name;
+            var employee = employeeService.GetEmployeeByUsername(loggedInUser);
+            ViewBag.EmployeeId = employee.EmployeeId;
+
             return View(holiday);
 
         }
