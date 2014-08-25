@@ -28,6 +28,8 @@
                     <li>@Html.ActionLink("Employee", "Index", "Employee")</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
                     <li>@Html.ActionLink("Holidays", "Index", "Holiday")</li>
+                    <li>@Html.ActionLink("Calendar", "Index", "GeneralHoliday")</li>
+                    <li>@Html.ActionLink("My Holiday Quota", "Index", "EmployeeQuota")</li>
                                    </ul>
                 @Html.Partial("_LoginPartial")
             </div>
@@ -42,7 +44,7 @@
     </div>
 
     @Scripts.Render("~/bundles/bootstrap")
-   
+    @RenderSection("calendar", required: false)
     @RenderSection("scripts", required: false)
 </body>
 </html>
