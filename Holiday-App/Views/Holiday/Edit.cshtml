@@ -41,36 +41,7 @@
             </div>
         </div>
 
-       @{if (ViewBag.EmployeeId == 1)
-             { 
-                <div class="form-group">
-                    @Html.LabelFor(model => model.Status, new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        @Html.EditorFor(model => model.Status)
-                        @Html.ValidationMessageFor(model => model.Status)
-                    </div>
-                </div>
-           
-           <div class="form-group">
-            @Html.LabelFor(model => model.BookingDate, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.BookingDate)
-                @Html.ValidationMessageFor(model => model.BookingDate)
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.BookedBy, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.BookedBy)
-                @Html.ValidationMessageFor(model => model.BookedBy)
-            </div>
-        </div>
-           
-         
-         
-             }
-        }
+       
         
         <div class="form-group">
             @Html.LabelFor(model => model.Holidaytype, new { @class = "control-label col-md-2" })
@@ -113,7 +84,10 @@
     @Scripts.Render("~/Scripts/jquery-ui-1.10.4.js")
     @Scripts.Render("~/Scripts/customjs.js")
 }
+
 @*Code to wire up your DatePicker*@
+
+
 <script>
     $(function () {
         $(".datepicker").datepicker({ dateFormat: "dd/mm/yy" });

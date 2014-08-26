@@ -28,7 +28,16 @@
                     <li>@Html.ActionLink("Employee", "Index", "Employee")</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
                     <li>@Html.ActionLink("Holidays", "Index", "Holiday")</li>
-                                   </ul>
+                    <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                Admin <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li>@Html.ActionLink("Home", "Index", "Admin")</li>
+                                <li>@Html.ActionLink("Requests", "Requests", "Admin")</li>
+                                <li>@Html.ActionLink("Creat Requests", "Create", "Admin")</li>
+                            </ul> 
+                    </li>
+                </ul>
                 @Html.Partial("_LoginPartial")
             </div>
         </div>

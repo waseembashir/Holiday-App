@@ -143,7 +143,7 @@ namespace HolidayApp.Controllers
             {
                 holiday.Employee = employee;
                 holiday.BookingDate = DateTime.Today;
-                holiday.BookedBy = employee.FirstName;
+                holiday.BookedBy = employee.Username;
 
                 db.Holidays.Add(holiday);
                 db.SaveChanges();
@@ -158,7 +158,7 @@ namespace HolidayApp.Controllers
                 //// message.CC.Add(new MailAddress("carboncopy@foo.bar.com"));
                 //message.Subject = "New Holiday Booking Request By " + employee.FirstName;
                 //message.IsBodyHtml = true;
-                //var link = "https://localhost:44388/Holiday/Edit/" + id;
+                //var link = "https://localhost:44388/Admin/Edit/" + id;
                 //message.Body = "This is demo mail Goto to this link <br> <a href='" + link + "'>Click here</a>";
                 //SmtpClient client = new SmtpClient() { EnableSsl = true };
                 //client.Host = "smtp.gmail.com";
@@ -235,15 +235,15 @@ namespace HolidayApp.Controllers
         // POST: /Holiday/Edit/5
         [HttpPost, ActionName("Edit")]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "HolidayId,StartDate,EndDate,NoOfDays,Employee,HalfDay,Holidaytype,HolidayDescription,")] Holiday holiday)
+        public ActionResult Edit([Bind(Include = "HolidayId,StartDate,EndDate,NoOfDays,Employee,HalfDay,Holidaytype,HolidayDescription")] Holiday holiday)
         {
             var loggedInUser = User.Identity.Name;
             var employee = employeeService.GetEmployeeByUsername(loggedInUser);
             if (ModelState.IsValid)
             {
-              //  holiday.Employee = employee;
+               holiday.Employee = employee;
                 db.Entry(holiday).State = EntityState.Modified;
-               
+                holiday.BookingDate = DateTime.Today;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }

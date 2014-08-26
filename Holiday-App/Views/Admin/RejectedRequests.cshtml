@@ -1,0 +1,85 @@
+﻿@model IEnumerable<HolidayApp.Core.Model.Holiday>
+
+@{
+    ViewBag.Title = "RejectedRequests";
+}
+
+<h2>Rejected Holiday Requests</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create") | 
+    @Html.ActionLink("Home", "Index", "Admin")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.StartDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EndDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NoOfDays)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HalfDay)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Status)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BookingDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BookedBy)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Holidaytype)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HolidayDescription)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.StartDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EndDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NoOfDays)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.HalfDay)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Status)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BookingDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BookedBy)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Holidaytype)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.HolidayDescription)
+        </td>
+        <td>
+            @{
+                if(item.StartDate>DateTime.Today)
+                {
+                    @Html.ActionLink("Accept", "Accept", new { id = item.HolidayId }, new { @class = "btn btn-success" }) 
+                }
+            }
+        </td>
+    </tr>
+}
+
+</table>

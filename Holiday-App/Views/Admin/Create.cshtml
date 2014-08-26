@@ -1,28 +1,33 @@
 ﻿@model HolidayApp.Core.Model.Holiday
 
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "Create Holiday";
 }
-
-<h2>Create</h2>
+@Html.ActionLink("Home", "Index", "Admin")
+<h2>Create Holiday Form An Employee</h2>
 <link href="~/Content/themes/base/jquery.ui.all.css" rel="stylesheet" />
-
 
 @using (Html.BeginForm()) 
 {
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>Holiday</h4>
+        
         <hr />
         @Html.ValidationSummary(true)
 
         <div class="form-group">
+            @Html.Label("Select Employee", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("EmployeeNames")
+               
+            </div>
+        </div>
+
+        <div class="form-group">
             @Html.LabelFor(model => model.StartDate, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                
-                <input type="text" name="StartDate" id="StartDate" />               
-                
+                <input type="text" name="StartDate" id="StartDate" />  
                 @Html.ValidationMessageFor(model => model.StartDate)
             </div>
         </div>
@@ -30,9 +35,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.EndDate, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                
                 <input type="text" name="EndDate" id="EndDate" />
-
                 @Html.ValidationMessageFor(model => model.EndDate)
             </div>
         </div>
@@ -43,23 +46,40 @@
                 @Html.EditorFor(model => model.NoOfDays)
                 <div class="halfday">
                     @Html.CheckBox("ishalf")
-                    @Html.Label("Any HalfDay") 
+                    @Html.Label("Any HalfDay")
                     <span id="amorpm">
                         @Html.Label("AM")
-                        @Html.RadioButtonFor(model => model.HalfDay,"Morning")
+                        @Html.RadioButtonFor(model => model.HalfDay, "Morning")
                         @Html.Label("PM")
                         @Html.RadioButtonFor(model => model.HalfDay, "Evening")
-                     </span>                              
+                    </span>
                 </div>
-
                 @Html.ValidationMessageFor(model => model.NoOfDays)
             </div>
         </div>
 
+        @*<div class="form-group">
+            @Html.LabelFor(model => model.HalfDay, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.HalfDay)
+                @Html.ValidationMessageFor(model => model.HalfDay)
+            </div>
+        </div>*@
+
+        @*<div class="form-group">
+            @Html.LabelFor(model => model.Status, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Status)
+                @Html.ValidationMessageFor(model => model.Status)
+            </div>
+        </div>*@
+
+        
+
         <div class="form-group">
             @Html.LabelFor(model => model.Holidaytype, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownList("HolidayType")
+               @Html.DropDownList("HolidayType")
                 @Html.ValidationMessageFor(model => model.Holidaytype)
             </div>
         </div>
@@ -67,11 +87,11 @@
         <div class="form-group">
             @Html.LabelFor(model => model.HolidayDescription, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.TextAreaFor(model => model.HolidayDescription)
+                @Html.EditorFor(model => model.HolidayDescription)
                 @Html.ValidationMessageFor(model => model.HolidayDescription)
             </div>
         </div>
-
+        
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <input type="submit" value="Create" class="btn btn-default" />
@@ -91,13 +111,11 @@
     @Scripts.Render("~/Scripts/customjs.js")
 }
 
-@*Code to wire up your DatePicker*@ 
+@*Code to wire up your DatePicker*@
 
 
-   <script>
-    	    $(function () {
-    	        $(".datepicker").datepicker({ dateFormat: "dd/mm/yy" });
-    	    });
-    </script>
-
-  
+<script>
+    $(function () {
+        $(".datepicker").datepicker({ dateFormat: "dd/mm/yy" });
+    });
+</script>
