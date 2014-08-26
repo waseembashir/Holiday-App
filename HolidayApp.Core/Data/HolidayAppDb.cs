@@ -13,15 +13,27 @@ namespace HolidayApp.Core.Data
 
         public DbSet<Holiday> Holidays { get; set; }
 
+        public DbSet<GeneralHoliday> GeneralHolidays { get; set; }
+        public DbSet<EmployeeQuota> EmployeeQuotas { get; set; }
         public IQueryable<Holiday> GetAllHolidays
         {
             get { return Holidays; }
         }
+        public IQueryable<GeneralHoliday> GetAllGeneralHolidays
+        {
+            get { return GeneralHolidays; }
+        }
 
         public IQueryable<Holiday> GetHolidaysByEmployee(Employee employee)
         {
-           return Holidays.Where(r => r.Employee.Username == employee.Username);
+            return Holidays.Where(r => r.Employee.Username == employee.Username);
         }
+
+        public IQueryable<EmployeeQuota> GetAllEmployeeQuotas
+        {
+            get { return EmployeeQuotas; }
+        }
+
 
 
         public IQueryable<Holiday> GetApprovedHolidays()
@@ -43,6 +55,7 @@ namespace HolidayApp.Core.Data
             return Holidays.Where(r => r.Status ==null && r.StartDate >=  DateTime.Today);
 
         }
+
 
 
 

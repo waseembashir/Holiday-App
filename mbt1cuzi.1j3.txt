@@ -1,0 +1,103 @@
+﻿Merge remote-tracking branch 'origin/master'
+
+Conflicts:
+	Holiday-App/Views/Shared/_Layout.cshtml
+	Holiday-App/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
+	HolidayApp.Core/Data/HolidayAppDb.cs
+#
+# It looks like you may be committing a merge.
+# If this is not correct, please remove the file
+#	.git/MERGE_HEAD
+# and try again.
+
+
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+# On branch master
+# Your branch and 'origin/master' have diverged,
+# and have 1 and 1 different commit each, respectively.
+#   (use "git pull" to merge the remote branch into yours)
+#
+# All conflicts fixed but you are still merging.
+#   (use "git commit" to conclude merge)
+#
+# Changes to be committed:
+#
+#	new file:   Holiday-App/Content/fullcalendar.css
+#	new file:   Holiday-App/Content/fullcalendar.print.css
+#	new file:   Holiday-App/Content/jquery.calendars.picker.css
+#	new file:   Holiday-App/Controllers/EmployeeQuotaController.cs
+#	new file:   Holiday-App/Controllers/GeneralHolidayController.cs
+#	modified:   Holiday-App/HolidayApp.csproj
+#	modified:   Holiday-App/Scripts/_references.js
+#	new file:   Holiday-App/Scripts/customjs2.js
+#	new file:   Holiday-App/Scripts/fullcalendar.js
+#	new file:   Holiday-App/Scripts/fullcalendar.min.js
+#	new file:   Holiday-App/Scripts/gcal.js
+#	new file:   Holiday-App/Scripts/jquery.calendars.islamic.js
+#	new file:   Holiday-App/Scripts/jquery.calendars.js
+#	new file:   Holiday-App/Scripts/jquery.calendars.picker.js
+#	new file:   Holiday-App/Scripts/jquery.calendars.plus.js
+#	new file:   Holiday-App/Scripts/jquery.min.js
+#	new file:   Holiday-App/Scripts/jquery.plugin.js
+#	new file:   Holiday-App/Views/EmployeeQuota/Create.cshtml
+#	new file:   Holiday-App/Views/EmployeeQuota/Delete.cshtml
+#	new file:   Holiday-App/Views/EmployeeQuota/Details.cshtml
+#	new file:   Holiday-App/Views/EmployeeQuota/Edit.cshtml
+#	new file:   Holiday-App/Views/EmployeeQuota/Index.cshtml
+#	new file:   Holiday-App/Views/GeneralHoliday/Calendar.cshtml
+#	new file:   Holiday-App/Views/GeneralHoliday/Create.cshtml
+#	new file:   Holiday-App/Views/GeneralHoliday/CreateIslamic.cshtml
+#	new file:   Holiday-App/Views/GeneralHoliday/Delete.cshtml
+#	new file:   Holiday-App/Views/GeneralHoliday/Details.cshtml
+#	new file:   Holiday-App/Views/GeneralHoliday/Edit.cshtml
+#	new file:   Holiday-App/Views/GeneralHoliday/FullCalendar.cshtml
+#	new file:   Holiday-App/Views/GeneralHoliday/Index.cshtml
+#	modified:   Holiday-App/Views/Shared/_Layout.cshtml
+#	modified:   Holiday-App/Web.config
+#	modified:   Holiday-App/bin/System.Web.Helpers.dll
+#	modified:   Holiday-App/bin/System.Web.Mvc.dll
+#	modified:   Holiday-App/bin/System.Web.Mvc.xml
+#	modified:   Holiday-App/bin/System.Web.Razor.dll
+#	modified:   Holiday-App/bin/System.Web.WebPages.Deployment.dll
+#	modified:   Holiday-App/bin/System.Web.WebPages.Razor.dll
+#	modified:   Holiday-App/bin/System.Web.WebPages.dll
+#	modified:   Holiday-App/packages.config
+#	new file:   HolidayApp.Core/Content/fullcalendar.css
+#	new file:   HolidayApp.Core/Content/fullcalendar.print.css
+#	modified:   HolidayApp.Core/Data/HolidayAppDb.cs
+#	modified:   HolidayApp.Core/HolidayApp.Core.csproj
+#	deleted:    HolidayApp.Core/Migrations/201407261856592_init.Designer.cs
+#	deleted:    HolidayApp.Core/Migrations/201407261856592_init.cs
+#	deleted:    HolidayApp.Core/Migrations/201407261856592_init.resx
+#	deleted:    HolidayApp.Core/Migrations/201408050750460_HolidayAppDb.Designer.cs
+#	deleted:    HolidayApp.Core/Migrations/201408050750460_HolidayAppDb.cs
+#	deleted:    HolidayApp.Core/Migrations/201408050750460_HolidayAppDb.resx
+#	deleted:    HolidayApp.Core/Migrations/201408082256308_SalesFirst.cs
+#	deleted:    HolidayApp.Core/Migrations/201408082256308_SalesFirst.resx
+#	deleted:    HolidayApp.Core/Migrations/201408190835481_HolidayAppDb.Designer.cs
+#	deleted:    HolidayApp.Core/Migrations/201408190835481_HolidayAppDb.cs
+#	deleted:    HolidayApp.Core/Migrations/201408190835481_HolidayAppDb.resx
+#	deleted:    HolidayApp.Core/Migrations/201408200929178_HolidayAppDb1.Designer.cs
+#	deleted:    HolidayApp.Core/Migrations/201408200929178_HolidayAppDb1.cs
+#	deleted:    HolidayApp.Core/Migrations/201408200929178_HolidayAppDb1.resx
+#	deleted:    HolidayApp.Core/Migrations/201408201013025_HolidayAppDb2.Designer.cs
+#	deleted:    HolidayApp.Core/Migrations/201408201013025_HolidayAppDb2.cs
+#	deleted:    HolidayApp.Core/Migrations/201408201013025_HolidayAppDb2.resx
+#	deleted:    HolidayApp.Core/Migrations/201408210916576_HolidayAppDb3.Designer.cs
+#	deleted:    HolidayApp.Core/Migrations/201408210916576_HolidayAppDb3.cs
+#	deleted:    HolidayApp.Core/Migrations/201408210916576_HolidayAppDb3.resx
+#	deleted:    HolidayApp.Core/Migrations/201408211130369_HolidayAppDb4.Designer.cs
+#	deleted:    HolidayApp.Core/Migrations/201408211130369_HolidayAppDb4.cs
+#	deleted:    HolidayApp.Core/Migrations/201408211130369_HolidayAppDb4.resx
+#	renamed:    HolidayApp.Core/Migrations/201408082256308_SalesFirst.Designer.cs -> HolidayApp.Core/Migrations/201408250357455_initial.Designer.cs
+#	new file:   HolidayApp.Core/Migrations/201408250357455_initial.cs
+#	new file:   HolidayApp.Core/Migrations/201408250357455_initial.resx
+#	new file:   HolidayApp.Core/Model/EmployeeQuota.cs
+#	new file:   HolidayApp.Core/Model/GeneralHoliday.cs
+#	new file:   HolidayApp.Core/Scripts/fullcalendar.js
+#	new file:   HolidayApp.Core/Scripts/fullcalendar.min.js
+#	new file:   HolidayApp.Core/Scripts/gcal.js
+#	modified:   HolidayApp.Core/packages.config
+#
+

@@ -1,0 +1,64 @@
+﻿@using System.Globalization;
+@{
+    ViewBag.Title = "Index";
+}
+@section calendar {
+ 
+<link href="~/Content/fullcalendar.css" rel="stylesheet" />
+<link href="~/Content/fullcalendar.print.css" rel="stylesheet" media="print" />
+
+<script src="~/Scripts/fullcalendar.js"></script>
+<script>
+
+    $(document).ready(function () {
+
+        $('#calendar').fullCalendar({
+           
+            events: [
+@{
+    
+  foreach(var item in ViewBag.GeneralHolidays){
+     String str = "{title: '" + item.Name + "', start: '" + string.Format("{0:yyyy-MM-dd}", item.StartDate) + "', end: '" + string.Format("{0:yyyy-MM-dd}", item.EndDate) + "', color:'#378006'},";
+     @Html.Raw(str)
+  }
+  if(ViewBag.Holidays != null){
+      foreach (var item in ViewBag.Holidays){
+      String str = "{title: '" + "Personnel Holiday" + "', start: '" + string.Format("{0:yyyy-MM-dd}", item.StartDate) + "', end: '" + string.Format("{0:yyyy-MM-dd}", item.EndDate) + "', color:'red'},";
+     @Html.Raw(str)
+     }  
+   }
+    
+}]
+
+        });
+
+    });
+
+</script>
+}
+<h2>Calender</h2>
+<div id='calendar'></div>
+
+@*@foreach (var item in Model)
+{
+    //String str = "{title: '" + item.Name + "', start: '" + string.Format("{0:MM-dd-yyyy}", item.StartDate) + "', end: '" + string.Format("{0:MM-dd-yyyy}", item.EndDate) + "'},";
+     //@Html.Raw(str)
+    //@Html.DisplayFor(modelItem => item.Name)
+   // @Html.Raw(string.Format("{0:MM-dd-yyyy}", item.StartDate))
+    //@Html.Raw(string.Format("{0:MM-dd-yyyy}", item.EndDate))
+
+   
+}*@
+@{
+    
+     CultureInfo arCI = new CultureInfo("ar-SA");
+    string hijri = "01/09/1435";
+
+    DateTime tempDate = DateTime.ParseExact(hijri, "dd/MM/yyyy", arCI.DateTimeFormat, DateTimeStyles.AllowInnerWhite);
+    
+    @Html.Raw( tempDate.ToString("dd/MM/yyyy"))
+
+}
+   
+
+
