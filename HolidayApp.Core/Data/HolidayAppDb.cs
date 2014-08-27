@@ -36,6 +36,7 @@ namespace HolidayApp.Core.Data
 
 
 
+
         public IQueryable<Holiday> GetApprovedHolidays()
         {
             return Holidays.Where(r => r.Status == "Approved");
@@ -55,6 +56,7 @@ namespace HolidayApp.Core.Data
             return Holidays.Where(r => r.Status ==null && r.StartDate >=  DateTime.Today);
 
         }
+
 
 
 

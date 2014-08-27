@@ -56,6 +56,18 @@
     <Compile Include="Migrations\201408250357455_initial.Designer.cs">
       <DependentUpon>201408250357455_initial.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201408270339561_HolidayAppDb.cs" />
+    <Compile Include="Migrations\201408270339561_HolidayAppDb.Designer.cs">
+      <DependentUpon>201408270339561_HolidayAppDb.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201408270355273_init.cs" />
+    <Compile Include="Migrations\201408270355273_init.Designer.cs">
+      <DependentUpon>201408270355273_init.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201408270356526_HolidayAppDb1.cs" />
+    <Compile Include="Migrations\201408270356526_HolidayAppDb1.Designer.cs">
+      <DependentUpon>201408270356526_HolidayAppDb1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model\EmployeeQuota.cs" />
     <Compile Include="Model\GeneralHoliday.cs" />
@@ -86,6 +98,15 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201408250357455_initial.resx">
       <DependentUpon>201408250357455_initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201408270339561_HolidayAppDb.resx">
+      <DependentUpon>201408270339561_HolidayAppDb.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201408270355273_init.resx">
+      <DependentUpon>201408270355273_init.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201408270356526_HolidayAppDb1.resx">
+      <DependentUpon>201408270356526_HolidayAppDb1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
