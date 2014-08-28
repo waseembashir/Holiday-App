@@ -7,13 +7,13 @@ namespace HolidayApp.Core.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.1-30610")]
-    public sealed partial class initial : IMigrationMetadata
+    public sealed partial class two : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(initial));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(two));
         
         string IMigrationMetadata.Id
         {
-            get { return "201408250357455_initial"; }
+            get { return "201408270856031_two"; }
         }
         
         string IMigrationMetadata.Source

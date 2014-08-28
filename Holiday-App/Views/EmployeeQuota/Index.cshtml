@@ -1,48 +1,78 @@
-﻿@model IEnumerable<HolidayApp.Core.Model.EmployeeQuota>
+﻿@model HolidayApp.Core.Model.EmployeeQuota
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "My Holiday Quota";
+}
+@section calendar {
+    <script src="~/Scripts/Chart.js"></script>
 }
 
-<h2>Index</h2>
+<h2>@ViewBag.Message</h2>
+<div>@{
+    var FirstDay = new DateTime(DateTime.Now.Year, 1, 1);
+var LastDay = new DateTime(DateTime.Now.Year, 12, 31);
+<h4>Current Holiday Period From @FirstDay.ToString("dd/MM/yyyy") to @LastDay.ToString("dd/MM/yyyy")</h4>
+  
+}
+      <hr />
+    <dl class="dl-horizontal">
+        <dt>
+           Total Entilement
+        </dt>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
+        <dd>
+            <value>
+        </dd>
+
+        <dt>
+            Holidays Taken
+        </dt>
+
+        <dd>
+            <value>
+        </dd>
+
+        <dt>
+            Booked this Year
+        </dt>
+
+        <dd>
+            <value>
+        </dd>
+
+        <dt>
+            Left to book this year
+        </dt>
+
+        <dd>
+            <value>
+        </dd>
+
+    </dl>
+</div>
+<div>
+    <h4>EmployeeQuota</h4>
+	<hr />
+    <dl class="dl-horizontal">
+        <dt>
             @Html.DisplayNameFor(model => model.PaidQuota)
-        </th>
-        <th>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PaidQuota)
+        </dd>
+
+        <dt>
             @Html.DisplayNameFor(model => model.NonPaidQuota)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.EmployeeId)
-        </th>
-        <th></th>
-    </tr>
+        </dt>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.PaidQuota)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.NonPaidQuota)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.EmployeeId)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.EmployeeQuotaId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.EmployeeQuotaId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.EmployeeQuotaId })
-        </td>
-    </tr>
-}
+        <dd>
+            @Html.DisplayFor(model => model.NonPaidQuota)
+        </dd>
 
-</table>
+    </dl>
+</div>
+
 <h4>Total Holidays Taken:</h4>
 <div class="progress">
     <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%;">
@@ -61,3 +91,44 @@
         50%
     </div>
 </div>
+<div id="canvas-holder">
+    <canvas id="chart-area" width="300" height="300" />
+</div>
+<script>
+
+    var pieData = [
+            {
+                value: 50,
+                color: "#F7464A",
+                highlight: "#FF5A5E",
+                label: "sickness"
+            },
+            {
+                value: 300,
+                color: "#46BFBD",
+                highlight: "#5AD3D1",
+                label: "travel"
+            },
+            {
+                value: 100,
+                color: "#FDB45C",
+                highlight: "#FFC870",
+                label: "non-paid"
+            },
+            {
+                value: 40,
+                color: "#949FB1",
+                highlight: "#A8B3C5",
+                label: "paid"
+            }
+
+    ];
+
+    window.onload = function () {
+        var ctx = document.getElementById("chart-area").getContext("2d");
+        window.myPie = new Chart(ctx).Pie(pieData);
+    };
+
+
+
+</script>

@@ -33,7 +33,10 @@ namespace HolidayApp.Core.Data
             get { return EmployeeQuotas; }
         }
 
-
+        public EmployeeQuota GetEmployeeQuotaByEmployee(Employee employee)
+        {
+            return EmployeeQuotas.Where(r => r.EmployeeId == employee.EmployeeId).SingleOrDefault();
+        }
 
     }
 

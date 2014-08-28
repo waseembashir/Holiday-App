@@ -13,6 +13,7 @@ using SalesFirst.Core.Data;
 
 namespace HolidayApp.Controllers
 {
+    [Authorize]
     public class EmployeeQuotaController : Controller
     {
         private HolidayAppDb db = new HolidayAppDb();
@@ -27,7 +28,7 @@ namespace HolidayApp.Controllers
         }
 
         // GET: /EmployeeQuota/
-        public ActionResult Index()
+        public ActionResult Manage()
         {
             return View(db.EmployeeQuotas.ToList());
         }
@@ -45,6 +46,25 @@ namespace HolidayApp.Controllers
                 return HttpNotFound();
             }
             return View(employeequota);
+        }
+        public ActionResult Index()
+        {
+
+            /*this gives us the username of the user currently logged in - WB*/
+            var loggedInUser = User.Identity.Name;
+
+            var employee = employeeService.GetEmployeeByUsername(loggedInUser);
+            if (employee == null || db.GetEmployeeQuotaByEmployee(employee) == null)
+            {
+                /*If the employee doesn't exist or if there are no quotas against an employee we cannot list any quotas*/
+                /*However, if the employee doesn't exist, meaning mapping didn't work - needs some extra validation - NN */
+                ViewBag.Message = "No Quota Information Found";
+                return View();
+            }
+
+            return View(db.GetEmployeeQuotaByEmployee(employee));
+
+           
         }
 
         // GET: /EmployeeQuota/Create

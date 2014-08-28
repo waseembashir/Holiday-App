@@ -1,4 +1,4 @@
-﻿@using System.Globalization;
+﻿@using HolidayApp.Core.Helpers;
 @{
     ViewBag.Title = "Index";
 }
@@ -18,7 +18,15 @@
 @{
     
   foreach(var item in ViewBag.GeneralHolidays){
-     String str = "{title: '" + item.Name + "', start: '" + string.Format("{0:yyyy-MM-dd}", item.StartDate) + "', end: '" + string.Format("{0:yyyy-MM-dd}", item.EndDate) + "', color:'#378006'},";
+
+      if (item.Type == "islamic")
+      {
+
+          item.StartDate = Helpers.IslamicToGeorgian(item.StartDate);
+          item.EndDate = Helpers.IslamicToGeorgian(item.EndDate);
+       }
+      
+      String str = "{title: '" + item.Name + "', start: '" + string.Format("{0:yyyy-MM-dd}", item.StartDate) + "', end: '" + string.Format("{0:yyyy-MM-dd}", item.EndDate) + "', color:'#378006'},";
      @Html.Raw(str)
   }
   if(ViewBag.Holidays != null){
@@ -37,28 +45,8 @@
 </script>
 }
 <h2>Calender</h2>
-<div id='calendar'></div>
+<div id='calendar' class="month-cal"></div>
 
-@*@foreach (var item in Model)
-{
-    //String str = "{title: '" + item.Name + "', start: '" + string.Format("{0:MM-dd-yyyy}", item.StartDate) + "', end: '" + string.Format("{0:MM-dd-yyyy}", item.EndDate) + "'},";
-     //@Html.Raw(str)
-    //@Html.DisplayFor(modelItem => item.Name)
-   // @Html.Raw(string.Format("{0:MM-dd-yyyy}", item.StartDate))
-    //@Html.Raw(string.Format("{0:MM-dd-yyyy}", item.EndDate))
-
-   
-}*@
-@{
-    
-     CultureInfo arCI = new CultureInfo("ar-SA");
-    string hijri = "01/09/1435";
-
-    DateTime tempDate = DateTime.ParseExact(hijri, "dd/MM/yyyy", arCI.DateTimeFormat, DateTimeStyles.AllowInnerWhite);
-    
-    @Html.Raw( tempDate.ToString("dd/MM/yyyy"))
-
-}
    
 
 

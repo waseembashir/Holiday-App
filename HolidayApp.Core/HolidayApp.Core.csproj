@@ -52,14 +52,20 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Data\HolidayAppDb.cs" />
-    <Compile Include="Migrations\201408250357455_initial.cs" />
-    <Compile Include="Migrations\201408250357455_initial.Designer.cs">
-      <DependentUpon>201408250357455_initial.cs</DependentUpon>
+    <Compile Include="Helpers\Helpers.cs" />
+    <Compile Include="Migrations\201408250448396_initial.cs" />
+    <Compile Include="Migrations\201408250448396_initial.Designer.cs">
+      <DependentUpon>201408250448396_initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201408270856031_two.cs" />
+    <Compile Include="Migrations\201408270856031_two.Designer.cs">
+      <DependentUpon>201408270856031_two.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model\EmployeeQuota.cs" />
     <Compile Include="Model\GeneralHoliday.cs" />
     <Compile Include="Model\Holiday.cs" />
+    <Compile Include="Model\PublicHoliday.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Validations\HolidayValidations.cs" />
   </ItemGroup>
@@ -84,8 +90,11 @@
     <Content Include="Scripts\jquery.validate.min.js" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201408250357455_initial.resx">
-      <DependentUpon>201408250357455_initial.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201408250448396_initial.resx">
+      <DependentUpon>201408250448396_initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201408270856031_two.resx">
+      <DependentUpon>201408270856031_two.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

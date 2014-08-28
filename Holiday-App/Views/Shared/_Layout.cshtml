@@ -28,8 +28,32 @@
                     <li>@Html.ActionLink("Employee", "Index", "Employee")</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
                     <li>@Html.ActionLink("Holidays", "Index", "Holiday")</li>
-                    <li>@Html.ActionLink("Calendar", "Index", "GeneralHoliday")</li>
-                    <li>@Html.ActionLink("My Holiday Quota", "Index", "EmployeeQuota")</li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Holiday Quota <span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li>@Html.ActionLink("View My Quota", "Index", "EmployeeQuota")</li>
+                            <li class="divider"></li>
+                            <li>@Html.ActionLink("Manage Employee Holiday Quota", "Manage", "EmployeeQuota")</li>
+                            <li>@Html.ActionLink("Add Quota For New Employee", "Create", "EmployeeQuota")</li>
+                            
+
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Calendar <span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li>@Html.ActionLink("Edit/View Holiday List", "Index", "GeneralHoliday")</li>
+                            <li class="divider"></li>
+                            <li>@Html.ActionLink("Add General Holiday", "Create", "GeneralHoliday")</li>
+                            <li>@Html.ActionLink("Add Islamic Holiday", "CreateIslamic", "GeneralHoliday")</li>
+                            <li class="divider"></li>
+                                                
+                            <li>@Html.ActionLink("View Calendar(General)", "Calendar", "GeneralHoliday")</li>
+                            <li>@Html.ActionLink("View Full Calendar(General + Personnel)", "FullCalendar", "GeneralHoliday")</li>
+                            <li>@Html.ActionLink("View Year Calendar", "FullYearCalendar", "GeneralHoliday")</li>
+                          
+                        </ul>
+                    </li>
                                    </ul>
                 @Html.Partial("_LoginPartial")
             </div>

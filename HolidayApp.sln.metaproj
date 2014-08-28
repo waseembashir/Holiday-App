@@ -1,34 +1,34 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" InitialTargets="ValidateSolutionConfiguration;ValidateToolsVersions;ValidateProjects" DefaultTargets="Build">
   <PropertyGroup>
-    <MSBuildToolsPath32>C:\Program Files (x86)\MSBuild\12.0\bin\</MSBuildToolsPath32>
-    <MSBuildToolsRoot>C:\Program Files (x86)\MSBuild\</MSBuildToolsRoot>
+    <MSBuildToolsPath32>C:\Program Files\MSBuild\12.0\bin\</MSBuildToolsPath32>
+    <MSBuildToolsRoot>C:\Program Files\MSBuild\</MSBuildToolsRoot>
     <MSBuildFrameworkToolsPath>C:\Windows\Microsoft.NET\Framework\v4.0.30319\</MSBuildFrameworkToolsPath>
     <MSBuildFrameworkToolsPath32>C:\Windows\Microsoft.NET\Framework\v4.0.30319\</MSBuildFrameworkToolsPath32>
     <MSBuildFrameworkToolsRoot>C:\Windows\Microsoft.NET\Framework\</MSBuildFrameworkToolsRoot>
     <MSBuildRuntimeVersion>4.0.30319</MSBuildRuntimeVersion>
-    <FrameworkSDKRoot>C:\Program Files (x86)\Microsoft SDKs\Windows\v8.1A\</FrameworkSDKRoot>
-    <SDK35ToolsPath>C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\</SDK35ToolsPath>
-    <SDK40ToolsPath>C:\Program Files (x86)\Microsoft SDKs\Windows\v8.1A\bin\NETFX 4.5.1 Tools\</SDK40ToolsPath>
-    <VCTargetsPath>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V120\</VCTargetsPath>
-    <VCTargetsPath10>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\</VCTargetsPath10>
-    <VCTargetsPath11>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V110\</VCTargetsPath11>
-    <VCTargetsPath12>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V120\</VCTargetsPath12>
+    <FrameworkSDKRoot>C:\Program Files\Microsoft SDKs\Windows\v8.1A\</FrameworkSDKRoot>
+    <SDK35ToolsPath>C:\Program Files\Microsoft SDKs\Windows\v7.0A\bin\</SDK35ToolsPath>
+    <SDK40ToolsPath>C:\Program Files\Microsoft SDKs\Windows\v8.1A\bin\NETFX 4.5.1 Tools\</SDK40ToolsPath>
+    <VCTargetsPath>C:\Program Files\MSBuild\Microsoft.Cpp\v4.0\V120\</VCTargetsPath>
+    <VCTargetsPath10>C:\Program Files\MSBuild\Microsoft.Cpp\v4.0\</VCTargetsPath10>
+    <VCTargetsPath11>C:\Program Files\MSBuild\Microsoft.Cpp\v4.0\V110\</VCTargetsPath11>
+    <VCTargetsPath12>C:\Program Files\MSBuild\Microsoft.Cpp\v4.0\V120\</VCTargetsPath12>
     <VisualStudioVersion>12.0</VisualStudioVersion>
-    <WindowsSDK80Path>C:\Program Files (x86)\Windows Kits\8.1\</WindowsSDK80Path>
+    <WindowsSDK80Path>C:\Program Files\Windows Kits\8.1\</WindowsSDK80Path>
     <Configuration>Debug</Configuration>
     <Platform>Any CPU</Platform>
     <AspNetConfiguration>Debug</AspNetConfiguration>
-    <SolutionDir>C:\Users\Waseem\Documents\GitHub\Holiday-App\</SolutionDir>
+    <SolutionDir>C:\Users\Nadeem Nazeer\Documents\Visual Studio 2013\Projects\Holiday-App\</SolutionDir>
     <SolutionExt>.sln</SolutionExt>
     <SolutionFileName>HolidayApp.sln</SolutionFileName>
     <SolutionName>HolidayApp</SolutionName>
-    <SolutionPath>C:\Users\Waseem\Documents\GitHub\Holiday-App\HolidayApp.sln</SolutionPath>
+    <SolutionPath>C:\Users\Nadeem Nazeer\Documents\Visual Studio 2013\Projects\Holiday-App\HolidayApp.sln</SolutionPath>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <CurrentSolutionConfigurationContents>
       <SolutionConfiguration xmlns="">
-  <ProjectConfiguration Project="{C5C844F5-88D1-4FB7-9F2B-318414D7F999}" AbsolutePath="C:\Users\Waseem\Documents\GitHub\Holiday-App\Holiday-App\HolidayApp.csproj" BuildProjectInSolution="True">Debug|AnyCPU</ProjectConfiguration>
-  <ProjectConfiguration Project="{AE9CAA05-2C12-4282-9BA8-A2AC27C2B7FB}" AbsolutePath="C:\Users\Waseem\Documents\GitHub\Holiday-App\HolidayApp.Core\HolidayApp.Core.csproj" BuildProjectInSolution="True">Debug|AnyCPU</ProjectConfiguration>
+  <ProjectConfiguration Project="{C5C844F5-88D1-4FB7-9F2B-318414D7F999}" AbsolutePath="C:\Users\Nadeem Nazeer\Documents\Visual Studio 2013\Projects\Holiday-App\Holiday-App\HolidayApp.csproj" BuildProjectInSolution="True">Debug|AnyCPU</ProjectConfiguration>
+  <ProjectConfiguration Project="{AE9CAA05-2C12-4282-9BA8-A2AC27C2B7FB}" AbsolutePath="C:\Users\Nadeem Nazeer\Documents\Visual Studio 2013\Projects\Holiday-App\HolidayApp.Core\HolidayApp.Core.csproj" BuildProjectInSolution="True">Debug|AnyCPU</ProjectConfiguration>
 </SolutionConfiguration>
     </CurrentSolutionConfigurationContents>
   </PropertyGroup>
@@ -39,8 +39,8 @@
       <Platform>Any CPU</Platform>
       <Content>
         <SolutionConfiguration xmlns="">
-  <ProjectConfiguration Project="{C5C844F5-88D1-4FB7-9F2B-318414D7F999}" AbsolutePath="C:\Users\Waseem\Documents\GitHub\Holiday-App\Holiday-App\HolidayApp.csproj" BuildProjectInSolution="True">Debug|AnyCPU</ProjectConfiguration>
-  <ProjectConfiguration Project="{AE9CAA05-2C12-4282-9BA8-A2AC27C2B7FB}" AbsolutePath="C:\Users\Waseem\Documents\GitHub\Holiday-App\HolidayApp.Core\HolidayApp.Core.csproj" BuildProjectInSolution="True">Debug|AnyCPU</ProjectConfiguration>
+  <ProjectConfiguration Project="{C5C844F5-88D1-4FB7-9F2B-318414D7F999}" AbsolutePath="C:\Users\Nadeem Nazeer\Documents\Visual Studio 2013\Projects\Holiday-App\Holiday-App\HolidayApp.csproj" BuildProjectInSolution="True">Debug|AnyCPU</ProjectConfiguration>
+  <ProjectConfiguration Project="{AE9CAA05-2C12-4282-9BA8-A2AC27C2B7FB}" AbsolutePath="C:\Users\Nadeem Nazeer\Documents\Visual Studio 2013\Projects\Holiday-App\HolidayApp.Core\HolidayApp.Core.csproj" BuildProjectInSolution="True">Debug|AnyCPU</ProjectConfiguration>
 </SolutionConfiguration>
       </Content>
     </SolutionConfiguration>
@@ -49,14 +49,14 @@
       <Platform>Any CPU</Platform>
       <Content>
         <SolutionConfiguration xmlns="">
-  <ProjectConfiguration Project="{C5C844F5-88D1-4FB7-9F2B-318414D7F999}" AbsolutePath="C:\Users\Waseem\Documents\GitHub\Holiday-App\Holiday-App\HolidayApp.csproj" BuildProjectInSolution="True">Release|AnyCPU</ProjectConfiguration>
-  <ProjectConfiguration Project="{AE9CAA05-2C12-4282-9BA8-A2AC27C2B7FB}" AbsolutePath="C:\Users\Waseem\Documents\GitHub\Holiday-App\HolidayApp.Core\HolidayApp.Core.csproj" BuildProjectInSolution="True">Release|AnyCPU</ProjectConfiguration>
+  <ProjectConfiguration Project="{C5C844F5-88D1-4FB7-9F2B-318414D7F999}" AbsolutePath="C:\Users\Nadeem Nazeer\Documents\Visual Studio 2013\Projects\Holiday-App\Holiday-App\HolidayApp.csproj" BuildProjectInSolution="True">Release|AnyCPU</ProjectConfiguration>
+  <ProjectConfiguration Project="{AE9CAA05-2C12-4282-9BA8-A2AC27C2B7FB}" AbsolutePath="C:\Users\Nadeem Nazeer\Documents\Visual Studio 2013\Projects\Holiday-App\HolidayApp.Core\HolidayApp.Core.csproj" BuildProjectInSolution="True">Release|AnyCPU</ProjectConfiguration>
 </SolutionConfiguration>
       </Content>
     </SolutionConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="C:\Users\Waseem\Documents\GitHub\Holiday-App\Holiday-App\HolidayApp.csproj">
+    <ProjectReference Include="C:\Users\Nadeem Nazeer\Documents\Visual Studio 2013\Projects\Holiday-App\Holiday-App\HolidayApp.csproj">
       <ToolsVersion>
       </ToolsVersion>
       <SkipNonexistentProjects>False</SkipNonexistentProjects>
@@ -64,7 +64,7 @@
       <Configuration>Debug</Configuration>
       <Platform>AnyCPU</Platform>
     </ProjectReference>
-    <ProjectReference Include="C:\Users\Waseem\Documents\GitHub\Holiday-App\HolidayApp.Core\HolidayApp.Core.csproj">
+    <ProjectReference Include="C:\Users\Nadeem Nazeer\Documents\Visual Studio 2013\Projects\Holiday-App\HolidayApp.Core\HolidayApp.Core.csproj">
       <ToolsVersion>
       </ToolsVersion>
       <SkipNonexistentProjects>False</SkipNonexistentProjects>
@@ -100,35 +100,35 @@
     <MSBuild Projects="@(ProjectReference)" Targets="Publish" BuildInParallel="True" Properties="BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)" SkipNonexistentProjects="%(ProjectReference.SkipNonexistentProjects)" />
   </Target>
   <Target Name="HolidayApp" Outputs="@(HolidayAppBuildOutput)">
-    <MSBuild Condition="'%(ProjectReference.Identity)' == 'C:\Users\Waseem\Documents\GitHub\Holiday-App\Holiday-App\HolidayApp.csproj'" Projects="@(ProjectReference)" BuildInParallel="True" ToolsVersion="$(ProjectToolsVersion)" Properties="Configuration=Debug; Platform=AnyCPU;BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)">
+    <MSBuild Condition="'%(ProjectReference.Identity)' == 'C:\Users\Nadeem Nazeer\Documents\Visual Studio 2013\Projects\Holiday-App\Holiday-App\HolidayApp.csproj'" Projects="@(ProjectReference)" BuildInParallel="True" ToolsVersion="$(ProjectToolsVersion)" Properties="Configuration=Debug; Platform=AnyCPU;BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)">
       <Output TaskParameter="TargetOutputs" ItemName="HolidayAppBuildOutput" />
     </MSBuild>
   </Target>
   <Target Name="HolidayApp:Clean">
-    <MSBuild Condition="'%(ProjectReference.Identity)' == 'C:\Users\Waseem\Documents\GitHub\Holiday-App\Holiday-App\HolidayApp.csproj'" Projects="@(ProjectReference)" Targets="Clean" BuildInParallel="True" ToolsVersion="$(ProjectToolsVersion)" Properties="Configuration=Debug; Platform=AnyCPU;BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)" />
+    <MSBuild Condition="'%(ProjectReference.Identity)' == 'C:\Users\Nadeem Nazeer\Documents\Visual Studio 2013\Projects\Holiday-App\Holiday-App\HolidayApp.csproj'" Projects="@(ProjectReference)" Targets="Clean" BuildInParallel="True" ToolsVersion="$(ProjectToolsVersion)" Properties="Configuration=Debug; Platform=AnyCPU;BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)" />
   </Target>
   <Target Name="HolidayApp:Rebuild" Outputs="@(HolidayAppBuildOutput)">
-    <MSBuild Condition="'%(ProjectReference.Identity)' == 'C:\Users\Waseem\Documents\GitHub\Holiday-App\Holiday-App\HolidayApp.csproj'" Projects="@(ProjectReference)" Targets="Rebuild" BuildInParallel="True" ToolsVersion="$(ProjectToolsVersion)" Properties="Configuration=Debug; Platform=AnyCPU;BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)">
+    <MSBuild Condition="'%(ProjectReference.Identity)' == 'C:\Users\Nadeem Nazeer\Documents\Visual Studio 2013\Projects\Holiday-App\Holiday-App\HolidayApp.csproj'" Projects="@(ProjectReference)" Targets="Rebuild" BuildInParallel="True" ToolsVersion="$(ProjectToolsVersion)" Properties="Configuration=Debug; Platform=AnyCPU;BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)">
       <Output TaskParameter="TargetOutputs" ItemName="HolidayAppBuildOutput" />
     </MSBuild>
   </Target>
   <Target Name="HolidayApp:Publish">
-    <MSBuild Condition="'%(ProjectReference.Identity)' == 'C:\Users\Waseem\Documents\GitHub\Holiday-App\Holiday-App\HolidayApp.csproj'" Projects="@(ProjectReference)" Targets="Publish" BuildInParallel="True" ToolsVersion="$(ProjectToolsVersion)" Properties="Configuration=Debug; Platform=AnyCPU;BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)" />
+    <MSBuild Condition="'%(ProjectReference.Identity)' == 'C:\Users\Nadeem Nazeer\Documents\Visual Studio 2013\Projects\Holiday-App\Holiday-App\HolidayApp.csproj'" Projects="@(ProjectReference)" Targets="Publish" BuildInParallel="True" ToolsVersion="$(ProjectToolsVersion)" Properties="Configuration=Debug; Platform=AnyCPU;BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)" />
   </Target>
   <Target Name="HolidayApp_Core" Outputs="@(HolidayApp_CoreBuildOutput)">
-    <MSBuild Condition="'%(ProjectReference.Identity)' == 'C:\Users\Waseem\Documents\GitHub\Holiday-App\HolidayApp.Core\HolidayApp.Core.csproj'" Projects="@(ProjectReference)" BuildInParallel="True" ToolsVersion="$(ProjectToolsVersion)" Properties="Configuration=Debug; Platform=AnyCPU;BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)">
+    <MSBuild Condition="'%(ProjectReference.Identity)' == 'C:\Users\Nadeem Nazeer\Documents\Visual Studio 2013\Projects\Holiday-App\HolidayApp.Core\HolidayApp.Core.csproj'" Projects="@(ProjectReference)" BuildInParallel="True" ToolsVersion="$(ProjectToolsVersion)" Properties="Configuration=Debug; Platform=AnyCPU;BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)">
       <Output TaskParameter="TargetOutputs" ItemName="HolidayApp_CoreBuildOutput" />
     </MSBuild>
   </Target>
   <Target Name="HolidayApp_Core:Clean">
-    <MSBuild Condition="'%(ProjectReference.Identity)' == 'C:\Users\Waseem\Documents\GitHub\Holiday-App\HolidayApp.Core\HolidayApp.Core.csproj'" Projects="@(ProjectReference)" Targets="Clean" BuildInParallel="True" ToolsVersion="$(ProjectToolsVersion)" Properties="Configuration=Debug; Platform=AnyCPU;BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)" />
+    <MSBuild Condition="'%(ProjectReference.Identity)' == 'C:\Users\Nadeem Nazeer\Documents\Visual Studio 2013\Projects\Holiday-App\HolidayApp.Core\HolidayApp.Core.csproj'" Projects="@(ProjectReference)" Targets="Clean" BuildInParallel="True" ToolsVersion="$(ProjectToolsVersion)" Properties="Configuration=Debug; Platform=AnyCPU;BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)" />
   </Target>
   <Target Name="HolidayApp_Core:Rebuild" Outputs="@(HolidayApp_CoreBuildOutput)">
-    <MSBuild Condition="'%(ProjectReference.Identity)' == 'C:\Users\Waseem\Documents\GitHub\Holiday-App\HolidayApp.Core\HolidayApp.Core.csproj'" Projects="@(ProjectReference)" Targets="Rebuild" BuildInParallel="True" ToolsVersion="$(ProjectToolsVersion)" Properties="Configuration=Debug; Platform=AnyCPU;BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)">
+    <MSBuild Condition="'%(ProjectReference.Identity)' == 'C:\Users\Nadeem Nazeer\Documents\Visual Studio 2013\Projects\Holiday-App\HolidayApp.Core\HolidayApp.Core.csproj'" Projects="@(ProjectReference)" Targets="Rebuild" BuildInParallel="True" ToolsVersion="$(ProjectToolsVersion)" Properties="Configuration=Debug; Platform=AnyCPU;BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)">
       <Output TaskParameter="TargetOutputs" ItemName="HolidayApp_CoreBuildOutput" />
     </MSBuild>
   </Target>
   <Target Name="HolidayApp_Core:Publish">
-    <MSBuild Condition="'%(ProjectReference.Identity)' == 'C:\Users\Waseem\Documents\GitHub\Holiday-App\HolidayApp.Core\HolidayApp.Core.csproj'" Projects="@(ProjectReference)" Targets="Publish" BuildInParallel="True" ToolsVersion="$(ProjectToolsVersion)" Properties="Configuration=Debug; Platform=AnyCPU;BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)" />
+    <MSBuild Condition="'%(ProjectReference.Identity)' == 'C:\Users\Nadeem Nazeer\Documents\Visual Studio 2013\Projects\Holiday-App\HolidayApp.Core\HolidayApp.Core.csproj'" Projects="@(ProjectReference)" Targets="Publish" BuildInParallel="True" ToolsVersion="$(ProjectToolsVersion)" Properties="Configuration=Debug; Platform=AnyCPU;BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)" />
   </Target>
 </Project>

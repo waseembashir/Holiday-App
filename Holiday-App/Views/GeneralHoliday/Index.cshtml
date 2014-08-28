@@ -3,10 +3,7 @@
 @{
     ViewBag.Title = "Index";
 }
-<h4>@Html.ActionLink("Add General Holiday", "Create", "GeneralHoliday")</h4>
-<h4>@Html.ActionLink("Add Islamic Holiday", "CreateIslamic", "GeneralHoliday")</h4>
-<h4>@Html.ActionLink("View Calendar(General)", "Calendar", "GeneralHoliday")</h4>
-<h4>@Html.ActionLink("View Full Calendar(General + Personnel)", "FullCalendar", "GeneralHoliday")</h4>
+
 <h2>General Holiday List</h2>
 
 
@@ -31,7 +28,7 @@
             @Html.DisplayNameFor(model => model.NoOfDays)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Status)
+            @Html.DisplayNameFor(model => model.Frequency)
         </th>
         <th></th>
     </tr>
@@ -57,7 +54,7 @@
             @Html.DisplayFor(modelItem => item.NoOfDays)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Status)
+            @Html.DisplayFor(modelItem => item.Frequency)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.GeneralHolidayId }) |

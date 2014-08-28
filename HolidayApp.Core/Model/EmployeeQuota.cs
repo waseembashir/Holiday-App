@@ -14,7 +14,7 @@ namespace HolidayApp.Core.Model
     {
         [Key]
         public virtual int EmployeeQuotaId { get; set; }
-
+        [Display(Name = "Employee Username")]
         public int EmployeeId { get; set; }
         [ForeignKey("EmployeeId")]
         public Employee Employee { get; set; }

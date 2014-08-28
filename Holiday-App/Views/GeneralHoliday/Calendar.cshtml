@@ -34,28 +34,7 @@
 </script>
 }
 <h2>Calender</h2>
-<div id='calendar'></div>
+<div id='calendar' class="month-cal"></div>
 
-@foreach (var item in Model)
-{
-    //String str = "{title: '" + item.Name + "', start: '" + string.Format("{0:MM-dd-yyyy}", item.StartDate) + "', end: '" + string.Format("{0:MM-dd-yyyy}", item.EndDate) + "'},";
-     //@Html.Raw(str)
-    //@Html.DisplayFor(modelItem => item.Name)
-   // @Html.Raw(string.Format("{0:MM-dd-yyyy}", item.StartDate))
-    //@Html.Raw(string.Format("{0:MM-dd-yyyy}", item.EndDate))
-
-   
-}
-@{
-    
-     CultureInfo arCI = new CultureInfo("ar-SA");
-    string hijri = "01/09/1435";
-
-    DateTime tempDate = DateTime.ParseExact(hijri, "dd/MM/yyyy", arCI.DateTimeFormat, DateTimeStyles.AllowInnerWhite);
-    
-    @Html.Raw( tempDate.ToString("dd/MM/yyyy"))
-
-}
-   
 
 

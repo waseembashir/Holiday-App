@@ -200,6 +200,7 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\calendar.css" />
     <Content Include="Content\fullcalendar.css" />
     <Content Include="Content\fullcalendar.print.css" />
     <Content Include="Content\themes\base\images\animated-overlay.gif" />
@@ -271,6 +272,7 @@
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\Chart.js" />
     <Content Include="Scripts\customjs.js" />
     <Content Include="Scripts\fullcalendar.js" />
     <Content Include="Scripts\fullcalendar.min.js" />
@@ -289,6 +291,7 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\jquery.year_calendar.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\myjquery.js" />
     <Content Include="Scripts\respond.js" />
@@ -335,7 +338,7 @@
     <Content Include="Views\EmployeeQuota\Delete.cshtml" />
     <Content Include="Views\EmployeeQuota\Details.cshtml" />
     <Content Include="Views\EmployeeQuota\Edit.cshtml" />
-    <Content Include="Views\EmployeeQuota\Index.cshtml" />
+    <Content Include="Views\EmployeeQuota\Manage.cshtml" />
     <Content Include="Views\GeneralHoliday\Calendar.cshtml" />
     <Content Include="Views\GeneralHoliday\Create.cshtml" />
     <Content Include="Views\GeneralHoliday\CreateIslamic.cshtml" />
@@ -344,6 +347,8 @@
     <Content Include="Views\GeneralHoliday\Edit.cshtml" />
     <Content Include="Views\GeneralHoliday\FullCalendar.cshtml" />
     <Content Include="Views\GeneralHoliday\Index.cshtml" />
+    <Content Include="Views\GeneralHoliday\FullYearCalendar.cshtml" />
+    <Content Include="Views\EmployeeQuota\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

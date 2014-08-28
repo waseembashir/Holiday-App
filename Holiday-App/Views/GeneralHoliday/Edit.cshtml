@@ -58,23 +58,10 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Status, new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Frequency, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @{
-    List<SelectListItem> listStatusValues = new List<SelectListItem>();
-    listStatusValues.Add(new SelectListItem
-         {
-             Text = "postponed",
-             Value = "Postponed"
-         });
-    listStatusValues.Add(new SelectListItem
-         {
-             Text = "cancelled",
-             Value = "Cancelled"
-         });
-                }
-                @Html.DropDownListFor(model => model.Status, listStatusValues, "-- Select Status --", new { @class = "select" })
-                @Html.ValidationMessageFor(model => model.Status)
+                 @Html.EnumDropDownListFor(model => model.Frequency, new { @class = "form-control" })
+                 @Html.ValidationMessageFor(model => model.Frequency)
             </div>
         </div>
 
