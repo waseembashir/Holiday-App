@@ -56,3 +56,15 @@ input[type="checkbox"].input-validation-error {
     margin-left:20px;
     display:none;
 }
+.btn{
+    margin:0px 5px;
+}
+.glyphicon-ok{
+    color:blue;
+    cursor:pointer;
+    
+}
+.glyphicon-remove{
+    color:red;
+    cursor:pointer;
+}

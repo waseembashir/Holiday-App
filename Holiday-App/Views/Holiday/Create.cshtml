@@ -13,12 +13,12 @@
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>Holiday</h4>
+        <h4>Create Holiday</h4>
         <hr />
         @Html.ValidationSummary(true)
 
         <div class="form-group">
-            @Html.LabelFor(model => model.StartDate, new { @class = "control-label col-md-2" })
+            @Html.Label("Starting Date", new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 
                 <input type="text" name="StartDate" id="StartDate" />               
@@ -28,7 +28,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.EndDate, new { @class = "control-label col-md-2" })
+            @Html.Label("End Date", new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 
                 <input type="text" name="EndDate" id="EndDate" />
@@ -38,7 +38,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.NoOfDays, new { @class = "control-label col-md-2" })
+            @Html.Label("Total Number Of Days", new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.NoOfDays)
                 <div class="halfday">
@@ -46,9 +46,9 @@
                     @Html.Label("Any HalfDay") 
                     <span id="amorpm">
                         @Html.Label("AM")
-                        @Html.RadioButtonFor(model => model.HalfDay,"Am")
+                        @Html.RadioButtonFor(model => model.HalfDay, "Morning", new { @class = "morning" })
                         @Html.Label("PM")
-                        @Html.RadioButtonFor(model => model.HalfDay, "Pm")
+                        @Html.RadioButtonFor(model => model.HalfDay, "Evening")
                      </span>                              
                 </div>
 
@@ -57,7 +57,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Holidaytype, new { @class = "control-label col-md-2" })
+            @Html.Label("Holiday Type", new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DropDownList("HolidayType")
                 @Html.ValidationMessageFor(model => model.Holidaytype)
@@ -65,7 +65,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.HolidayDescription, new { @class = "control-label col-md-2" })
+            @Html.Label("Holiday Description : ", new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.TextAreaFor(model => model.HolidayDescription)
                 @Html.ValidationMessageFor(model => model.HolidayDescription)

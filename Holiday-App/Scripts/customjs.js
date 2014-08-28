@@ -15,7 +15,9 @@ $(document).ready(function () {
         var diff = parseFloat($('#NoOfDays').val());
         if ($(this).prop('checked') == true) {
             $("#amorpm").show();           
-            diff = diff - 0.5;           
+            diff = diff - 0.5;
+            $(".morning").prop("checked", true);
+
         } 
         else {            
             diff = diff + 0.5;           

@@ -11,7 +11,7 @@
 	<hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.StartDate)
+            @Html.DisplayName("Starting Date : ")
         </dt>
 
         <dd>
@@ -19,7 +19,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.EndDate)
+            @Html.DisplayName("End Date : ")
         </dt>
 
         <dd>
@@ -27,7 +27,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.NoOfDays)
+            @Html.DisplayName("No Of Days : ")
         </dt>
 
         <dd>
@@ -35,7 +35,7 @@
         </dd>
         
         <dt>
-            @Html.DisplayNameFor(model => model.Status)
+            @Html.DisplayName("Status : ")
         </dt>
 
         <dd>
@@ -45,6 +45,5 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.HolidayId }) |
-    @Html.ActionLink("Back to List", "Index")
+     @Html.ActionLink("Back to List", "Index")
 </p>

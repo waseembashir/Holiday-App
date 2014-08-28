@@ -12,37 +12,30 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.StartDate)
+            @Html.DisplayName("Starting Date : ")
         </dt>
-
         <dd>
             @Html.DisplayFor(model => model.StartDate)
         </dd>
-
         <dt>
-            @Html.DisplayNameFor(model => model.EndDate)
+            @Html.DisplayName("End Date : ")
         </dt>
-
         <dd>
             @Html.DisplayFor(model => model.EndDate)
         </dd>
-
         <dt>
-            @Html.DisplayNameFor(model => model.NoOfDays)
+            @Html.DisplayName("No Of Days : ")
         </dt>
-
         <dd>
             @Html.DisplayFor(model => model.NoOfDays)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Status)
+            @Html.DisplayName("Status : ")
         </dt>
-
         <dd>
             @Html.DisplayFor(model => model.Status)
         </dd>
-
     </dl>
 
     @using (Html.BeginForm()) {

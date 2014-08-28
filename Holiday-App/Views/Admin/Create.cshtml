@@ -1,40 +1,58 @@
 ﻿@model HolidayApp.Core.Model.Holiday
 
 @{
-    ViewBag.Title = "Edit";
+    ViewBag.Title = "Create Holiday";
 }
 
-<h2>Edit</h2>
+<h3>Create Holiday Form An Employee</h3>
+
+<div class="navbar-collapse collapse">
+    <ul class="nav navbar-nav">
+        <li>@Html.ActionLink("Home", "Index", "Admin")</li>
+        <li>@Html.ActionLink("Approved Requests", "Requests", "Admin")</li>
+        <li>@Html.ActionLink("Rejected Requests", "RejectedRequests", "Admin")</li>
+    </ul>
+
+</div>
+
+
 <link href="~/Content/themes/base/jquery.ui.all.css" rel="stylesheet" />
 
-@using (Html.BeginForm())
+@using (Html.BeginForm()) 
 {
     @Html.AntiForgeryToken()
-
+    
     <div class="form-horizontal">
-        <h4>Edit Holiday</h4>
+        
         <hr />
         @Html.ValidationSummary(true)
-        @Html.HiddenFor(model => model.HolidayId)
+
+        <div class="form-group">
+            @Html.Label("Select Employee", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("EmployeeNames")
+               
+            </div>
+        </div>
+
         <div class="form-group">
             @Html.Label("Starting Date : ", new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.StartDate)
+                <input type="text" name="StartDate" id="StartDate" />  
                 @Html.ValidationMessageFor(model => model.StartDate)
             </div>
         </div>
+
         <div class="form-group">
             @Html.Label("End Date : ", new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-
-                @Html.EditorFor(model => model.EndDate)
-
-                @Html.ValidationMessageFor(model => model.StartDate)
+                <input type="text" name="EndDate" id="EndDate" />
+                @Html.ValidationMessageFor(model => model.EndDate)
             </div>
         </div>
 
         <div class="form-group">
-            @Html.Label("Total Number Of Days : ", new { @class = "control-label col-md-2" })
+            @Html.Label("No Of Days", new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.NoOfDays)
                 <div class="halfday">
@@ -42,7 +60,7 @@
                     @Html.Label("Any HalfDay")
                     <span id="amorpm">
                         @Html.Label("AM")
-                        @Html.RadioButtonFor(model => model.HalfDay, "Morning", new { @class = "morning" })
+                        @Html.RadioButtonFor(model => model.HalfDay, "Morning")
                         @Html.Label("PM")
                         @Html.RadioButtonFor(model => model.HalfDay, "Evening")
                     </span>
@@ -51,11 +69,12 @@
             </div>
         </div>
 
+           
 
         <div class="form-group">
             @Html.Label("Holiday Type : ", new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownList("HolidayType")
+               @Html.DropDownList("HolidayType")
                 @Html.ValidationMessageFor(model => model.Holidaytype)
             </div>
         </div>
@@ -67,29 +86,31 @@
                 @Html.ValidationMessageFor(model => model.HolidayDescription)
             </div>
         </div>
-
-
+        
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
+                <input type="submit" value="Create" class="btn btn-default" />
             </div>
         </div>
-
     </div>
 }
 
-            <div>
-                @Html.ActionLink("Back to List", "Index")
-            </div>
-            @section Scripts {
-                @Scripts.Render("~/bundles/jqueryval")
-                @Scripts.Render("~/Scripts/jquery-ui-1.10.4.js")
-                @Scripts.Render("~/Scripts/customjs.js")
-            }
-            @*Code to wire up your DatePicker*@
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
 
-            <script>
-                $(function () {
-                    $(".datepicker").datepicker({ dateFormat: "dd/mm/yy" });
-                });
-            </script>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/Scripts/jquery-ui-1.10.4.js")
+    @Scripts.Render("~/Scripts/customjs.js")
+}
+
+@*Code to wire up your DatePicker*@
+
+
+<script>
+    $(function () {
+        $(".datepicker").datepicker({ dateFormat: "dd/mm/yy" });
+    });
+</script>

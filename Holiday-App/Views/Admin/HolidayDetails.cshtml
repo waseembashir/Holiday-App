@@ -1,0 +1,95 @@
+﻿@model HolidayApp.Core.Model.Holiday
+
+@{
+    ViewBag.Title = "HolidayDetails";
+}
+
+<h3>Holiday Details</h3>
+
+<div class="navbar-collapse collapse">
+    <ul class="nav navbar-nav">
+        <li>@Html.ActionLink("Approved Requests", "Requests", "Admin")</li>
+        <li>@Html.ActionLink("Rejected Requests", "RejectedRequests", "Admin")</li>
+        <li>@Html.ActionLink("Create Requests", "Create", "Admin")</li>
+    </ul>
+
+</div>
+
+
+<div>
+    
+	<hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.StartDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StartDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EndDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EndDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NoOfDays)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NoOfDays)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HalfDay)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HalfDay)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BookingDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BookingDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BookedBy)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BookedBy)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Holidaytype)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Holidaytype)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HolidayDescription)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HolidayDescription)
+        </dd>
+
+    </dl>
+</div>
+        
+            @Html.ActionLink("Accept", "Accept", new { id = (Html.ValueFor(model => model.HolidayId)) }, new { @class = "btn btn-success" })
+            @Html.ActionLink("Reject", "Reject", new { id = (Html.ValueFor(model => model.HolidayId)) }, new { @class = "btn btn-danger" })
+<p>
+   
+    @Html.ActionLink("Back to List", "Index")
+</p>
