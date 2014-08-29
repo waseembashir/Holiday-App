@@ -17,9 +17,19 @@
        @{
 
            foreach (var item in ViewBag.GeneralHolidays)
-            {
+           {
+
+               /*NN: check whether type of holiday is islamic, then converts it to goergian before displaying */
+               if (item.Type == "islamic")
+               {
+
+                   item.StartDate = Helpers.IslamicToGeorgian(item.StartDate);
+                   item.EndDate = Helpers.IslamicToGeorgian(item.EndDate);
+
+              }
+               
                /*NN: check whether frequency of holiday is yearly, then sets year to current year */
-                if (item.Frequency == 0 && item.Type != "islamic")
+                if (item.Frequency == 0)
                 {
                     item.StartDate = Helpers.SetYearToCurrent(item.StartDate);
                     item.EndDate = Helpers.SetYearToCurrent(item.EndDate);
@@ -31,22 +41,7 @@
                 item.EndDate = item.EndDate.AddMonths(-1);
                 item.EndDate = item.EndDate.AddDays(1);
 
-                /*NN: check whether type of holiday is islamic, then converts it to goergian before displaying */
-               if (item.Type == "islamic")
-               {
-
-                   item.StartDate = Helpers.IslamicToGeorgian(item.StartDate);
-                   item.EndDate = Helpers.IslamicToGeorgian(item.EndDate);
-              
-                            
-                   
-                    /*NN: check whether frequency of converetd islamic holiday is yearly, then sets year to current year */
-                    if (item.Frequency == 0)
-                    {
-                        item.StartDate = Helpers.SetYearToCurrent(item.StartDate);
-                        item.EndDate = Helpers.SetYearToCurrent(item.EndDate);
-                    }
-                }
+               
                 String str = "{ start: new Date(" + string.Format("{0:yyyy, MM, dd}", item.StartDate) + "), end: new Date(" + string.Format("{0:yyyy, MM, dd}", item.EndDate) + "), label: '"+item.Name+" public-holiday', title: 'public-holiday' },";
                 @Html.Raw(str)
             }
@@ -95,12 +90,12 @@
            /*NN: get half days */
            if (ViewBag.Holidays != null)
             {
-                foreach (var item in ViewBag.Holidays)
+                foreach (var item3 in ViewBag.Holidays)
                 {
-                 if(item.HalfDay != null)
+                 if(item3.HalfDay != null)
                  {
                     
-                     String str = "{ date: new Date(" + string.Format("{0:yyyy, MM, dd}", item.EndDate) + "), title: 'Half Day' },";
+                     String str = "{ date: new Date(" + string.Format("{0:yyyy, MM, dd}", item3.EndDate) + "), title: 'Half Day' },";
                
                      @Html.Raw(str) }
                 

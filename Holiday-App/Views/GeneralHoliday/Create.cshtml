@@ -49,14 +49,6 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.NoOfDays, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.NoOfDays)
-                @Html.ValidationMessageFor(model => model.NoOfDays)
-            </div>
-        </div>
-
-        <div class="form-group">
             @Html.LabelFor(model => model.Frequency, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EnumDropDownListFor(model => model.Frequency, new { @class = "form-control" })

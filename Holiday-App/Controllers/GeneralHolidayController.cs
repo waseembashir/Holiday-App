@@ -117,7 +117,7 @@ namespace HolidayApp.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "GeneralHolidayId,Name,Description,Type,StartDate,EndDate,NoOfDays,Frequency")] GeneralHoliday generalholiday)
+        public ActionResult Create([Bind(Include = "GeneralHolidayId,Name,Description,Type,StartDate,EndDate,Frequency")] GeneralHoliday generalholiday)
         {
             generalholiday.Type = "general";
             if (ModelState.IsValid)
@@ -140,19 +140,11 @@ namespace HolidayApp.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult CreateIslamic([Bind(Include = "GeneralHolidayId,Name,Description,Type,StartDate,EndDate,NoOfDays,Frequency")] GeneralHoliday generalholiday)
+        public ActionResult CreateIslamic([Bind(Include = "GeneralHolidayId,Name,Description,Type,StartDate,EndDate,Frequency")] GeneralHoliday generalholiday)
         {
             generalholiday.Type = "islamic";
 
-            ///*NN: Sets culture we want to convert selected islamic date from using System.Globalization classes */
-            //CultureInfo arCI = new CultureInfo("ar-SA");
-
-           
-            ///*NN: Converts from selected Islamic date to Georgian */
-            //generalholiday.StartDate = DateTime.ParseExact(generalholiday.StartDate.ToString("dd/MM/yyyy"), "dd/MM/yyyy", arCI.DateTimeFormat, DateTimeStyles.AllowInnerWhite);
-            //generalholiday.EndDate = DateTime.ParseExact(generalholiday.EndDate.ToString("dd/MM/yyyy"), "dd/MM/yyyy", arCI.DateTimeFormat, DateTimeStyles.AllowInnerWhite);
-
-           
+                       
             if (ModelState.IsValid)
             {
                 db.GeneralHolidays.Add(generalholiday);
@@ -183,7 +175,7 @@ namespace HolidayApp.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "GeneralHolidayId,Name,Description,StartDate,EndDate,NoOfDays,Frequency")] GeneralHoliday generalholiday)
+        public ActionResult Edit([Bind(Include = "GeneralHolidayId,Name,Description,StartDate,EndDate,Frequency")] GeneralHoliday generalholiday)
         {
             if (ModelState.IsValid)
             {

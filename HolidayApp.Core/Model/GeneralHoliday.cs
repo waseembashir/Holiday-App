@@ -14,6 +14,7 @@ namespace HolidayApp.Core.Model
     {
         [Key]
         public virtual int GeneralHolidayId { get; set; }
+       [Required]
         public string Name { get; set; }
 
         public string Description { get; set; }
@@ -31,16 +32,16 @@ namespace HolidayApp.Core.Model
         [HolidayValidations("StartDate")]
         public virtual DateTime EndDate { get; set; }
         
-        [Required]
-        [Range(0.5, 100)]
+        
+        [Range(1, 100)]
         public virtual float NoOfDays { 
-            get { return (float)EndDate.Subtract(StartDate).TotalDays;
+            get { return (float)EndDate.Subtract(StartDate).TotalDays+1;
          
             }
             
             set{} }
 
-
+        [Required]
         public virtual Frequency? Frequency { get; set; }
 
     }
