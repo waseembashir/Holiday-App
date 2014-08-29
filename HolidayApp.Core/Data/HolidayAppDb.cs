@@ -43,6 +43,15 @@ namespace HolidayApp.Core.Data
         {
             return EmployeeQuotas.Where(r => r.EmployeeId == employee.EmployeeId).SingleOrDefault();
         }
+        public EmployeeQuota GetEmployeeRemainingQuotaByEmployee(Employee employee)
+        {
+        
+     /*NN: Will return adjusted remaining employee quota, subtracting any public holidays or weekends*/   
+            
+            return EmployeeQuotas.Where(r => r.EmployeeId == employee.EmployeeId).SingleOrDefault();
+        
+        
+        }
 
 
         public IQueryable<Holiday> GetApprovedHolidays()
