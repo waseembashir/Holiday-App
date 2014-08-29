@@ -44,7 +44,7 @@ namespace HolidayApp.Controllers
             var loggedInUser = User.Identity.Name;
 
             var employee = employeeService.GetEmployeeByUsername(loggedInUser);
-            if (employee == null || db.GetHolidaysByEmployee(employee).FirstOrDefault() == null)
+            if (employee == null || db.GetNotRejectedHolidaysByEmployee(employee).FirstOrDefault() == null)
             {
                 /*If the employee doesn't exist or if there are no holidays against an employee we cannot list any holidays*/
                 /*However, if the employee doesn't exist, meaning mapping didn't work - needs some extra validation - WB */
@@ -58,7 +58,7 @@ namespace HolidayApp.Controllers
 
          
             ViewBag.GeneralHolidays = db.GeneralHolidays.ToList();
-            ViewBag.Holidays = db.GetHolidaysByEmployee(employee).ToList();
+            ViewBag.Holidays = db.GetNotRejectedHolidaysByEmployee(employee).ToList();
         
             return View();
 
@@ -71,7 +71,7 @@ namespace HolidayApp.Controllers
             var loggedInUser = User.Identity.Name;
 
             var employee = employeeService.GetEmployeeByUsername(loggedInUser);
-            if (employee == null || db.GetHolidaysByEmployee(employee).FirstOrDefault() == null)
+            if (employee == null || db.GetNotRejectedHolidaysByEmployee(employee).FirstOrDefault() == null)
             {
                 /*If the employee doesn't exist or if there are no holidays against an employee we cannot list any holidays*/
                 /*However, if the employee doesn't exist, meaning mapping didn't work - needs some extra validation - WB */
@@ -85,7 +85,7 @@ namespace HolidayApp.Controllers
 
 
             ViewBag.GeneralHolidays = db.GeneralHolidays.ToList();
-            ViewBag.Holidays = db.GetHolidaysByEmployee(employee).ToList();
+            ViewBag.Holidays = db.GetNotRejectedHolidaysByEmployee(employee).ToList();
 
             return View();
 

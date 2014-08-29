@@ -41,8 +41,9 @@
                 item.EndDate = item.EndDate.AddMonths(-1);
                 item.EndDate = item.EndDate.AddDays(1);
 
-               
-                String str = "{ start: new Date(" + string.Format("{0:yyyy, MM, dd}", item.StartDate) + "), end: new Date(" + string.Format("{0:yyyy, MM, dd}", item.EndDate) + "), label: '"+item.Name+" public-holiday', title: 'public-holiday' },";
+                /*Set cell color by setting appropriate classname in css and which matches holiday type */
+                var color = (item.Type == "islamic") ? " islamic-public-holiday" : " public-holiday";
+                String str = "{ start: new Date(" + string.Format("{0:yyyy, MM, dd}", item.StartDate) + "), end: new Date(" + string.Format("{0:yyyy, MM, dd}", item.EndDate) + "), label: '" + item.Name + color + " ', title: '" + color + "' },";
                 @Html.Raw(str)
             }
             if (ViewBag.Holidays != null)
@@ -50,18 +51,19 @@
                 
                 foreach (var item2 in ViewBag.Holidays)
                 {
+                    
                     /*NN: subtracts 1 from month, as array used here in javascript is zero based */
                     item2.StartDate = item2.StartDate.AddMonths(-1);
                     item2.EndDate = item2.EndDate.AddMonths(-1);
-                    
-                    String str =  "{ start: new Date("+string.Format("{0:yyyy, MM, dd}", item2.StartDate)+"), end: new Date("+string.Format("{0:yyyy, MM, dd}", item2.EndDate)+"), label: 'pending', title: 'pending' },";
+                    var color2 = (item2.Status == "pending" || item2.Status == null) ? " pending" : " "+item2.Holidaytype;
+                    String str = "{ start: new Date(" + string.Format("{0:yyyy, MM, dd}", item2.StartDate) + "), end: new Date(" + string.Format("{0:yyyy, MM, dd}", item2.EndDate.AddDays(1)) + "), label: '" + color2 + " ', title: '" + color2 + "' },";
                 @Html.Raw(str)
                
                     if (item2.StartDate == item2.EndDate && item2.HalfDay == null)
                     {
                         item2.EndDate = item2.EndDate.AddDays(1);
-                    String str2 =  "{ start: new Date("+string.Format("{0:yyyy, MM, dd}", item2.StartDate)+"), end: new Date("+string.Format("{0:yyyy, MM, dd}", item2.EndDate)+"), label: 'pending', title: 'pending' },";
-                     @Html.Raw(str2)
+                    String str2 = "{ start: new Date(" + string.Format("{0:yyyy, MM, dd}", item2.StartDate) + "), end: new Date(" + string.Format("{0:yyyy, MM, dd}", item2.EndDate) + "), label: '" + color2 + " ', title: '" + color2 + "' },";
+                @Html.Raw(str2)
                     }
        
        
@@ -70,12 +72,7 @@
             }
 
         }
-                { start: new Date(2013, 0, 2), end: new Date(2013, 0, 3), label: 'pending', title: 'pending' },
-                { start: new Date(2013, 3, 2), end: new Date(2013, 3, 3), label: 'holiday', title: 'holiday' },
-                { start: new Date(2013, 5, 5), end: new Date(2013, 5, 7), label: 'sickness', title: 'sickness' },
-                { start: new Date(2013, 7, 2), end: new Date(2013, 7, 3), label: 'public-holiday', title: 'public-holiday' },
-                { start: new Date(2013, 9, 2), end: new Date(2013, 9, 3), label: 'travel', title: 'travel' }
-
+              
 
             ];
 
@@ -92,6 +89,7 @@
             {
                 foreach (var item3 in ViewBag.Holidays)
                 {
+                    
                  if(item3.HalfDay != null)
                  {
                     

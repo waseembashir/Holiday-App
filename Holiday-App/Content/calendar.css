@@ -223,11 +223,7 @@ background-color: red;
 color:white;
 
 }
-#year-calendar .holiday{
-background-color: green;
-color:white;
 
-}
 #year-calendar .sickness{
 background-color: orange;
 
@@ -237,6 +233,16 @@ background-color: blue;
 color:white;
 
 }
+#year-calendar .islamic-public-holiday{
+background-color: green;
+color:white;
+
+}
+
 #year-calendar .travel{
 background-color: yellow;
+}
+#year-calendar .Personal{
+background-color: black;
+color:white;
 }

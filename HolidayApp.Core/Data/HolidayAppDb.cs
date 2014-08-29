@@ -28,6 +28,11 @@ namespace HolidayApp.Core.Data
         {
             return Holidays.Where(r => r.Employee.Username == employee.Username);
         }
+        public IQueryable<Holiday> GetNotRejectedHolidaysByEmployee(Employee employee)
+        {
+            return Holidays.Where(r => r.Employee.Username == employee.Username && r.Status != "Rejected");
+        }
+
 
         public IQueryable<EmployeeQuota> GetAllEmployeeQuotas
         {
