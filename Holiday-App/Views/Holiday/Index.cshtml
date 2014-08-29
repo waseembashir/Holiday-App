@@ -17,17 +17,17 @@
     <tr>
        
         <th>
-            @Html.DisplayNameFor(model => model.StartDate)
+            @Html.DisplayName("Starting Date")
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.EndDate)
+            @Html.DisplayName("End Date")
         </th>
         
         <th>
-            @Html.DisplayNameFor(model => model.NoOfDays)
+            @Html.DisplayName("No Of Days")
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Status)
+            @Html.DisplayName("Status")
         </th>
         <th></th>
     </tr>
@@ -49,19 +49,40 @@
             @if (item.Status==null)
             {
                 <p>Pending</p>
-                    
-            }else
-            { 
-                @Html.DisplayFor(modelItem => item.Status)
+
+            }
+            else if (item.Status == "Approved")
+            {
+                <span class="glyphicon glyphicon-ok" title="Approved" data-toggle="tooltip"></span>
+                @*@Html.DisplayFor(modelItem => item.Status)*@
+            }
+            else
+            {
+                <span class="glyphicon glyphicon-remove" title="Rejected" data-toggle="tooltip"></span>
             }
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.HolidayId }) |
-            @Html.ActionLink("Details", "Details", new { id = item.HolidayId }) |
-            @Html.ActionLink("Delete", "Delete", new { id = item.HolidayId })
+            @{
+                if(item.Status==null)
+                {
+                    @Html.ActionLink("Edit", "Edit", new { id = item.HolidayId }, new { @class = "btn btn-primary" }) 
+                    @Html.ActionLink("Delete", "Delete", new { id = item.HolidayId }, new { @class = "btn btn-danger" })    
+                }
+                
+               if(item.Status!=null && item.Status=="Rejected") 
+               {
+                 @Html.ActionLink("Delete", "Delete", new { id = item.HolidayId }, new { @class = "btn btn-danger" })    
+               }
+                              
+            }
+            @Html.ActionLink("Details", "Details", new { id = item.HolidayId }, new { @class = "btn btn-info" })
+            
         </td>
     </tr>
 }
 
 </table>
 }}
+
+
+

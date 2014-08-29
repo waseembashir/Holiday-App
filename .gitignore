@@ -200,3 +200,7 @@ $RECYCLE.BIN/
 *.cache
 Holiday-App/obj/*
 *.cache
+Holiday-App/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
+Holiday-App/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
+Holiday-App/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
+Holiday-App/Views/Shared/_Layout.cshtml

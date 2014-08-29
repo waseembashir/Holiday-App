@@ -3,6 +3,7 @@ using System.Linq;
 using HolidayApp.Core.Model;
 using SalesFirst.Core.Model;
 using SalesFirst.Core.Data;
+using System;
 
 namespace HolidayApp.Core.Data
 {
@@ -37,6 +38,31 @@ namespace HolidayApp.Core.Data
         {
             return EmployeeQuotas.Where(r => r.EmployeeId == employee.EmployeeId).SingleOrDefault();
         }
+
+
+        public IQueryable<Holiday> GetApprovedHolidays()
+        {
+            return Holidays.Where(r => r.Status == "Approved");
+           
+        }
+
+
+        public IQueryable<Holiday> GetDisApprovedHolidays()
+        {
+            return Holidays.Where(r => r.Status == "Rejected" || r.StartDate < DateTime.Today);
+
+        }
+
+        public IQueryable<Holiday> GetPendingHolidays()
+        {
+           
+            return Holidays.Where(r => r.Status ==null && r.StartDate >=  DateTime.Today);
+
+        }
+
+
+
+
 
     }
 
