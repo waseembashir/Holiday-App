@@ -24,15 +24,22 @@
             Initializes a new instance of the <see cref="T:SalesFirst.Core.Service.EmailService"/> class.
             </summary>
         </member>
-        <member name="M:SalesFirst.Core.Service.EmailService.SendEmail(System.String,System.String,System.String)">
+        <member name="M:SalesFirst.Core.Service.EmailService.SendEmail(System.String,System.String,System.String,System.Collections.Generic.List{System.String})">
             <summary>
             Sends the email.
             </summary>
             <param name="subject">The subject of the email.</param>
             <param name="bodyText">The body text of the email.</param>
             <param name="toEmail">The recipient.</param>
+            <param name="ccList">List of address which need to be copied</param>
             <returns></returns>
             <exception cref="T:System.Exception"></exception>
+        </member>
+        <member name="M:SalesFirst.Core.Service.EmployeeService.GetAll">
+            <summary>
+            Gets all.
+            </summary>
+            <returns>An IEnumerable list of employees</returns>
         </member>
         <member name="M:SalesFirst.Core.Service.EmployeeService.GetEmployeeByApexureId(System.String)">
             <summary>
