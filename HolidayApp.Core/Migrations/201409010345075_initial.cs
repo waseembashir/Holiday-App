@@ -197,8 +197,8 @@ namespace HolidayApp.Core.Migrations
                         Name = c.String(nullable: false),
                         Description = c.String(),
                         Type = c.String(),
-                        StartDate = c.DateTime(nullable: false),
-                        EndDate = c.DateTime(nullable: false),
+                        StartDate = c.DateTime(nullable: false, storeType: "datetime2"),
+                        EndDate = c.DateTime(nullable: false, storeType: "datetime2"),
                         NoOfDays = c.Single(nullable: false),
                         Frequency = c.Int(nullable: false),
                     })
@@ -239,6 +239,20 @@ namespace HolidayApp.Core.Migrations
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.Projects", t => t.Project_Id)
                 .Index(t => t.Project_Id);
+            
+            CreateTable(
+                "dbo.Portfolios",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        Name = c.String(nullable: false),
+                        Url = c.String(nullable: false),
+                        Status = c.Boolean(nullable: false),
+                        ClientIndustry_Id = c.Int(),
+                    })
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.ClientIndustries", t => t.ClientIndustry_Id)
+                .Index(t => t.ClientIndustry_Id);
             
             CreateTable(
                 "dbo.ProjectLogs",
@@ -311,6 +325,7 @@ namespace HolidayApp.Core.Migrations
             DropForeignKey("dbo.ProjectLogs", "Tag_Id", "dbo.Tags");
             DropForeignKey("dbo.ProjectLogs", "Project_Id", "dbo.Projects");
             DropForeignKey("dbo.ProjectLogs", "Participant_EmployeeId", "dbo.Employees");
+            DropForeignKey("dbo.Portfolios", "ClientIndustry_Id", "dbo.ClientIndustries");
             DropForeignKey("dbo.Payments", "Project_Id", "dbo.Projects");
             DropForeignKey("dbo.Holidays", "Employee_EmployeeId", "dbo.Employees");
             DropForeignKey("dbo.EmployeeSalaries", "Employee_EmployeeId", "dbo.Employees");
@@ -331,6 +346,7 @@ namespace HolidayApp.Core.Migrations
             DropIndex("dbo.ProjectLogs", new[] { "Tag_Id" });
             DropIndex("dbo.ProjectLogs", new[] { "Project_Id" });
             DropIndex("dbo.ProjectLogs", new[] { "Participant_EmployeeId" });
+            DropIndex("dbo.Portfolios", new[] { "ClientIndustry_Id" });
             DropIndex("dbo.Payments", new[] { "Project_Id" });
             DropIndex("dbo.Holidays", new[] { "Employee_EmployeeId" });
             DropIndex("dbo.EmployeeSalaries", new[] { "Employee_EmployeeId" });
@@ -348,6 +364,7 @@ namespace HolidayApp.Core.Migrations
             DropTable("dbo.Watermarks");
             DropTable("dbo.Tags");
             DropTable("dbo.ProjectLogs");
+            DropTable("dbo.Portfolios");
             DropTable("dbo.Payments");
             DropTable("dbo.Holidays");
             DropTable("dbo.GeneralHolidays");

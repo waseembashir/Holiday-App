@@ -6,7 +6,26 @@
 @section calendar {
 
     <link href="~/Content/calendar.css" rel="stylesheet" />
+    <style>
 
+        @{
+            if (ViewBag.HolidayDesc != null) { 
+            
+             foreach (var holidayType in ViewBag.HolidayDesc)
+        {
+            string cssclass = "#year-calendar ." + holidayType.HolidayType +"{";
+            cssclass += "background-color:" + holidayType.HolidayColor + ";";
+        cssclass += "color: white;}";
+        
+         @Html.Raw(cssclass)
+        }
+            
+            
+            }   
+       
+        }
+
+    </style>
     <script src="~/Scripts/jquery.year_calendar.js"></script>
 
     <script>

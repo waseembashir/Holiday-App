@@ -1,0 +1,60 @@
+﻿@model HolidayApp.Core.Model.HolidayDescription
+
+@{
+    ViewBag.Title = "Edit";
+}
+@section calendar {
+    <script src="~/Scripts/jscolor.js"></script>
+}
+<h2>Edit</h2>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>HolidayDescription</h4>
+        <hr />
+        @Html.ValidationSummary(true)
+        @Html.HiddenFor(model => model.HolidayDescriptionId)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.HolidayType, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.HolidayType)
+                @Html.ValidationMessageFor(model => model.HolidayType)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.HolidayColor, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.HolidayColor, new { htmlAttributes = new { @class = "color" } })
+                @Html.ValidationMessageFor(model => model.HolidayColor)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.TypeFor, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EnumDropDownListFor(model => model.TypeFor, new { @class = "form-control" })
+
+                @Html.ValidationMessageFor(model => model.TypeFor)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

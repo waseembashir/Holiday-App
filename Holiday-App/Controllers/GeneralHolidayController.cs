@@ -77,13 +77,14 @@ namespace HolidayApp.Controllers
                 /*However, if the employee doesn't exist, meaning mapping didn't work - needs some extra validation - WB */
 
                 ViewBag.GeneralHolidays = db.GeneralHolidays.ToList();
+                ViewBag.HolidayDesc = db.GetAllHolidayDescriptions.ToList();
                 ViewBag.Holidays = null;
 
                 return View();
 
             }
 
-
+            ViewBag.HolidayDesc = db.GetAllHolidayDescriptions.ToList();
             ViewBag.GeneralHolidays = db.GeneralHolidays.ToList();
             ViewBag.Holidays = db.GetNotRejectedHolidaysByEmployee(employee).ToList();
 

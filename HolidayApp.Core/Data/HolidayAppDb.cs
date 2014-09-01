@@ -15,9 +15,26 @@ namespace HolidayApp.Core.Data
 
         public DbSet<GeneralHoliday> GeneralHolidays { get; set; }
         public DbSet<EmployeeQuota> EmployeeQuotas { get; set; }
+        public DbSet<HolidayDescription> HolidayDescriptions { get; set; }
         public IQueryable<Holiday> GetAllHolidays
         {
             get { return Holidays; }
+        }
+        public IQueryable<HolidayDescription> GetAllHolidayDescriptions
+        {
+            get { return HolidayDescriptions; }
+        }
+        public IQueryable<HolidayDescription> GetAllEmployeeHolidayDescriptions
+        {
+            get { return HolidayDescriptions.Where(r => r.TypeFor == TypeFor.EmployeeHolidays && r.HolidayType != "pending"); }
+        }
+        public IQueryable<HolidayDescription> GetAllGeneralHolidayDescriptions
+        {
+            get { return HolidayDescriptions.Where(r => r.TypeFor == TypeFor.GeneralCalendar && r.HolidayType != "pending"); }
+        }
+        public IQueryable<HolidayDescription> GetHolidayDescription(string HolidayType)
+        {
+            return HolidayDescriptions.Where(r => r.HolidayType == HolidayType); 
         }
         public IQueryable<GeneralHoliday> GetAllGeneralHolidays
         {

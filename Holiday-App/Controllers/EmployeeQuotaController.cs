@@ -62,8 +62,8 @@ namespace HolidayApp.Controllers
                 ViewBag.Message = "No Quota Information Found";
                 return View();
             }
-            int totalApproved = Helpers.TotalHolidaysTaken(employee);
-            ViewBag.approved = totalApproved;
+            ViewBag.approved = Helpers.TotalHolidaysTaken(employee);
+           
 
             return View(db.GetEmployeeQuotaByEmployee(employee));
 
