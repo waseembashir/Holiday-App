@@ -222,7 +222,7 @@
 
             $_calendar.append('<div id=\"legend\"></div>');
             $_legend = $('#legend');
-            $_legend.append("<div style='float:left; margin-right:20px;'> <div class='legend-item label label-calendar' style='height:40px ;'><div class=''></div></div><span style='margin-left:-15px;  line-height: 35px;'>working-day</span></div><div style='float:left; margin-right:20px;'> <div class='legend-item label label-calendar' style='height:40px ;'><div class='markers'></div></div><span style='margin-left:-15px;  line-height: 35px;'>half-day</span></div><div style='float:left; margin-right:20px;'> <div class='legend-item label label-calendar weekend ' style='height:40px ;'><div></div></div><span style='margin-left:-15px;  line-height: 35px;'>weekend</span></div>");
+            $_legend.append("<div style='float:left; margin-right:20px;'> <div class='legend-item label label-calendar' style='height:40px ;'><div class=''></div></div><span style='margin-left:-15px;  line-height: 35px;'>working-day</span></div><div style='float:left; margin-right:20px;'> <div class='legend-item label label-calendar' style='height:40px ;'><div class='markers'></div></div><span style='margin-left:-15px;  line-height: 35px;'>half-day</span></div><div style='float:left; margin-right:20px;'> <div class='legend-item label label-calendar weekend ' style='height:40px; background:pink;'><div></div></div><span style='margin-left:-15px;  line-height: 35px;'>weekend</span></div>");
 
             $.each(pl.options.date_styles, function (i, style) {
 

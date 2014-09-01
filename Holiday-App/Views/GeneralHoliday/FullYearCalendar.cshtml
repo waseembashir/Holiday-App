@@ -168,29 +168,3 @@
     <div class="alert alert-success">Islamic holidays (exact date is subject to moon-sighting).</div>
 
 </P>
-
-@{
-    
-    
-    foreach (var item4 in ViewBag.Holidays)
-    {
-
-        bool test = (item4.EndDate.DayOfWeek != DayOfWeek.Saturday) && (item4.EndDate.DayOfWeek != DayOfWeek.Sunday);
-       @Html.Raw(test)
-        if (test)
-            {
-                if(item4.HalfDay != null){
-
-                     String str4 = "{ date: new Date(" + string.Format("{0:yyyy, MM, dd}", item4.EndDate) + "), title: 'Half Day' },";
-                    @Html.Raw(str4)
-                    }
-            }
-
-                
-
-
-}
-    
-    
-    
-}
