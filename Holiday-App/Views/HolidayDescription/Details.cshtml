@@ -1,0 +1,34 @@
+﻿@model HolidayApp.Core.Model.HolidayDescription
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>HolidayDescription</h4>
+	<hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.HolidayType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HolidayType)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HolidayColor)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HolidayColor)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.HolidayDescriptionId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

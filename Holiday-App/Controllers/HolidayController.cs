@@ -118,6 +118,8 @@ namespace HolidayApp.Controllers
 
             items.Add(new SelectListItem { Text = "Yearly", Value = "Yearly" });
 
+            ViewBag.HolidayTypes = new SelectList(db.GetAllEmployeeHolidayDescriptions, "HolidayType", "HolidayType");
+
             ViewBag.HolidayType = items;
 
             return View();

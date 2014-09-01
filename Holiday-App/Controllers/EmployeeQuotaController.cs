@@ -10,6 +10,7 @@ using HolidayApp.Core.Model;
 using HolidayApp.Core.Data;
 using SalesFirst.Core.Service;
 using SalesFirst.Core.Data;
+using HolidayApp.Core.Helpers;
 
 namespace HolidayApp.Controllers
 {
@@ -61,6 +62,8 @@ namespace HolidayApp.Controllers
                 ViewBag.Message = "No Quota Information Found";
                 return View();
             }
+            ViewBag.approved = Helpers.TotalHolidaysTaken(employee);
+           
 
             return View(db.GetEmployeeQuotaByEmployee(employee));
 

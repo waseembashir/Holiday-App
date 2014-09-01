@@ -72,7 +72,7 @@
 }
 
 #year-calendar .day.selected {
-	background: #428bca!important;
+	
 	color:white!important;
 }
 
@@ -142,7 +142,7 @@
 	height: 25px;
 	background-color: #FF5000;
 	border-radius: 0 3px 0 25px;
-	cursor: pointer;
+	
 }
 
 #year-calendar .markers.selected {
@@ -217,32 +217,4 @@
     border-left: 1px solid white;
     border-top: 1px solid white;
     box-shadow: 1px 1px 3px;
-}
-#year-calendar .pending{
-background-color: red;
-color:white;
-
-}
-
-#year-calendar .sickness{
-background-color: orange;
-
-}
-#year-calendar .public-holiday{
-background-color: blue;
-color:white;
-
-}
-#year-calendar .islamic-public-holiday{
-background-color: green;
-color:white;
-
-}
-
-#year-calendar .travel{
-background-color: yellow;
-}
-#year-calendar .Personal{
-background-color: black;
-color:white;
 }

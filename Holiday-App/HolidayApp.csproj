@@ -188,6 +188,7 @@
     <Compile Include="Controllers\EmployeeQuotaController.cs" />
     <Compile Include="Controllers\GeneralHolidayController.cs" />
     <Compile Include="Controllers\HolidayController.cs" />
+    <Compile Include="Controllers\HolidayDescriptionController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -271,16 +272,20 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Scripts\arrow.gif" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\Chart.js" />
+    <Content Include="Scripts\cross.gif" />
     <Content Include="Scripts\customjs.js" />
     <Content Include="Scripts\customjs2.js" />
     <Content Include="Scripts\fullcalendar.js" />
     <Content Include="Scripts\fullcalendar.min.js" />
     <Content Include="Scripts\gcal.js" />
     <Content Include="Scripts\googleAuth.js" />
+    <Content Include="Scripts\hs.png" />
+    <Content Include="Scripts\hv.png" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery-2.1.1.intellisense.js" />
@@ -301,6 +306,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\jquery.year_calendar.js" />
+    <Content Include="Scripts\jscolor.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\myjquery.js" />
     <Content Include="Scripts\respond.js" />
@@ -360,10 +366,15 @@
     <Content Include="Views\GeneralHoliday\Delete.cshtml" />
     <Content Include="Views\GeneralHoliday\Details.cshtml" />
     <Content Include="Views\GeneralHoliday\Edit.cshtml" />
-    <Content Include="Views\GeneralHoliday\FullCalendar.cshtml" />
+    <Content Include="Views\GeneralHoliday\MonthCalendar.cshtml" />
     <Content Include="Views\GeneralHoliday\Index.cshtml" />
     <Content Include="Views\GeneralHoliday\FullYearCalendar.cshtml" />
     <Content Include="Views\EmployeeQuota\Index.cshtml" />
+    <Content Include="Views\HolidayDescription\Create.cshtml" />
+    <Content Include="Views\HolidayDescription\Delete.cshtml" />
+    <Content Include="Views\HolidayDescription\Details.cshtml" />
+    <Content Include="Views\HolidayDescription\Edit.cshtml" />
+    <Content Include="Views\HolidayDescription\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

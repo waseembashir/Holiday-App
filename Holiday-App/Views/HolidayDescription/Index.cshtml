@@ -1,0 +1,49 @@
+﻿@model IEnumerable<HolidayApp.Core.Model.HolidayDescription>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.HolidayType)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HolidayColor)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.HolidayType)
+        </td>
+        <td>
+            <div style="background: @Html.Raw(item.HolidayColor); width: 30%;">
+                @Html.DisplayFor(modelItem => item.HolidayColor)
+            </div>
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.HolidayDescriptionId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.HolidayDescriptionId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.HolidayDescriptionId })
+        </td>
+    </tr>
+}
+
+</table>
+<br />
+<br />
+<p>
+    <div class="alert alert-danger">If you create multipe holiday types of same name, cascading will apply, newer will cascade older.</div>
+
+    <div class="alert alert-info">Create atleast 3 holiday types with names(public-holiday, islamic-public-holiday and pending as these are generalised ones).</div>
+   
+</p>

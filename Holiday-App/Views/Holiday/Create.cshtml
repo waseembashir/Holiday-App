@@ -59,7 +59,7 @@
         <div class="form-group">
             @Html.Label("Holiday Type", new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownList("HolidayType")
+                @Html.DropDownListFor(model => model.Holidaytype, ViewBag.HolidayTypes as SelectList, "--Select Holiday Type--")
                 @Html.ValidationMessageFor(model => model.Holidaytype)
             </div>
         </div>

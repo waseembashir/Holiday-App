@@ -37,7 +37,7 @@ namespace HolidayApp.Controllers
         {
             return View(db.GeneralHolidays.ToList());
         }
-        public ActionResult FullCalendar()
+        public ActionResult MonthCalendar()
         {
             ClientDb salesFirstDb = new ClientDb();
            /*this gives us the username of the user currently logged in - WB*/
@@ -77,13 +77,14 @@ namespace HolidayApp.Controllers
                 /*However, if the employee doesn't exist, meaning mapping didn't work - needs some extra validation - WB */
 
                 ViewBag.GeneralHolidays = db.GeneralHolidays.ToList();
+                ViewBag.HolidayDesc = db.GetAllHolidayDescriptions.ToList();
                 ViewBag.Holidays = null;
 
                 return View();
 
             }
 
-
+           
             ViewBag.GeneralHolidays = db.GeneralHolidays.ToList();
             ViewBag.Holidays = db.GetNotRejectedHolidaysByEmployee(employee).ToList();
 
@@ -119,7 +120,7 @@ namespace HolidayApp.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "GeneralHolidayId,Name,Description,Type,StartDate,EndDate,Frequency")] GeneralHoliday generalholiday)
         {
-            generalholiday.Type = "general";
+            generalholiday.Type = "public-holiday";
             if (ModelState.IsValid)
             {
                 db.GeneralHolidays.Add(generalholiday);
@@ -142,7 +143,7 @@ namespace HolidayApp.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult CreateIslamic([Bind(Include = "GeneralHolidayId,Name,Description,Type,StartDate,EndDate,Frequency")] GeneralHoliday generalholiday)
         {
-            generalholiday.Type = "islamic";
+            generalholiday.Type = "islamic-public-holiday";
 
                        
             if (ModelState.IsValid)

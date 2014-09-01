@@ -6,7 +6,13 @@
 @section calendar {
 
     <link href="~/Content/calendar.css" rel="stylesheet" />
+    <style>
 
+             
+         @Html.Raw(Helpers.HolidayColors())
+        
+
+    </style>
     <script src="~/Scripts/jquery.year_calendar.js"></script>
 
     <script>
@@ -20,7 +26,7 @@
            {
 
                /*NN: check whether type of holiday is islamic, then converts it to goergian before displaying */
-               if (item.Type == "islamic")
+               if (item.Type == "islamic-public-holiday")
                {
 
                    item.StartDate = Helpers.IslamicToGeorgian(item.StartDate);
@@ -42,7 +48,7 @@
                 item.EndDate = item.EndDate.AddDays(1);
 
                 /*Set cell color by setting appropriate classname in css and which matches holiday type */
-                var color = (item.Type == "islamic") ? " islamic-public-holiday" : " public-holiday";
+                var color = (item.Type == "islamic-public-holiday") ? " islamic-public-holiday" : " public-holiday";
                 String str = "{ start: new Date(" + string.Format("{0:yyyy, MM, dd}", item.StartDate) + "), end: new Date(" + string.Format("{0:yyyy, MM, dd}", item.EndDate) + "), label: '" + item.Name + color + " ', title: '" + color + "' },";
                 @Html.Raw(str)
             }
@@ -168,29 +174,3 @@
     <div class="alert alert-success">Islamic holidays (exact date is subject to moon-sighting).</div>
 
 </P>
-
-@{
-    
-    
-    foreach (var item4 in ViewBag.Holidays)
-    {
-
-        bool test = (item4.EndDate.DayOfWeek != DayOfWeek.Saturday) && (item4.EndDate.DayOfWeek != DayOfWeek.Sunday);
-       @Html.Raw(test)
-        if (test)
-            {
-                if(item4.HalfDay != null){
-
-                     String str4 = "{ date: new Date(" + string.Format("{0:yyyy, MM, dd}", item4.EndDate) + "), title: 'Half Day' },";
-                    @Html.Raw(str4)
-                    }
-            }
-
-                
-
-
-}
-    
-    
-    
-}

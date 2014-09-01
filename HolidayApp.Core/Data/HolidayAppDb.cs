@@ -15,10 +15,24 @@ namespace HolidayApp.Core.Data
 
         public DbSet<GeneralHoliday> GeneralHolidays { get; set; }
         public DbSet<EmployeeQuota> EmployeeQuotas { get; set; }
+        public DbSet<HolidayDescription> HolidayDescriptions { get; set; }
         public IQueryable<Holiday> GetAllHolidays
         {
             get { return Holidays; }
         }
+        public IQueryable<HolidayDescription> GetAllHolidayDescriptions
+        {
+            get { return HolidayDescriptions; }
+        }
+        public IQueryable<HolidayDescription> GetAllEmployeeHolidayDescriptions
+        {
+            get { return HolidayDescriptions.Where(r => r.TypeFor == TypeFor.EmployeeHolidays && r.HolidayType != "pending"); }
+        }
+        public IQueryable<HolidayDescription> GetAllGeneralHolidayDescriptions
+        {
+            get { return HolidayDescriptions.Where(r => r.TypeFor == TypeFor.GeneralCalendar && r.HolidayType != "pending"); }
+        }
+     
         public IQueryable<GeneralHoliday> GetAllGeneralHolidays
         {
             get { return GeneralHolidays; }
@@ -32,6 +46,10 @@ namespace HolidayApp.Core.Data
         {
             return Holidays.Where(r => r.Employee.Username == employee.Username && r.Status != "Rejected");
         }
+        public IQueryable<Holiday> GetApprovedHolidaysByEmployee(Employee employee)
+        {
+            return Holidays.Where(r => r.Employee.Username == employee.Username && r.Status == "Approved");
+        }
 
 
         public IQueryable<EmployeeQuota> GetAllEmployeeQuotas
@@ -42,15 +60,6 @@ namespace HolidayApp.Core.Data
         public EmployeeQuota GetEmployeeQuotaByEmployee(Employee employee)
         {
             return EmployeeQuotas.Where(r => r.EmployeeId == employee.EmployeeId).SingleOrDefault();
-        }
-        public EmployeeQuota GetEmployeeRemainingQuotaByEmployee(Employee employee)
-        {
-        
-     /*NN: Will return adjusted remaining employee quota, subtracting any public holidays or weekends*/   
-            
-            return EmployeeQuotas.Where(r => r.EmployeeId == employee.EmployeeId).SingleOrDefault();
-        
-        
         }
 
 
