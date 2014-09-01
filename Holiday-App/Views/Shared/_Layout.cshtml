@@ -44,13 +44,14 @@
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Calendar <span class="caret"></span></a>
                         <ul class="dropdown-menu" role="menu">
                             <li>@Html.ActionLink("Edit/View Holiday List", "Index", "GeneralHoliday")</li>
+                            <li>@Html.ActionLink("Holiday Type Customization", "Index", "HolidayDescription")</li>
                             <li class="divider"></li>
                             <li>@Html.ActionLink("Add General Holiday", "Create", "GeneralHoliday")</li>
                             <li>@Html.ActionLink("Add Islamic Holiday", "CreateIslamic", "GeneralHoliday")</li>
                             <li class="divider"></li>
                                                 
-                            <li>@Html.ActionLink("View Calendar(General)", "Calendar", "GeneralHoliday")</li>
-                            <li>@Html.ActionLink("View Full Calendar(General + Personnel)", "FullCalendar", "GeneralHoliday")</li>
+                          
+                            <li>@Html.ActionLink("View Month Calendar", "MonthCalendar", "GeneralHoliday")</li>
                             <li>@Html.ActionLink("View Year Calendar", "FullYearCalendar", "GeneralHoliday")</li>
                           
                         </ul>
@@ -65,7 +66,7 @@
                                 <li>@Html.ActionLink("Home", "Index", "Admin")</li>
                                 <li>@Html.ActionLink("Requests", "Requests", "Admin")</li>
                                 <li>@Html.ActionLink("Create Requests", "Create", "Admin")</li>
-                                <li>@Html.ActionLink("Holiday Type Customization", "Index", "HolidayDescription")</li>
+                                
                             </ul> 
                     </li>
                                  

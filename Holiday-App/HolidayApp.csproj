@@ -366,7 +366,7 @@
     <Content Include="Views\GeneralHoliday\Delete.cshtml" />
     <Content Include="Views\GeneralHoliday\Details.cshtml" />
     <Content Include="Views\GeneralHoliday\Edit.cshtml" />
-    <Content Include="Views\GeneralHoliday\FullCalendar.cshtml" />
+    <Content Include="Views\GeneralHoliday\MonthCalendar.cshtml" />
     <Content Include="Views\GeneralHoliday\Index.cshtml" />
     <Content Include="Views\GeneralHoliday\FullYearCalendar.cshtml" />
     <Content Include="Views\EmployeeQuota\Index.cshtml" />

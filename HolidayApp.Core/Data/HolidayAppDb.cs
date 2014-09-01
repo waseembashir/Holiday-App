@@ -32,10 +32,7 @@ namespace HolidayApp.Core.Data
         {
             get { return HolidayDescriptions.Where(r => r.TypeFor == TypeFor.GeneralCalendar && r.HolidayType != "pending"); }
         }
-        public IQueryable<HolidayDescription> GetHolidayDescription(string HolidayType)
-        {
-            return HolidayDescriptions.Where(r => r.HolidayType == HolidayType); 
-        }
+     
         public IQueryable<GeneralHoliday> GetAllGeneralHolidays
         {
             get { return GeneralHolidays; }

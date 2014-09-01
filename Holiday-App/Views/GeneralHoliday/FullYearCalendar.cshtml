@@ -8,22 +8,9 @@
     <link href="~/Content/calendar.css" rel="stylesheet" />
     <style>
 
-        @{
-            if (ViewBag.HolidayDesc != null) { 
-            
-             foreach (var holidayType in ViewBag.HolidayDesc)
-        {
-            string cssclass = "#year-calendar ." + holidayType.HolidayType +"{";
-            cssclass += "background-color:" + holidayType.HolidayColor + ";";
-        cssclass += "color: white;}";
+             
+         @Html.Raw(Helpers.HolidayColors())
         
-         @Html.Raw(cssclass)
-        }
-            
-            
-            }   
-       
-        }
 
     </style>
     <script src="~/Scripts/jquery.year_calendar.js"></script>
@@ -39,7 +26,7 @@
            {
 
                /*NN: check whether type of holiday is islamic, then converts it to goergian before displaying */
-               if (item.Type == "islamic")
+               if (item.Type == "islamic-public-holiday")
                {
 
                    item.StartDate = Helpers.IslamicToGeorgian(item.StartDate);
@@ -61,7 +48,7 @@
                 item.EndDate = item.EndDate.AddDays(1);
 
                 /*Set cell color by setting appropriate classname in css and which matches holiday type */
-                var color = (item.Type == "islamic") ? " islamic-public-holiday" : " public-holiday";
+                var color = (item.Type == "islamic-public-holiday") ? " islamic-public-holiday" : " public-holiday";
                 String str = "{ start: new Date(" + string.Format("{0:yyyy, MM, dd}", item.StartDate) + "), end: new Date(" + string.Format("{0:yyyy, MM, dd}", item.EndDate) + "), label: '" + item.Name + color + " ', title: '" + color + "' },";
                 @Html.Raw(str)
             }

@@ -20,6 +20,45 @@ namespace HolidayApp.Core.Helpers
 
             return date;
         }
+        /// <summary>
+        /// Returns list of css classes defining holiday type colors
+        /// </summary>
+        /// <returns>Returns list of css classes defining holiday type colors</returns>
+        public static string HolidayColors()
+        {
+            string cssclass = "";
+            string css = "";
+            HolidayAppDb db = new HolidayAppDb();
+            List<HolidayDescription> list = db.GetAllHolidayDescriptions.ToList();
+            foreach (var holidayType in list)
+            {
+                cssclass = "#year-calendar ." + holidayType.HolidayType + "{";
+                cssclass += "background-color:" + holidayType.HolidayColor + ";";
+                cssclass += "color: white;}";
+                css += cssclass;
+            }
+
+            return css;
+        }
+        /// <summary>
+        /// Returns color of holiday type by passing in holiday type
+        /// </summary>
+        /// <param name="HolidayType"></param>
+        /// <returns>Returns color of holiday type by passing in holiday type</returns>
+        public static string GetHolidayTypeColor(string HolidayType)
+        {
+            string color = "";
+           HolidayAppDb db = new HolidayAppDb();
+            List<HolidayDescription> list = db.GetAllHolidayDescriptions.ToList();
+            foreach (var holidayType in list)
+            {
+                if (holidayType.HolidayType == HolidayType)
+                color = holidayType.HolidayColor;
+            
+            }
+
+            return color;
+        }
 
         public static DateTime SetYearToCurrent(DateTime date)
         {
