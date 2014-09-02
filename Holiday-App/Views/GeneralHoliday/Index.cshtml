@@ -1,5 +1,5 @@
 ﻿@model IEnumerable<HolidayApp.Core.Model.GeneralHoliday>
-
+@using HolidayApp.Core.Helpers;
 @{
     ViewBag.Title = "Index";
 }
@@ -46,9 +46,17 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.StartDate)
+            @if (item.Type == "islamic-public-holiday")
+            {
+                @Html.Raw(string.Format("{0:[dd/MM/yyyy]}", Helpers.IslamicToGeorgian(item.StartDate)))}
+            
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.EndDate)
+            @if (item.Type == "islamic-public-holiday")
+            {
+                @Html.Raw(string.Format("{0:[dd/MM/yyyy]}", Helpers.IslamicToGeorgian(item.EndDate)))}
+
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.NoOfDays)
