@@ -5,6 +5,7 @@ using System.Globalization;
 using HolidayApp.Core.Model;
 using System.Collections.Generic;
 using System.Linq;
+using System.Collections;
 namespace HolidayApp.Core.Helpers
 {
     public static class Helpers
@@ -110,6 +111,7 @@ namespace HolidayApp.Core.Helpers
                             weekends++;
                             break;
                     }
+
                 }
 
 
@@ -162,6 +164,22 @@ namespace HolidayApp.Core.Helpers
 
             int result = 30;
             return result;
+        }
+
+        public static IEnumerable HolidayTypesTaken(Employee employee)
+        {
+            HolidayAppDb db = new HolidayAppDb();
+            List<Holiday> list = db.GetApprovedHolidaysByEmployee(employee).ToList();
+
+            var query = list.GroupBy(n => n.Holidaytype,
+                    (key, values) => new { Group = key, Count = values.Count() });
+
+            foreach(var item in query){
+                int a = item.Count;
+            }
+           
+
+            return query;
         }
 
     }
