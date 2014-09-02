@@ -1,9 +1,12 @@
 ﻿@model IEnumerable<HolidayApp.Core.Model.EmployeeQuota>
 @using SalesFirst.Core.Service;
+@using HolidayApp.Core.Helpers;
 @{
     ViewBag.Title = "Index";
 }
-
+@section calendar {
+    <script src="~/Scripts/Chart.js"></script>
+}
 <h2>Index</h2>
 
 <p>
@@ -15,39 +18,85 @@
             @Html.DisplayNameFor(model => model.EmployeeId)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.PaidQuota)
+           Total Entitlement
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.NonPaidQuota)
+            Holidays Taken
         </th>
-      
+        <th>
+            Booked This Year
+        </th>
+        <th>
+            Remaining This Year
+        </th>
         <th></th>
     </tr>
+@{
+    string usernames="";
+    string holidaysThisYear = "";
+    foreach (var item in Model)
+    {
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @{
-                 
-    EmployeeService employeeService = new EmployeeService(new SalesFirst.Core.Data.EmployeeRepository(new HolidayApp.Core.Data.HolidayAppDb()));
-    SalesFirst.Core.Model.Employee employee = employeeService.GetEmployeeByEmployeeId(item.EmployeeId);
-    @Html.Raw(employee.Username)  
+        EmployeeService employeeService = new EmployeeService(new SalesFirst.Core.Data.EmployeeRepository(new HolidayApp.Core.Data.HolidayAppDb()));
+        SalesFirst.Core.Model.Employee employee = employeeService.GetEmployeeByEmployeeId(item.EmployeeId);
+
+        <tr>
+            <td>
+                @Html.ActionLink(employee.Username, "Index", new { id = employee.EmployeeId })
+                @{usernames += '"'+employee.Username+'"'+",";}
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PaidQuota)
+            </td>
+            <td>
+                @Html.Raw(Helpers.HolidaysTaken(employee))
+            </td>
+            <td>
+                @Html.Raw(Helpers.HolidaysBookedInYear(employee, DateTime.Now.Year))
+                @{holidaysThisYear += '"' + Helpers.HolidaysBookedInYear(employee, DateTime.Now.Year).ToString() + '"' + ",";}
+            </td>
+            <td>
+                
+                @Html.Raw(item.PaidQuota - Helpers.HolidaysBookedInYear(employee, DateTime.Now.Year))
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.EmployeeQuotaId }) |
+                @Html.ActionLink("Details", "Details", new { id = item.EmployeeQuotaId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.EmployeeQuotaId })
+            </td>
+        </tr>
+    }
+
+<script>
+
+    var data = {
+        labels: [@Html.Raw(usernames)],
+        datasets: [
+            {
+                label: "My First dataset",
+                fillColor: "rgba(151,187,205,0.5)",
+                strokeColor: "rgba(151,187,205,0.8)",
+                highlightFill: "rgba(151,187,205,0.75)",
+                highlightStroke: "rgba(151,187,205,1)",
+                data: [@Html.Raw(holidaysThisYear)]
             }
-          
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PaidQuota)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.NonPaidQuota)
-        </td>
-       
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.EmployeeQuotaId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.EmployeeQuotaId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.EmployeeQuotaId })
-        </td>
-    </tr>
-}
+        ]
+    };
 
+    window.onload = function () {
+        var ctx = document.getElementById("canvas").getContext("2d");
+        window.myBar = new Chart(ctx).Bar(data, {
+            responsive: true
+        });
+    }
+
+
+
+</script>    
+    
+    }
 </table>
+<h3>Holidays Booked by Employees this year( @DateTime.Now.Year)</h3>
+<div style="width: 50%">
+    <canvas id="canvas"></canvas>
+</div>

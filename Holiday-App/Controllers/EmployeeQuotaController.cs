@@ -32,6 +32,8 @@ namespace HolidayApp.Controllers
         public ActionResult Manage()
         {
             return View(db.EmployeeQuotas.ToList());
+
+                
         }
 
         // GET: /EmployeeQuota/Details/5
@@ -48,13 +50,15 @@ namespace HolidayApp.Controllers
             }
             return View(employeequota);
         }
-        public ActionResult Index()
+        public ActionResult Index1()
         {
 
             /*this gives us the username of the user currently logged in - WB*/
             var loggedInUser = User.Identity.Name;
 
             var employee = employeeService.GetEmployeeByUsername(loggedInUser);
+
+
             if (employee == null || db.GetEmployeeQuotaByEmployee(employee) == null)
             {
                 /*If the employee doesn't exist or if there are no quotas against an employee we cannot list any quotas*/
@@ -62,14 +66,42 @@ namespace HolidayApp.Controllers
                 ViewBag.Message = "No Quota Information Found";
                 return View();
             }
-            ViewBag.approved = Helpers.TotalHolidaysTaken(employee);
+            ViewBag.approved = Helpers.ActualHolidaysTaken(employee);
            
 
             return View(db.GetEmployeeQuotaByEmployee(employee));
 
            
         }
+        public ActionResult Index(int id=-1)
+        {
+            if (id == -1)
+            {
+                var loggedInUser = User.Identity.Name;
+                id = employeeService.GetEmployeeByUsername(User.Identity.Name).EmployeeId;
+            }
+            
+                        
+            var employee = employeeService.GetEmployeeByEmployeeId(id);
 
+
+            if (employee == null || db.GetEmployeeQuotaByEmployee(employee) == null)
+            {
+                /*If the employee doesn't exist or if there are no quotas against an employee we cannot list any quotas*/
+                /*However, if the employee doesn't exist, meaning mapping didn't work - needs some extra validation - NN */
+                ViewBag.Message = "No Quota Information Found";
+                return View();
+            }
+            ViewBag.Username = employee.Username;
+            ViewBag.Entitlement = db.GetEmployeeQuotaByEmployee(employee).PaidQuota;
+            ViewBag.HolidaysTaken = Helpers.HolidaysTaken(employee);
+            ViewBag.BookedThisYear = Helpers.HolidaysBookedInYear(employee, DateTime.Now.Year);
+            ViewBag.Remaining = db.GetEmployeeQuotaByEmployee(employee).PaidQuota - Helpers.HolidaysBookedInYear(employee, DateTime.Now.Year);
+            ViewData["PercentRemaining"] = Helpers.HolidaysBookedInYear(employee, DateTime.Now.Year) / db.GetEmployeeQuotaByEmployee(employee).PaidQuota;
+            return View(db.GetEmployeeQuotaByEmployee(employee));
+
+
+        }
         // GET: /EmployeeQuota/Create
         public ActionResult Create()
         {

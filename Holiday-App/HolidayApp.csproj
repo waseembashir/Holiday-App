@@ -369,12 +369,13 @@
     <Content Include="Views\GeneralHoliday\MonthCalendar.cshtml" />
     <Content Include="Views\GeneralHoliday\Index.cshtml" />
     <Content Include="Views\GeneralHoliday\FullYearCalendar.cshtml" />
-    <Content Include="Views\EmployeeQuota\Index.cshtml" />
+    <Content Include="Views\EmployeeQuota\Index1.cshtml" />
     <Content Include="Views\HolidayDescription\Create.cshtml" />
     <Content Include="Views\HolidayDescription\Delete.cshtml" />
     <Content Include="Views\HolidayDescription\Details.cshtml" />
     <Content Include="Views\HolidayDescription\Edit.cshtml" />
     <Content Include="Views\HolidayDescription\Index.cshtml" />
+    <Content Include="Views\EmployeeQuota\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
