@@ -39,10 +39,9 @@
 
         EmployeeService employeeService = new EmployeeService(new SalesFirst.Core.Data.EmployeeRepository(new HolidayApp.Core.Data.HolidayAppDb()));
         SalesFirst.Core.Model.Employee employee = employeeService.GetEmployeeByEmployeeId(item.EmployeeId);
-        @foreach(var item3 in Helpers.HolidayTypesTaken(employee)){
-            @Html.Raw(item3.)
-}
-        <tr>
+        
+           
+         <tr>
             <td>
                 @Html.ActionLink(employee.Username, "Index", new { id = employee.EmployeeId })
                 @{usernames += '"'+employee.Username+'"'+",";}

@@ -2,7 +2,7 @@ namespace HolidayApp.Core.Migrations
 {
     using System;
     using System.Data.Entity.Migrations;
-
+    
     public partial class initial : DbMigration
     {
         public override void Up()
@@ -22,7 +22,7 @@ namespace HolidayApp.Core.Migrations
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.Clients", t => t.Client_Id)
                 .Index(t => t.Client_Id);
-
+            
             CreateTable(
                 "dbo.Clients",
                 c => new
@@ -44,7 +44,7 @@ namespace HolidayApp.Core.Migrations
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.ClientIndustries", t => t.ClientIndustry_Id)
                 .Index(t => t.ClientIndustry_Id);
-
+            
             CreateTable(
                 "dbo.ClientIndustries",
                 c => new
@@ -53,7 +53,7 @@ namespace HolidayApp.Core.Migrations
                         Name = c.String(nullable: false),
                     })
                 .PrimaryKey(t => t.Id);
-
+            
             CreateTable(
                 "dbo.DomainOrders",
                 c => new
@@ -70,7 +70,7 @@ namespace HolidayApp.Core.Migrations
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.Clients", t => t.Client_Id)
                 .Index(t => t.Client_Id);
-
+            
             CreateTable(
                 "dbo.Meetings",
                 c => new
@@ -84,7 +84,7 @@ namespace HolidayApp.Core.Migrations
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.CallLogs", t => t.CallLog_Id)
                 .Index(t => t.CallLog_Id);
-
+            
             CreateTable(
                 "dbo.Attendances",
                 c => new
@@ -100,7 +100,7 @@ namespace HolidayApp.Core.Migrations
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.Employees", t => t.Employee_EmployeeId)
                 .Index(t => t.Employee_EmployeeId);
-
+            
             CreateTable(
                 "dbo.Employees",
                 c => new
@@ -120,7 +120,7 @@ namespace HolidayApp.Core.Migrations
                         JobTitle = c.String(),
                     })
                 .PrimaryKey(t => t.EmployeeId);
-
+            
             CreateTable(
                 "dbo.Projects",
                 c => new
@@ -149,7 +149,7 @@ namespace HolidayApp.Core.Migrations
                 .Index(t => t.Domain_Id)
                 .Index(t => t.HostingPackage_Id)
                 .Index(t => t.SalesPerson_EmployeeId);
-
+            
             CreateTable(
                 "dbo.Hostings",
                 c => new
@@ -161,7 +161,7 @@ namespace HolidayApp.Core.Migrations
                         Cost = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.Id);
-
+            
             CreateTable(
                 "dbo.EmployeeQuotas",
                 c => new
@@ -174,7 +174,7 @@ namespace HolidayApp.Core.Migrations
                 .PrimaryKey(t => t.EmployeeQuotaId)
                 .ForeignKey("dbo.Employees", t => t.EmployeeId, cascadeDelete: true)
                 .Index(t => t.EmployeeId);
-
+            
             CreateTable(
                 "dbo.EmployeeSalaries",
                 c => new
@@ -188,7 +188,7 @@ namespace HolidayApp.Core.Migrations
                 .PrimaryKey(t => t.EmployeeSalaryId)
                 .ForeignKey("dbo.Employees", t => t.Employee_EmployeeId)
                 .Index(t => t.Employee_EmployeeId);
-
+            
             CreateTable(
                 "dbo.GeneralHolidays",
                 c => new
@@ -203,7 +203,18 @@ namespace HolidayApp.Core.Migrations
                         Frequency = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.GeneralHolidayId);
-
+            
+            CreateTable(
+                "dbo.HolidayDescriptions",
+                c => new
+                    {
+                        HolidayDescriptionId = c.Int(nullable: false, identity: true),
+                        HolidayType = c.String(nullable: false),
+                        HolidayColor = c.String(nullable: false),
+                        TypeFor = c.Int(nullable: false),
+                    })
+                .PrimaryKey(t => t.HolidayDescriptionId);
+            
             CreateTable(
                 "dbo.Holidays",
                 c => new
@@ -223,7 +234,7 @@ namespace HolidayApp.Core.Migrations
                 .PrimaryKey(t => t.HolidayId)
                 .ForeignKey("dbo.Employees", t => t.Employee_EmployeeId)
                 .Index(t => t.Employee_EmployeeId);
-
+            
             CreateTable(
                 "dbo.Payments",
                 c => new
@@ -239,7 +250,7 @@ namespace HolidayApp.Core.Migrations
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.Projects", t => t.Project_Id)
                 .Index(t => t.Project_Id);
-
+            
             CreateTable(
                 "dbo.Portfolios",
                 c => new
@@ -253,7 +264,7 @@ namespace HolidayApp.Core.Migrations
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.ClientIndustries", t => t.ClientIndustry_Id)
                 .Index(t => t.ClientIndustry_Id);
-
+            
             CreateTable(
                 "dbo.ProjectLogs",
                 c => new
@@ -280,7 +291,7 @@ namespace HolidayApp.Core.Migrations
                 .Index(t => t.Participant_EmployeeId)
                 .Index(t => t.Project_Id)
                 .Index(t => t.Tag_Id);
-
+            
             CreateTable(
                 "dbo.Tags",
                 c => new
@@ -292,7 +303,7 @@ namespace HolidayApp.Core.Migrations
                         RequiresAsanaUrl = c.Boolean(nullable: false),
                     })
                 .PrimaryKey(t => t.Id);
-
+            
             CreateTable(
                 "dbo.Watermarks",
                 c => new
@@ -304,7 +315,7 @@ namespace HolidayApp.Core.Migrations
                         UpdatedTime = c.DateTime(nullable: false, precision: 7, storeType: "datetime2"),
                     })
                 .PrimaryKey(t => t.Id);
-
+            
             CreateTable(
                 "dbo.ProjectEmployee",
                 c => new
@@ -317,9 +328,9 @@ namespace HolidayApp.Core.Migrations
                 .ForeignKey("dbo.Employees", t => t.EmployeeId, cascadeDelete: true)
                 .Index(t => t.ProjectId)
                 .Index(t => t.EmployeeId);
-
+            
         }
-
+        
         public override void Down()
         {
             DropForeignKey("dbo.ProjectLogs", "Tag_Id", "dbo.Tags");
@@ -367,6 +378,7 @@ namespace HolidayApp.Core.Migrations
             DropTable("dbo.Portfolios");
             DropTable("dbo.Payments");
             DropTable("dbo.Holidays");
+            DropTable("dbo.HolidayDescriptions");
             DropTable("dbo.GeneralHolidays");
             DropTable("dbo.EmployeeSalaries");
             DropTable("dbo.EmployeeQuotas");

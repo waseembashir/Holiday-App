@@ -6,6 +6,7 @@ using HolidayApp.Core.Model;
 using System.Collections.Generic;
 using System.Linq;
 using System.Collections;
+using SalesFirst.Core.Service;
 namespace HolidayApp.Core.Helpers
 {
     public static class Helpers
@@ -112,6 +113,7 @@ namespace HolidayApp.Core.Helpers
                             break;
                     }
 
+
                 }
 
 
@@ -142,12 +144,14 @@ namespace HolidayApp.Core.Helpers
         /// </summary>
         /// <param name="employee">takes employee as input</param>
         /// <returns>returns number of holidays of type int taken by particular employee</returns>
-        public static int HolidaysTaken(Employee employee)
+        public static float HolidaysTaken(Employee employee)
         {
             HolidayAppDb db = new HolidayAppDb();
             List<Holiday> list = db.GetApprovedHolidaysByEmployee(employee).ToList();
 
-            int result = list.Count;
+
+            float result = list.Select(c => c.NoOfDays).Sum();
+            
             return result;
         }
 
@@ -157,29 +161,107 @@ namespace HolidayApp.Core.Helpers
         /// <param name="employee">employee</param>
         /// <param name="FromDate">from date of type datetime</param>
         /// <returns>returns number of holidays of type int booked in particular year</returns>
-        public static int HolidaysBookedInYear(Employee employee, int Year)
+        public static float HolidaysBookedInYear(Employee employee, int Year)
         {
             HolidayAppDb db = new HolidayAppDb();
             List<Holiday> list = db.GetApprovedHolidaysByEmployee(employee).ToList();
+            List<Holiday> newlist = Helpers.HolidayListOfYear(employee,Year);
+            float result = newlist.Select(c => c.NoOfDays).Sum();
 
-            int result = 30;
             return result;
+
         }
 
-        public static IEnumerable HolidayTypesTaken(Employee employee)
+        /// <summary>
+        /// gets different types of holiday types and corresponding number of total days of dieefernt holiday types
+        /// </summary>
+        /// <param name="username">username of employee</param>
+        /// <returns>holiday type and number of days</returns>
+        public static Dictionary<string, float> HolidayTypesTaken(String username)
         {
             HolidayAppDb db = new HolidayAppDb();
+            EmployeeService employeeService = new EmployeeService(new SalesFirst.Core.Data.EmployeeRepository(new HolidayApp.Core.Data.HolidayAppDb()));
+            SalesFirst.Core.Model.Employee employee = employeeService.GetEmployeeByUsername(username);
             List<Holiday> list = db.GetApprovedHolidaysByEmployee(employee).ToList();
 
             var query = list.GroupBy(n => n.Holidaytype,
                     (key, values) => new { Group = key, Count = values.Count() });
 
-            foreach(var item in query){
-                int a = item.Count;
-            }
-           
 
-            return query;
+            var result = list.GroupBy(h => h.Holidaytype)
+                          .Select(hd =>
+                                new
+                                {
+                                    Group = hd.Key,
+                                    Count = hd.Count(),
+                                    Sum = hd.Sum(h => h.NoOfDays)
+                                });
+
+
+            Dictionary<string, float> groups =  new Dictionary<string, float>();
+            foreach(var item in result)
+            {
+                groups.Add(item.Group,item.Sum);
+
+            }
+
+
+
+            return groups;
+        }
+
+
+        /// <summary>
+        /// gets list of individual holidays in particular year, and adjusting halfday count
+        /// </summary>
+        /// <param name="employee"></param>
+        /// <param name="Year">returns list of individual holidays in particular year, and adjusting halfday count</param>
+        /// <returns></returns>
+        public static List<Holiday> HolidayListOfYear(Employee employee, int Year)
+        {
+            HolidayAppDb db = new HolidayAppDb();
+            List<Holiday> list = db.GetApprovedHolidaysByEmployee(employee).ToList();
+            List<Holiday> newlist = new List<Holiday>();
+           
+            foreach (var item in list)
+            {
+                DateTime startDate = item.StartDate;
+                DateTime endDate = item.EndDate;
+
+                TimeSpan diff = endDate - startDate;
+                int days = diff.Days;
+                Holiday holiday = new Holiday();
+                for (var i = 0; i <= days; i++)
+                {
+                    //total = (item.HalfDay == null) ? total+.5 : total++;
+                    var testDate = startDate.AddDays(i);
+                    if (testDate.Year == Year)
+                    {
+                        
+                        holiday.BookedBy = item.BookedBy;
+                        holiday.BookingDate = item.BookingDate;
+                        holiday.Employee = item.Employee;
+                        holiday.EndDate = testDate;
+                        holiday.HolidayDescription = item.HolidayDescription;
+                        holiday.HolidayId = item.HolidayId;
+                        holiday.Holidaytype = item.Holidaytype;
+                        holiday.NoOfDays = 1;
+                        holiday.StartDate = testDate;
+                        holiday.Status = item.Status;
+                        holiday.HalfDay = item.HalfDay;
+
+                    }
+
+                }
+                if (item.HalfDay != null) {
+                    holiday.NoOfDays =  holiday.NoOfDays/2;
+                }
+                newlist.Add(holiday);
+
+            }
+
+            return newlist;
+
         }
 
     }

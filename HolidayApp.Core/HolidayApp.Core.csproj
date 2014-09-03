@@ -53,17 +53,9 @@
   <ItemGroup>
     <Compile Include="Data\HolidayAppDb.cs" />
     <Compile Include="Helpers\Helpers.cs" />
-    <Compile Include="Migrations\201409010345075_initial.cs" />
-    <Compile Include="Migrations\201409010345075_initial.Designer.cs">
-      <DependentUpon>201409010345075_initial.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201409010502597_second.cs" />
-    <Compile Include="Migrations\201409010502597_second.Designer.cs">
-      <DependentUpon>201409010502597_second.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201409010535476_third.cs" />
-    <Compile Include="Migrations\201409010535476_third.Designer.cs">
-      <DependentUpon>201409010535476_third.cs</DependentUpon>
+    <Compile Include="Migrations\201409030624222_initial.cs" />
+    <Compile Include="Migrations\201409030624222_initial.Designer.cs">
+      <DependentUpon>201409030624222_initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model\EmployeeQuota.cs" />
@@ -100,14 +92,8 @@
     <Content Include="Scripts\jscolor.js" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201409010345075_initial.resx">
-      <DependentUpon>201409010345075_initial.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201409010502597_second.resx">
-      <DependentUpon>201409010502597_second.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201409010535476_third.resx">
-      <DependentUpon>201409010535476_third.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201409030624222_initial.resx">
+      <DependentUpon>201409030624222_initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

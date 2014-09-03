@@ -1,5 +1,5 @@
 ﻿@model HolidayApp.Core.Model.EmployeeQuota
-
+@using HolidayApp.Core.Helpers
 @{
     ViewBag.Title = "My Holiday Quota";
 }
@@ -56,11 +56,7 @@
 <h4>Total Holidays Taken:</h4>
 <div class="progress">
     <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="@Html.Raw(ViewBag.Remaining)" aria-valuemin="0" aria-valuemax="@Html.Raw(ViewBag.Entitlement)" style="width: 80%;">
-        @{
-            float res = ViewBag.BookedThisYear / ViewBag.Entitlement;
-             @Html.Raw(res)
-        }
-         
+       
         
     </div>
 </div>
@@ -71,30 +67,15 @@
 <script>
 
     var pieData = [
-            {
-                value: 50,
-                color: "#F7464A",
-                highlight: "#FF5A5E",
-                label: "sickness"
-            },
-            {
-                value: 300,
-                color: "#46BFBD",
-                highlight: "#5AD3D1",
-                label: "travel"
-            },
-            {
-                value: 100,
-                color: "#FDB45C",
-                highlight: "#FFC870",
-                label: "non-paid"
-            },
-            {
-                value: 40,
-                color: "#949FB1",
-                highlight: "#A8B3C5",
-                label: "paid"
-            }
+
+        @foreach (var grp in Helpers.HolidayTypesTaken(ViewBag.Username))
+    {
+           
+            
+            @Html.Raw("{value: " + grp.Value + ", color: '" + Helpers.GetHolidayTypeColor(grp.Key) + "',highlight: '"+Helpers.GetHolidayTypeColor(grp.Key)+"',label: '" + grp.Key + "'},")
+    }
+        
+            
 
     ];
 

@@ -13,7 +13,7 @@ namespace HolidayApp.Core.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201409010345075_initial"; }
+            get { return "201409030624222_initial"; }
         }
         
         string IMigrationMetadata.Source
