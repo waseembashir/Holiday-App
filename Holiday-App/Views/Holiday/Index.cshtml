@@ -68,12 +68,8 @@
                     @Html.ActionLink("Edit", "Edit", new { id = item.HolidayId }, new { @class = "btn btn-primary" }) 
                     @Html.ActionLink("Delete", "Delete", new { id = item.HolidayId }, new { @class = "btn btn-danger" })    
                 }
-                
-               if(item.Status!=null && item.Status=="Rejected") 
-               {
-                 @Html.ActionLink("Delete", "Delete", new { id = item.HolidayId }, new { @class = "btn btn-danger" })    
-               }
-                              
+   
+                                         
             }
             @Html.ActionLink("Details", "Details", new { id = item.HolidayId }, new { @class = "btn btn-info" })
             

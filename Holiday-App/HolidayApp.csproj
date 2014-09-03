@@ -198,6 +198,11 @@
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="_aspnet_Holiday_App_20140718101307DataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_aspnet_Holiday_App_20140718101307DataSet.xsd</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
@@ -376,6 +381,17 @@
     <Content Include="Views\HolidayDescription\Edit.cshtml" />
     <Content Include="Views\HolidayDescription\Index.cshtml" />
     <Content Include="Views\EmployeeQuota\Index.cshtml" />
+    <Content Include="_aspnet_Holiday_App_20140718101307DataSet.xsc">
+      <DependentUpon>_aspnet_Holiday_App_20140718101307DataSet.xsd</DependentUpon>
+    </Content>
+    <None Include="_aspnet_Holiday_App_20140718101307DataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>_aspnet_Holiday_App_20140718101307DataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="_aspnet_Holiday_App_20140718101307DataSet.xss">
+      <DependentUpon>_aspnet_Holiday_App_20140718101307DataSet.xsd</DependentUpon>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -395,6 +411,10 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Reports\HolidayReport.rdlc" />
+    <EmbeddedResource Include="Reports\Report1.rdlc" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

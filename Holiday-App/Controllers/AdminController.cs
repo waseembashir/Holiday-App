@@ -155,7 +155,7 @@ namespace HolidayApp.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "EmployeeNames,HolidayId,StartDate,EndDate,NoOfDays,Employee,BookingDate,BookedBy,Holidaytype,HolidayDescription,HalfDay")] Holiday holiday)
+        public ActionResult Create([Bind(Include = "EmployeeNames,StartDate,EndDate,NoOfDays,Holidaytype,HolidayDescription,HalfDay")] Holiday holiday)
         {
             var loggedInUser = User.Identity.Name;
             var employee = employeeService.GetEmployeeByUsername(Request.Form["EmployeeNames"]);
@@ -173,31 +173,18 @@ namespace HolidayApp.Controllers
             {
                 holiday.Employee = employee;
                 holiday.BookingDate = DateTime.Today;
-                holiday.BookedBy = "Admin";
+                holiday.BookedBy = employee.Username;
                 holiday.Status = "Approved";
 
                 db.Holidays.Add(holiday);
                 db.SaveChanges();
                 //Send email notification to the admin
-                ////EmailService email = new EmailService();
-                var id = holiday.HolidayId;
-
-                MailMessage message = new MailMessage();
-                //  message.To.Add(new MailAddress("zafar.rather@apexure.com"));  //employees email id retrieve from employee table
-                message.To.Add(new MailAddress(employee.Username));
-                message.From = new MailAddress("zafar.rather@apexure.com");
-                // message.CC.Add(new MailAddress("carboncopy@foo.bar.com"));
-                message.Subject = "New Holiday Booked for you By Admin ";
-                message.IsBodyHtml = true;
-                var link = "https://localhost:44388/Holiday/Details/" + id;
-                message.Body = "This is demo mail Goto to this link <br> <a href='" + link + "'>Click here</a>";
-                SmtpClient client = new SmtpClient() { EnableSsl = true };
-                client.Host = "smtp.gmail.com";
-                client.Port = 587;
-                client.UseDefaultCredentials = false;
-                client.Credentials = new System.Net.NetworkCredential
-                ("holiday.apexure", "apexure111");
-                client.Send(message);
+                EmailService email = new EmailService();
+                string email_body = "Holiday has been booked for you by Admin. Click the link below for details<br/>";
+                email_body = email_body + "<a href='" + Request.Url.GetLeftPart(UriPartial.Authority) + "/Holiday/Details/" + holiday.HolidayId + "'>Check Details</a>";
+                List<string> emailcc = new List<string>();
+                email.SendEmail("Holiday Has been booked for you by Admin",email_body,employee.Username,emailcc);
+               
                 //------------------------------------------------------------------------------------
                 return RedirectToAction("Index");
             }
@@ -222,6 +209,14 @@ namespace HolidayApp.Controllers
             var date = holiday.StartDate;
             db.Entry(holiday).State = EntityState.Modified;
             db.SaveChanges();
+            //Send email notification to the admin
+            EmailService email = new EmailService();
+            string email_body = "Congratulations your Holiday Request has been approved. Click the link below for details<br/>";
+            email_body = email_body + "<a href='" + Request.Url.GetLeftPart(UriPartial.Authority) + "/Holiday/Details/" + holiday.HolidayId + "'>Check Details</a>";
+            List<string> emailcc = new List<string>();
+            email.SendEmail("Holiday Has been booked for you by Admin", email_body, holiday.Employee.Username, emailcc);
+
+            //------------------------------------------------------------------------------------
                 
             return RedirectToAction("Index");
         }
@@ -243,6 +238,15 @@ namespace HolidayApp.Controllers
             db.Holidays.Attach(holiday);
             db.Entry(holiday).State = EntityState.Modified;
             db.SaveChanges();
+            //Send email notification to the admin
+            EmailService email = new EmailService();
+            string email_body = "Your Holiday Request has been Rejected. Click the link below for details<br/>";
+            email_body = email_body + "<a href='" + Request.Url.GetLeftPart(UriPartial.Authority) + "/Holiday/Details/" + holiday.HolidayId + "'>Check Details</a>";
+            List<string> emailcc = new List<string>();
+            email.SendEmail("Your Holiday request has been rejected Admin", email_body, holiday.Employee.Username, emailcc);
+
+            //------------------------------------------------------------------------------------
+                
             return RedirectToAction("Index");
         }
 

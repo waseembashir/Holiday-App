@@ -40,7 +40,7 @@ namespace HolidayApp.Core.Data
 
         public IQueryable<Holiday> GetHolidaysByEmployee(Employee employee)
         {
-            return Holidays.Where(r => r.Employee.Username == employee.Username);
+            return Holidays.Where(r => r.Employee.Username == employee.Username).OrderByDescending(x => x.HolidayId);
         }
         public IQueryable<Holiday> GetNotRejectedHolidaysByEmployee(Employee employee)
         {
@@ -65,25 +65,34 @@ namespace HolidayApp.Core.Data
 
         public IQueryable<Holiday> GetApprovedHolidays()
         {
-            return Holidays.Where(r => r.Status == "Approved");
+            return Holidays.Where(r => r.Status == "Approved").OrderByDescending(x => x.HolidayId);
            
         }
 
 
         public IQueryable<Holiday> GetDisApprovedHolidays()
         {
-            return Holidays.Where(r => r.Status == "Rejected" || r.StartDate < DateTime.Today);
+            return Holidays.Where(r => r.Status == "Rejected" || r.StartDate < DateTime.Today).OrderByDescending(x => x.HolidayId);
 
         }
 
         public IQueryable<Holiday> GetPendingHolidays()
         {
            
-            return Holidays.Where(r => r.Status ==null && r.StartDate >=  DateTime.Today);
+            return Holidays.Where(r => r.Status ==null && r.StartDate >=  DateTime.Today).OrderByDescending(x=>x.HolidayId);
 
         }
 
+        /// <summary>
+        /// Get the holidays of cuurent year for an employee
+        /// </summary>
+        /// <returns> holidays</returns>
+        public IQueryable<Holiday> GetCurrentYearHolidays(Employee employee)
+        {
 
+            return Holidays.Where(r => r.Status == null && r.StartDate >= DateTime.Today).OrderByDescending(x => x.HolidayId);
+
+        }
 
 
 

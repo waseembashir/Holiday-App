@@ -153,25 +153,12 @@ namespace HolidayApp.Controllers
                 db.Holidays.Add(holiday);
                 db.SaveChanges();
                 //Send email notification to the admin
-                ////EmailService email = new EmailService();
-                //var id = holiday.HolidayId;
+                EmailService email = new EmailService();
+                string email_body = "New Holiday Request from "+employee.Username+". Click the link below for details<br/>";
+                email_body = email_body + "<a href='" + Request.Url.GetLeftPart(UriPartial.Authority) + "/Admin/HolidayDetails/" + holiday.HolidayId + "'>Check Details</a>";
+                List<string> emailcc = new List<string>();
+                email.SendEmail("New Holiday Request", email_body,"zafar.rather@apexure.com", emailcc);
 
-                //MailMessage message = new MailMessage();
-                ////  message.To.Add(new MailAddress("zafar.rather@apexure.com"));  //employees email id retrieve from employee table
-                //message.To.Add(new MailAddress("zafar.rather@apexure.com"));
-                //message.From = new MailAddress("zafar.rather@apexure.com");
-                //// message.CC.Add(new MailAddress("carboncopy@foo.bar.com"));
-                //message.Subject = "New Holiday Booking Request By " + employee.FirstName;
-                //message.IsBodyHtml = true;
-                //var link = "https://localhost:44388/Admin/Edit/" + id;
-                //message.Body = "This is demo mail Goto to this link <br> <a href='" + link + "'>Click here</a>";
-                //SmtpClient client = new SmtpClient() { EnableSsl = true };
-                //client.Host = "smtp.gmail.com";
-                //client.Port = 587;
-                //client.UseDefaultCredentials = false;
-                //client.Credentials = new System.Net.NetworkCredential
-                //("holiday.apexure", "apexure111");
-                //client.Send(message);
                 //------------------------------------------------------------------------------------
                 return RedirectToAction("Index");
             }
@@ -200,7 +187,7 @@ namespace HolidayApp.Controllers
                 return HttpNotFound();
             }
 
-            if (id == null || holiday.Status == "Approved")
+            if (id == null || holiday.Status !=null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
@@ -271,6 +258,15 @@ namespace HolidayApp.Controllers
             return View(holiday);
         }
 
+        /// <summary>
+        /// Generate Reports 
+        /// </summary>
+        /// <returns></returns>
+        // GEt: /Holiday/Report
+        public ActionResult Report(int id)
+        {
+            return View();
+        }
 
         protected override void Dispose(bool disposing)
         {
