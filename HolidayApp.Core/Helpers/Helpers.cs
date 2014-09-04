@@ -210,6 +210,43 @@ namespace HolidayApp.Core.Helpers
             return groups;
         }
 
+        /// <summary>
+        /// gets different types of holiday types and corresponding number of total days of dieefernt holiday types in year
+        /// </summary>
+        /// <param name="username">username of employee</param>
+        /// <returns>holiday type and number of days in year</returns>
+        public static Dictionary<string, float> HolidayTypesTakenInYear(String username, int Year)
+        {
+            HolidayAppDb db = new HolidayAppDb();
+            EmployeeService employeeService = new EmployeeService(new SalesFirst.Core.Data.EmployeeRepository(new HolidayApp.Core.Data.HolidayAppDb()));
+            SalesFirst.Core.Model.Employee employee = employeeService.GetEmployeeByUsername(username);
+            List<Holiday> list = Helpers.HolidayListOfYear(employee, Year);
+
+            var query = list.GroupBy(n => n.Holidaytype,
+                    (key, values) => new { Group = key, Count = values.Count() });
+
+
+            var result = list.GroupBy(h => h.Holidaytype)
+                          .Select(hd =>
+                                new
+                                {
+                                    Group = hd.Key,
+                                    Count = hd.Count(),
+                                    Sum = hd.Sum(h => h.NoOfDays)
+                                });
+
+
+            Dictionary<string, float> groups = new Dictionary<string, float>();
+            foreach (var item in result)
+            {
+                groups.Add(item.Group, item.Sum);
+
+            }
+
+
+
+            return groups;
+        }
 
         /// <summary>
         /// gets list of individual holidays in particular year, and adjusting halfday count
@@ -230,13 +267,14 @@ namespace HolidayApp.Core.Helpers
 
                 TimeSpan diff = endDate - startDate;
                 int days = diff.Days;
-                Holiday holiday = new Holiday();
+               bool flag = false;
                 for (var i = 0; i <= days; i++)
                 {
                     //total = (item.HalfDay == null) ? total+.5 : total++;
                     var testDate = startDate.AddDays(i);
                     if (testDate.Year == Year)
                     {
+                        Holiday holiday = new Holiday();
                         
                         holiday.BookedBy = item.BookedBy;
                         holiday.BookingDate = item.BookingDate;
@@ -249,14 +287,17 @@ namespace HolidayApp.Core.Helpers
                         holiday.StartDate = testDate;
                         holiday.Status = item.Status;
                         holiday.HalfDay = item.HalfDay;
-
+                        if (holiday.HalfDay != null && flag == false)
+                        {
+                        holiday.NoOfDays = holiday.NoOfDays / 2;
+                        flag = true;
+                        }
+                        newlist.Add(holiday);
                     }
 
                 }
-                if (item.HalfDay != null) {
-                    holiday.NoOfDays =  holiday.NoOfDays/2;
-                }
-                newlist.Add(holiday);
+               
+                
 
             }
 

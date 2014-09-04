@@ -53,16 +53,29 @@
 </div>
 
 
-<h4>Total Holidays Taken:</h4>
+<h4>Holidays Taken This Year:</h4>
+@{
+    string cls = "progress-bar-success";
+    if (@ViewBag.BookedThisYear / @ViewBag.Entitlement * 100 >= 60)
+    {
+        cls = "progress-bar-danger";
+    }
 <div class="progress">
-    <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="@Html.Raw(ViewBag.Remaining)" aria-valuemin="0" aria-valuemax="@Html.Raw(ViewBag.Entitlement)" style="width: 80%;">
-       
+    <div class="progress-bar @Html.Raw(cls)" role="progressbar" aria-valuenow="@Html.Raw(ViewBag.Remaining)" aria-valuemin="0" aria-valuemax="@Html.Raw(ViewBag.Entitlement)" style="width: @Html.Raw(@ViewBag.BookedThisYear/@ViewBag.Entitlement*100)%;">
+        @Html.Raw(@ViewBag.BookedThisYear/@ViewBag.Entitlement*100)%
         
     </div>
 </div>
-
-<div id="canvas-holder">
-    <canvas id="chart-area" width="300" height="300" />
+}
+<div>
+    <div class="canvas-holder col-md-6">
+        <h5>Total Holidays Taken:</h5>
+        <canvas id="chart-area" width="300" height="300" />
+    </div>
+    <div class="canvas-holder col-md-6" style="float:left">
+        <h5>Holidays Taken This Year:</h5>
+        <canvas id="chart-area2" width="300" height="300" />
+    </div>
 </div>
 <script>
 
@@ -78,10 +91,24 @@
             
 
     ];
+    var pieData2 = [
+
+       @foreach (var grp2 in Helpers.HolidayTypesTakenInYear(ViewBag.Username, DateTime.Now.Year))
+    {
+           
+            
+            @Html.Raw("{value: " + grp2.Value + ", color: '" + Helpers.GetHolidayTypeColor(grp2.Key) + "',highlight: '"+Helpers.GetHolidayTypeColor(grp2.Key)+"',label: '" + grp2.Key + "'},")
+    }
+        
+            
+
+    ];
 
     window.onload = function () {
         var ctx = document.getElementById("chart-area").getContext("2d");
         window.myPie = new Chart(ctx).Pie(pieData);
+        var ctx = document.getElementById("chart-area2").getContext("2d");
+        window.myPie = new Chart(ctx).Pie(pieData2);
     };
 
 
