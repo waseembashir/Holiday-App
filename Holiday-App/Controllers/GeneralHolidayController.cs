@@ -33,6 +33,10 @@ namespace HolidayApp.Controllers
         {
             return View(db.GeneralHolidays.ToList());
         }
+        public ActionResult Search()
+        {
+            return View();
+        }
         public ActionResult Calendar()
         {
             return View(db.GeneralHolidays.ToList());

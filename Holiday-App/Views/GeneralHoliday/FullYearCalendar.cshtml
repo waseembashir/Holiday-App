@@ -96,15 +96,14 @@
                 foreach (var item3 in ViewBag.Holidays)
                 {
              /*NN: checks if half day to dispay is weekend, then skips*/       
-             if(!(item3.EndDate.DayOfWeek != DayOfWeek.Saturday) && (item3.EndDate.DayOfWeek != DayOfWeek.Sunday)){
-                 if(item3.HalfDay != null)
+                if(item3.HalfDay != null)
                  {
                     
                      String str = "{ date: new Date(" + string.Format("{0:yyyy, MM, dd}", item3.EndDate) + "), title: 'Half Day' },";
                
                      @Html.Raw(str) }
                 
-                }
+                
                 }
             }
 

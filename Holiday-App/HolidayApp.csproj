@@ -277,6 +277,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Scripts\angular.min.js" />
     <Content Include="Scripts\arrow.gif" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -316,6 +317,7 @@
     <Content Include="Scripts\myjquery.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\underscore.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -384,6 +386,7 @@
     <Content Include="_aspnet_Holiday_App_20140718101307DataSet.xsc">
       <DependentUpon>_aspnet_Holiday_App_20140718101307DataSet.xsd</DependentUpon>
     </Content>
+    <Content Include="Views\GeneralHoliday\Search.cshtml" />
     <None Include="_aspnet_Holiday_App_20140718101307DataSet.xsd">
       <Generator>MSDataSetGenerator</Generator>
       <LastGenOutput>_aspnet_Holiday_App_20140718101307DataSet.Designer.cs</LastGenOutput>

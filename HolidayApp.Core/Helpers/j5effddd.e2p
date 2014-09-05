@@ -46,21 +46,6 @@ namespace HolidayApp.Core.Helpers
 
             return css;
         }
-
-        public static Dictionary<string, string> GetHolidayNamesAndColors()
-        {
-           
-            HolidayAppDb db = new HolidayAppDb();
-            List<HolidayDescription> list = db.GetAllHolidayDescriptions.ToList();
-
-            Dictionary<string, string> groups = new Dictionary<string, string>();
-            foreach (var holidayType in list)
-            {
-                groups.Add(holidayType.HolidayType,holidayType.HolidayColor);
-            }
-
-            return groups;
-        }
         /// <summary>
         /// Returns color of holiday type by passing in holiday type
         /// </summary>
@@ -320,12 +305,11 @@ namespace HolidayApp.Core.Helpers
 
         }
 
-
-        public static List<CombinedHoliday> CompleteHolidayListOfYear(int Year)
+        public static List<Holiday> HolidayListOfYear(Employee employee, int Year)
         {
             HolidayAppDb db = new HolidayAppDb();
-            List<Holiday> list = db.GetNotRejectedHolidays().ToList();
-            List<CombinedHoliday> newlist = new List<CombinedHoliday>().ToList();
+            List<Holiday> list = db.GetApprovedHolidaysByEmployee(employee).ToList();
+            List<Holiday> newlist = new List<Holiday>();
 
             foreach (var item in list)
             {
@@ -336,23 +320,29 @@ namespace HolidayApp.Core.Helpers
                 int days = diff.Days;
                 bool flag = false;
                 for (var i = 0; i <= days; i++)
-                {var t= i;
+                {
                     //total = (item.HalfDay == null) ? total+.5 : total++;
                     var testDate = startDate.AddDays(i);
                     if (testDate.Year == Year)
                     {
-                        CombinedHoliday holiday = new CombinedHoliday();
-                        holiday.day = 1;
-                        if (item.HalfDay != null && flag == false && t == days)
+                        Holiday holiday = new Holiday();
+
+                        holiday.BookedBy = item.BookedBy;
+                        holiday.BookingDate = item.BookingDate;
+                        holiday.Employee = item.Employee;
+                        holiday.EndDate = testDate;
+                        holiday.HolidayDescription = item.HolidayDescription;
+                        holiday.HolidayId = item.HolidayId;
+                        holiday.Holidaytype = item.Holidaytype;
+                        holiday.NoOfDays = 1;
+                        holiday.StartDate = testDate;
+                        holiday.Status = item.Status;
+                        holiday.HalfDay = item.HalfDay;
+                        if (holiday.HalfDay != null && flag == false)
                         {
-                            holiday.day = holiday.day / 2;
+                            holiday.NoOfDays = holiday.NoOfDays / 2;
                             flag = true;
                         }
-                        holiday.name = item.Employee.Username;
-                        holiday.date = testDate;
-                        holiday.type = item.Holidaytype;
-                        holiday.status = item.Status;
-                        
                         newlist.Add(holiday);
                     }
 
@@ -362,15 +352,21 @@ namespace HolidayApp.Core.Helpers
 
             }
 
-            List<GeneralHoliday> list2 = db.GetAllGeneralHolidays.ToList();
-            foreach (var item in list2)
+            return newlist;
+
+        }
+
+        public static List<Holiday> CompleteHolidayListOfYear(int Year)
+        {
+            HolidayAppDb db = new HolidayAppDb();
+            List<Holiday> list = db.GetNotRejectedHolidays();
+            List<CombinedHolidayList> newlist = new List<CombinedHolidayList>();
+
+            foreach (var item in list)
             {
                 DateTime startDate = item.StartDate;
                 DateTime endDate = item.EndDate;
-                if (item.Type == "islamic-public-holiday") { 
-                startDate = Helpers.IslamicToGeorgian(item.StartDate);
-                endDate = Helpers.IslamicToGeorgian(item.EndDate);
-                }
+
                 TimeSpan diff = endDate - startDate;
                 int days = diff.Days;
                 bool flag = false;
@@ -380,14 +376,24 @@ namespace HolidayApp.Core.Helpers
                     var testDate = startDate.AddDays(i);
                     if (testDate.Year == Year)
                     {
-                        CombinedHoliday holiday = new CombinedHoliday();
+                        Holiday holiday = new Holiday();
 
-                        holiday.name = item.Name;
-                        holiday.date = testDate;
-                        holiday.type = item.Type;
-                        holiday.status = item.Name;
-                        holiday.day = 1;
-                        
+                        holiday.BookedBy = item.BookedBy;
+                        holiday.BookingDate = item.BookingDate;
+                        holiday.Employee = item.Employee;
+                        holiday.EndDate = testDate;
+                        holiday.HolidayDescription = item.HolidayDescription;
+                        holiday.HolidayId = item.HolidayId;
+                        holiday.Holidaytype = item.Holidaytype;
+                        holiday.NoOfDays = 1;
+                        holiday.StartDate = testDate;
+                        holiday.Status = item.Status;
+                        holiday.HalfDay = item.HalfDay;
+                        if (holiday.HalfDay != null && flag == false)
+                        {
+                            holiday.NoOfDays = holiday.NoOfDays / 2;
+                            flag = true;
+                        }
                         newlist.Add(holiday);
                     }
 
@@ -397,12 +403,9 @@ namespace HolidayApp.Core.Helpers
 
             }
 
-
-            return newlist.OrderBy(o => o.date).ToList();
+            return newlist;
 
         }
-
-
 
 
     }
