@@ -406,4 +406,12 @@ namespace HolidayApp.Core.Helpers
 
 
     }
+    public class CombinedHoliday
+    {
+        public string name;
+        public DateTime date;
+        public string status;
+        public float day;
+        public string type;
+    }
 }

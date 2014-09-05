@@ -102,8 +102,7 @@ namespace HolidayApp.Core.Data
 
         }
 
-
-
+      
     }
 
 

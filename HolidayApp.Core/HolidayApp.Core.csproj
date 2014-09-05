@@ -58,7 +58,6 @@
       <DependentUpon>201409030624222_initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Model\CombinedHoliday.cs" />
     <Compile Include="Model\EmployeeQuota.cs" />
     <Compile Include="Model\GeneralHoliday.cs" />
     <Compile Include="Model\Holiday.cs" />
